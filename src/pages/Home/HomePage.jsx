@@ -1,21 +1,22 @@
 import React, { useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { moviesLoading } from "../../redux/slices/films";
-import FilmContainer from "./HomePage";
+import FilmItem from "./HomeItem";
 
-const HomePageContainer = () => {
-  const { list, isLoading } = useSelector(state => state.movies)  
+const HomePage = () => {
   const dispatch = useDispatch()
+  
+  const { list, isLoading } = useSelector(state => state.movies)  
 
   useEffect(() => {
     dispatch(moviesLoading())
   }, [dispatch])
   
   return(
-     <FilmContainer list={list} isLoading={isLoading} />
+     <FilmItem list={list} isLoading={isLoading} />
   )
 }
-export default HomePageContainer
+export default HomePage
 
 
 

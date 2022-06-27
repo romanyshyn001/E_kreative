@@ -3,7 +3,7 @@ import style from './style.module.css'
 import { NavLink } from "react-router-dom";
 import Loader from "../../Components/Loader/Loader"
 
-const FilmContainer = (props) => {
+const FilmItem = (props) => {
   
   return (  
     <div className={style.home}> 
@@ -25,4 +25,4 @@ const FilmContainer = (props) => {
   )
 }
 
-export default FilmContainer
+export default FilmItem

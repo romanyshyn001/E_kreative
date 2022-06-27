@@ -1,14 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { all, fork } from 'redux-saga/effects'
 import createSagaMiddleware from '@redux-saga/core'
 
 import moviesList from './slices/films'
 import movieDetailsInfo from './slices/movieDetailsInfo'
 import characterInfo from './slices/characterInfo'
-
-import movieAllSaga from './sagas/MoviesAll'
-import movieInfoWatcher from './sagas/MovieInfo'
-import personageInfoWatcher from './sagas/personageInfo'
+import rootSaga from './slices/rootSaga'
 
 
 let sagaMiddleware = createSagaMiddleware()
@@ -22,15 +18,8 @@ export default configureStore({
   },
   
   middleware: getDefaultMiddleware => {
-   return getDefaultMiddleware({ thunk: false }).prepend(sagaMiddleware)
+    return getDefaultMiddleware({ thunk: false }).prepend(sagaMiddleware)
 }
 })
 
-function* rootSaga() {
-  yield all([
-    fork(movieAllSaga),
-    fork(movieInfoWatcher),
-    fork(personageInfoWatcher)
-  ]);
-}
 sagaMiddleware.run(rootSaga)

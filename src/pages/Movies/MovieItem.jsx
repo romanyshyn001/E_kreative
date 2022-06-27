@@ -7,6 +7,7 @@ import Loader from '../../Components/Loader/Loader'
 
 const MovieDetails = (props) => {
   const dispatch = useDispatch()
+  
   const { characterLinks, characters, isLoading } = useSelector(state => state.movieDetails )
 
   useEffect(() => {

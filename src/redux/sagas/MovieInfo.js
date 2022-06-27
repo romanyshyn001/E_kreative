@@ -14,8 +14,7 @@ function* movieInfoSaga({payload: id}){
 function* setPersonageSaga({payload: id}) {
     try{
         const response = yield call(arrayOfLinks, id)
-        yield put(getPersonagesInfo(response.map(i => i.data)))
-    
+        yield put(getPersonagesInfo(response.map(i => i.data)))   
     } catch(error) {
         console.log(error)
     }

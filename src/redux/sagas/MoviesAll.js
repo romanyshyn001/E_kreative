@@ -1,10 +1,10 @@
 import { takeEvery, put, call } from 'redux-saga/effects'
-import { getMovieAllAPI } from '../../Service/ApiService'
+import { getMovieAPI } from '../../Service/ApiService'
 import { moviesAll } from '../slices/films'
 
 function* moviesAllSaga(){
     try {
-        const movieInfo = yield call(getMovieAllAPI)        
+        const movieInfo = yield call(getMovieAPI)        
         yield put(moviesAll(movieInfo.data.results))
     } catch(error) {
         console.log(error)

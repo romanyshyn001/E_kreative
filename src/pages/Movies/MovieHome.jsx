@@ -1,14 +1,14 @@
 import React, { useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
-import MovieDetails from './MoviePage';
+import MovieDetails from './MovieItem';
 import { movieDetailsLoading } from '../../redux/slices/movieDetailsInfo';
 
-const MovieContainer = () => {
-
-  const { filmDetails } = useSelector(state => state.movieDetails)
+const MovieHome = () => {
   const dispatch = useDispatch()
   const params = useParams()
+  
+  const { filmDetails } = useSelector(state => state.movieDetails)
   
   
   useEffect(() => {
@@ -23,6 +23,6 @@ return (
     </div>
   )
 }
-export default MovieContainer
+export default MovieHome
 
 

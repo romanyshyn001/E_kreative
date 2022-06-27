@@ -31,6 +31,6 @@ const personageInfo = createSlice({
     }
 })
 
-export const { getCharacterInfo, characterInfoLoading,
-     setFilmsInfoLoading, getFilmsInfo } = personageInfo.actions
+export const {  getCharacterInfo, characterInfoLoading, 
+    setFilmsInfoLoading, getFilmsInfo } = personageInfo.actions
 export default personageInfo.reducer

@@ -5,8 +5,8 @@ import { NavLink } from "react-router-dom";
 import Loader from "../../Components/Loader/Loader";
 
 
-const PersonagePage = () => {
-    const { personageDetails,  filmsInfo, isLoading } = useSelector(state => state.personage)
+const PersonageItem = () => {
+    const { personageDetails, filmsInfo, isLoading } = useSelector(state => state.personage)
 
     return (
         <div className={style.container}>
@@ -37,4 +37,4 @@ const PersonagePage = () => {
     )
 }
 
-export default PersonagePage
+export default PersonageItem
