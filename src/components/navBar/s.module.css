@@ -1,0 +1,39 @@
+.main{
+  margin: 25px;
+  box-sizing: border-box;
+}
+nav{
+  display: flex;
+  padding: 25px;
+  flex-direction: row;
+  justify-content: space-between; 
+}
+.item a{
+  color: rgb(252, 252, 252);
+  font-size: 25px;
+  text-decoration: none;
+  padding: 25px;
+  font-weight: 700;
+
+}
+.item a:hover{
+  color: rgb(21, 226, 86);
+  font-weight: 700;
+  font-size: 25px;
+  text-decoration: none;
+}
+
+.active a{
+  color: rgb(25, 4, 143);
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.item {
+  margin-top: 30px;
+  margin-bottom: 70px;
+}
+.menuMain{
+  display: flex;
+}

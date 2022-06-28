@@ -1,0 +1,63 @@
+.containerPost{
+    flex-basis: 60%;
+}
+.container{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    margin-right: 100px;
+    margin-left: 100px;
+}
+.info div{
+    background-color: hsl(120, 1%, 83%);
+    width:100%;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+.info p{
+   padding: 10px;
+}
+.info  span{
+    border-radius: 15px;
+    font-size: 20px;
+    background-color: hsl(120, 1%, 83%);
+    padding: 15px;
+    font-weight: 500;
+}
+
+.action{
+    display:  flex;
+    justify-content: flex-end;    
+}
+.action span{
+    margin: 5px;
+    padding: 5px;
+    color: rgb(0, 0, 0);
+    font-size: 15px;
+    font-weight:550;
+    background-color: hsl(120, 1%, 83%);
+    border-radius: 40px;
+}
+
+.comment{
+    margin-top:25px;
+    padding: 15px;
+    margin-left: 30px;
+    margin-right: 55px;
+
+    font-size: 18px;
+    background-color: rgb(220, 231, 137);
+    border-radius: 50px 50px 0px 50px;
+}
+img{
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    margin-top: -10px;
+}
+.ava{
+    display: flex;
+    justify-content:flex-end;
+}

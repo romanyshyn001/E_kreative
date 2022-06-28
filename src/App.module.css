@@ -1,0 +1,23 @@
+/* .main{
+    display: flex;
+    flex-basis: 100%;
+    background: rgb(13,38,71);
+    background: linear-gradient(105deg, rgba(89, 144, 217, 0.967) 0%, rgba(54,126,147,1) 49%, rgba(37,163,173,1) 100%);    width: 100%;
+
+}*/
+body{
+  background: linear-gradient(105deg, rgba(89, 144, 217, 0.967) 0%, rgba(54,126,147,1) 49%, rgba(37,163,173,1) 100%);    width: 100%;
+  box-sizing: border-box;
+  width: auto;
+}
+
+.App_header {
+  
+  font-size: calc(10px + 1vmin);
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    box-sizing: border-box;
+}
+

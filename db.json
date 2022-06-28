@@ -1,0 +1,203 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "dan93@gmail.com",
+      "password": "$2a$10$PjxK1XEgkR/1htAcHR.n3eyhMsxF7ohTerKvpzjrMGiXELE9O.GnO",
+      "firstname": "Dan",
+      "lastname": "Konopelski",
+      "age": 22
+    },
+    {
+      "id": 2,
+      "email": "kenya.kilback@hotmail.com",
+      "password": "$2a$10$PjxK1XEgkR/1htAcHR.n3eyhMsxF7ohTerKvpzjrMGiXELE9O.GnO",
+      "firstname": "Kenya",
+      "lastname": "Kilback",
+      "age": 55
+    },
+    {
+      "id": 3,
+      "email": "mayra64@gmail.com",
+      "password": "$2a$10$PjxK1XEgkR/1htAcHR.n3eyhMsxF7ohTerKvpzjrMGiXELE9O.GnO",
+      "firstname": "Mayra",
+      "lastname": "Flatley",
+      "age": 30
+    },
+    {
+      "id": 4,
+      "email": "shania.nienow52@gmail.com",
+      "password": "$2a$10$PjxK1XEgkR/1htAcHR.n3eyhMsxF7ohTerKvpzjrMGiXELE9O.GnO",
+      "firstname": "Shania",
+      "lastname": "Nienow",
+      "age": 45
+    },
+    {
+      "id": 5,
+      "email": "carli5@gmail.com",
+      "password": "$2a$10$PjxK1XEgkR/1htAcHR.n3eyhMsxF7ohTerKvpzjrMGiXELE9O.GnO",
+      "firstname": "Carli",
+      "lastname": "Runolfsson",
+      "age": 23
+    },
+    {
+      "id": 6,
+      "email": "cletus.kihn@hotmail.com",
+      "password": "$2a$10$PjxK1XEgkR/1htAcHR.n3eyhMsxF7ohTerKvpzjrMGiXELE9O.GnO",
+      "firstname": "Cletus",
+      "lastname": "Kihn",
+      "age": 30
+    },
+    {
+      "id": 7,
+      "email": "dagmar60@gmail.com",
+      "password": "$2a$10$PjxK1XEgkR/1htAcHR.n3eyhMsxF7ohTerKvpzjrMGiXELE9O.GnO",
+      "firstname": "Dagmar",
+      "lastname": "Wyman",
+      "age": 26
+    },
+    {
+      "id": 8,
+      "email": "amely_mills@gmail.com",
+      "password": "$2a$10$PjxK1XEgkR/1htAcHR.n3eyhMsxF7ohTerKvpzjrMGiXELE9O.GnO",
+      "firstname": "Amely",
+      "lastname": "Mills",
+      "age": 41
+    },
+    {
+      "id": 9,
+      "email": "leonard90@hotmail.com",
+      "password": "$2a$10$PjxK1XEgkR/1htAcHR.n3eyhMsxF7ohTerKvpzjrMGiXELE9O.GnO",
+      "firstname": "Leonard",
+      "lastname": "Lind",
+      "age": 25
+    },
+    {
+      "id": 10,
+      "email": "howell_mcglynn@gmail.com",
+      "password": "$2a$10$PjxK1XEgkR/1htAcHR.n3eyhMsxF7ohTerKvpzjrMGiXELE9O.GnO",
+      "firstname": "Howell",
+      "lastname": "McGlynn",
+      "age": 46
+    },
+    {
+      "id": 11,
+      "email": "melba.purdy40@gmail.com",
+      "password": "$2a$10$PjxK1XEgkR/1htAcHR.n3eyhMsxF7ohTerKvpzjrMGiXELE9O.GnO",
+      "firstname": "Melba",
+      "lastname": "Purdy",
+      "age": 18
+    },
+    {
+      "id": 12,
+      "email": "dayana31@hotmail.com",
+      "password": "$2a$10$PjxK1XEgkR/1htAcHR.n3eyhMsxF7ohTerKvpzjrMGiXELE9O.GnO",
+      "firstname": "Dayana",
+      "lastname": "Doyle",
+      "age": 35
+    },
+    {
+      "id": 13,
+      "email": "carole30@hotmail.com",
+      "password": "$2a$10$PjxK1XEgkR/1htAcHR.n3eyhMsxF7ohTerKvpzjrMGiXELE9O.GnO",
+      "firstname": "Carole",
+      "lastname": "Heller",
+      "age": 27
+    },
+    {
+      "id": 14,
+      "email": "brock.homenick47@hotmail.com",
+      "password": "$2a$10$PjxK1XEgkR/1htAcHR.n3eyhMsxF7ohTerKvpzjrMGiXELE9O.GnO",
+      "firstname": "Brock",
+      "lastname": "Homenick",
+      "age": 42
+    },
+    {
+      "id": 15,
+      "email": "karley.mcglynn@hotmail.com",
+      "password": "$2a$10$PjxK1XEgkR/1htAcHR.n3eyhMsxF7ohTerKvpzjrMGiXELE9O.GnO",
+      "firstname": "Karley",
+      "lastname": "McGlynn",
+      "age": 20
+    },
+    {
+      "id": 16,
+      "email": "lawson.abernathy@yahoo.com",
+      "password": "$2a$10$PjxK1XEgkR/1htAcHR.n3eyhMsxF7ohTerKvpzjrMGiXELE9O.GnO",
+      "firstname": "Lawson",
+      "lastname": "Abernathy",
+      "age": 42
+    },
+    {
+      "id": 17,
+      "email": "jane_sauer27@hotmail.com",
+      "password": "$2a$10$PjxK1XEgkR/1htAcHR.n3eyhMsxF7ohTerKvpzjrMGiXELE9O.GnO",
+      "firstname": "Jane",
+      "lastname": "Sauer",
+      "age": 37
+    },
+    {
+      "id": 18,
+      "email": "carolina37@gmail.com",
+      "password": "$2a$10$PjxK1XEgkR/1htAcHR.n3eyhMsxF7ohTerKvpzjrMGiXELE9O.GnO",
+      "firstname": "Carolina",
+      "lastname": "Nolan",
+      "age": 45
+    },
+    {
+      "id": 19,
+      "email": "juanita.bednar39@yahoo.com",
+      "password": "$2a$10$PjxK1XEgkR/1htAcHR.n3eyhMsxF7ohTerKvpzjrMGiXELE9O.GnO",
+      "firstname": "Juanita",
+      "lastname": "Bednar",
+      "age": 55
+    },
+    {
+      "id": 20,
+      "email": "roslyn.wolff14@gmail.com",
+      "password": "$2a$10$PjxK1XEgkR/1htAcHR.n3eyhMsxF7ohTerKvpzjrMGiXELE9O.GnO",
+      "firstname": "Roslyn",
+      "lastname": "Wolff",
+      "age": 33
+    },
+    {
+      "id": 21,
+      "email": "kevon33@hotmail.com",
+      "password": "$2a$10$PjxK1XEgkR/1htAcHR.n3eyhMsxF7ohTerKvpzjrMGiXELE9O.GnO",
+      "firstname": "Kevon",
+      "lastname": "Hettinger",
+      "age": 24
+    },
+    {
+      "id": 22,
+      "email": "angela48@yahoo.com",
+      "password": "$2a$10$PjxK1XEgkR/1htAcHR.n3eyhMsxF7ohTerKvpzjrMGiXELE9O.GnO",
+      "firstname": "Angela",
+      "lastname": "Schowalter",
+      "age": 33
+    },
+    {
+      "email": "vitala8896@gmail.com",
+      "password": "$2a$10$RG8qTIe/R67VT5AVBLMkD.GxXn43p1LSDCpAigVrEBSWffkhNv0bS",
+      "firstname": "Віталій",
+      "lastname": "Дячук",
+      "age": 18,
+      "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9BgREGwGBtdG9th6TjSLJu4PA7FaRkqfI2A&usqp=CAU",
+      "id": 23
+    },
+    {
+      "email": {
+        "email": "dan93@gmail.com",
+        "password": "bestPassw0rd"
+      },
+      "id": 24
+    },
+    {
+      "email": {
+        "email": "dan93@gmail.com",
+        "password": "bestPassw0rd"
+      },
+      "id": 25
+    }
+  ]
+}
