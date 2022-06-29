@@ -3,7 +3,8 @@ import React from "react";
 const Register = () => {
 
 
-    return (<></>
+    return (
+    <h1>Hello</h1>
       
       )
 }

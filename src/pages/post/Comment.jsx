@@ -9,8 +9,7 @@ const Comments = (props) => {
 
   return  <div>
             { comments.map(i => <div key={i.id}>
-                {   
-                i.postId === props.post
+                { i.postId === props.post
                 ? <div>
                     <div className={s.comment}><span>{i.body}</span></div>
                     <div className={s.ava}><img src={ava} alt="Rayan"/></div>

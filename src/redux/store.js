@@ -1,7 +1,5 @@
-
 import { configureStore } from "@reduxjs/toolkit";
 import posts from "./slices/article";
-
 import { rootSaga } from "./saga/rootSaga";
 import createSagaMiddleware from '@redux-saga/core'
 import comments from "./slices/comments";

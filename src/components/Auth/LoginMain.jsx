@@ -4,7 +4,7 @@ import s from './style.module.css'
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from "react-redux/es/exports";
 import { loginLoading } from "../../redux/slices/login";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate} from "react-router-dom";
 
 const LoginForm = () => {
 
@@ -12,25 +12,24 @@ const dispatch = useDispatch()
 
 const {isAuth} = useSelector(state => state.login)
 
-
 	const formik = useFormik({
 		initialValues: {
 			password: '',
 			email: '',
 			rememberMe: false
 		 },
-		 validationSchema: Yup.object({
+		validationSchema: Yup.object({
 			password: Yup.string()
 				.max(15, 'Must be at least 20 char')
 				.required('Required'),
-         	email: Yup.string()
+			email: Yup.string()
 				.email('Invalid Email')
 				.required('*Required')
-		 }),
-		 onSubmit:(values) => {
+		}),
+		onSubmit:(values) => {
 			dispatch(loginLoading(values))
-			// console.log('values onSubmit=>', values)
-		 }
+		// console.log('values onSubmit=>', values)
+		}
 	})
 
 
@@ -70,18 +69,17 @@ return (
 						name="rememberMe"
 						onChange={formik.handleChange}
 						onBlur={formik.handleBlur}/>
-				<div>
+				<div>		
 					<button className={s.btn} type="submit">Log In</button>
-					
-					<p className={s.register}>Sign In</p>
+					<Link to="/register" className={s.register}><p>Sign In</p></Link>
 				</div>	
 				
 			</form>
 				<div>
-					{
-				isAuth 
-				? <Navigate to={'/article'}/>
-				: null }
+				{ isAuth 
+					? <Navigate to={'/article'}/>
+					: null
+				}
 				</div>
 		</div>
       )
