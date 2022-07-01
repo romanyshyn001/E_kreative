@@ -2,7 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     post: [],
-    isLoading: false
+    currentPage: 1,
+    perPage: 5,
+    totalPostCount: 100,
+    isLoading: false,
 }
 
 const postList = createSlice({
@@ -13,7 +16,8 @@ const postList = createSlice({
             state.isLoading = true
         },
         getPost:(state, {payload}) => {
-            state.post = payload
+            state.post = payload.data
+            state.currentPage = payload.activePage
             state.isLoading = false
         }
     }

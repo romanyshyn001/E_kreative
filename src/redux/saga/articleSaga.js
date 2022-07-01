@@ -2,11 +2,13 @@ import { call, put, takeEvery } from "redux-saga/effects";
 import { api } from "../../service/api";
 import { getPost } from "../slices/article";
 
-function* postSaga({payload: id}){
+function* postSaga({payload}){
+    
     try{
-        const res = yield call(api.postAPI, id)
+        const res = yield call(api.postAPI, payload.currentPage, payload.perPage)
         let data = res.data
-        yield put(getPost(data))      
+        let activePage = payload.currentPage
+        yield put(getPost({data, activePage}))      
     } catch (error) {
         console.log(error)
     }

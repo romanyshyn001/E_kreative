@@ -8,12 +8,15 @@ export const instance = axios.create({
   })
 
 export const api = {
-  postAPI: async() => {
-    return await instance.get(`posts/?_limit=7`)
+  postAPI: async(currentPage = 1, perPage = 5) => {
+    console.log('api', currentPage, perPage)
+    return await instance.get(`posts?_page=${currentPage}&_limit=${perPage}`)
   },
+  
   commentAPI: async(id) => {
     return await instance.get(`comments`, id)
   },
+
   loginAPI: async(email, password, rememberMe) => {
     return await instance.post('login', {email, password})
     .then(resp => {
