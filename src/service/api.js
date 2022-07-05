@@ -39,10 +39,9 @@ export const api = {
   announcements: async(news) =>{
     return await instance.get('announcements', news)
       .then(res => {
-        console.log('res =>',res.data)
         return res.data
       })
   }
 }
-api.announcements()
+
 

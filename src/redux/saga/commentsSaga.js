@@ -12,8 +12,7 @@ function* commentsSaga({payload: id}){
     }
 }
 
-
-function* commenttWatcher() {
+function* commentWatcher() {
     yield takeEvery('comments/commentsLoading', commentsSaga)
 }
-export default commenttWatcher
+export default commentWatcher
