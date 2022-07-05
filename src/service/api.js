@@ -9,7 +9,6 @@ export const instance = axios.create({
 
 export const api = {
   postAPI: async(currentPage = 1, perPage = 5) => {
-    console.log('api', currentPage, perPage)
     return await instance.get(`posts?_page=${currentPage}&_limit=${perPage}`)
   },
   
@@ -27,6 +26,16 @@ export const api = {
         } else {
           console.log('Bad Request =>')
         }
+    })
+  },
+
+  register: async(email, password, fistName, lastName, age, avatar) => {
+    const payload = {email, password, fistName, lastName, age, avatar}
+    console.log('email, password from api =>', payload)
+      return await instance.post('register', payload )
+        .then(resp => {
+          return resp
+          // console.log('resp from api =>', resp)
     })
   },
 

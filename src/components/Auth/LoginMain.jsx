@@ -4,7 +4,7 @@ import s from './style.module.css'
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from "react-redux/es/exports";
 import { loginLoading } from "../../redux/slices/login";
-import { Link, Navigate} from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 const LoginForm = () => {
 
@@ -27,18 +27,16 @@ const {isAuth} = useSelector(state => state.login)
 		}),
 		onSubmit:(values) => {
 			dispatch(loginLoading(values))
-		// console.log('values onSubmit=>', values)
 		}
 	})
 
-
 return (
-		<div className={s.containerPost}>
+		<div className={s.authContainer}>
 			<div className={s.background}>
 				<div className={s.shape}></div>
 				<div className={s.shape}></div>
 			</div>
-			<form onSubmit={formik.handleSubmit}>
+			<form className={s.login} onSubmit={formik.handleSubmit}>
 				<h3>Login Here</h3>
 
 				<label 	htmlFor="email">Username</label>
@@ -70,7 +68,6 @@ return (
 						onBlur={formik.handleBlur}/>
 				<div>		
 					<button className={s.btn} type="submit">Log In</button>
-					<Link to="/register" className={s.register}><p>Sign In</p></Link>
 				</div>	
 				
 			</form>
