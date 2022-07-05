@@ -31,13 +31,18 @@ export const api = {
 
   register: async(email, password, fistName, lastName, age, avatar) => {
     const payload = {email, password, fistName, lastName, age, avatar}
-    console.log('email, password from api =>', payload)
       return await instance.post('register', payload )
         .then(resp => {
           return resp
-          // console.log('resp from api =>', resp)
     })
   },
-
+  announcements: async(news) =>{
+    return await instance.get('announcements', news)
+      .then(res => {
+        console.log('res =>',res)
+        return res.data
+      })
+  }
 }
+api.announcements()
 

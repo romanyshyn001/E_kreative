@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import s from './s.module.css'
 import { useDispatch, useSelector } from "react-redux/es/exports";
-import Comments from "./Comment";
+
 import PostPagination from "./PostPagination";
 
 import { postLoading } from "../../redux/slices/article";
 import { commentsLoading } from "../../redux/slices/comments";
+import Comments from "../comments/CommentMain";
 
 const PostMain = () => {
   

@@ -4,6 +4,7 @@ import LoginForm from './components/Auth/LoginMain';
 import LogOut from './components/Auth/Logout/LogOut';
 import Register from './components/Auth/Registration';
 import NavBar from './components/navBar/navigation';
+import NewsMain from './pages/announcements/NewsMain';
 import PostContainer from './pages/post/PostsMain';
 
 
@@ -19,6 +20,7 @@ function App() {
          <Route path='/auth' element={<LoginForm/>}/>
          <Route path='/logout' element={<LogOut/>}/>
          <Route path='/register' element={<Register/>}/>
+         <Route path='/announcements' element={<NewsMain/>}/>
       </Routes>
    </div>
   );

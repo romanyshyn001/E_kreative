@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from "react-redux/es/exports";
 import s from './style.module.css'
-import {  Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { registerLoading } from "../../redux/slices/register";
 
 const Register = () => {
