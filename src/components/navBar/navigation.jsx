@@ -1,9 +1,12 @@
 import { NavLink } from 'react-router-dom';
 import s from './s.module.css';
 import React from 'react';
+import { useSelector } from "react-redux/es/exports";
 
 const NavBar = () => {
 
+   const { isAuth } = useSelector(state => state.authMe)
+   // console.log('isAuthMe, isAuth', isAuthMe, isAuth)
     return (
          <div className={s.main}>
             <nav>
@@ -19,7 +22,7 @@ const NavBar = () => {
                      </div>
                   </div>
 
-                  { localStorage.token != null 
+                  { isAuth
                   ?  
                      <div className={s.item}>
                         <NavLink to='/logout'>Log out</NavLink>

@@ -2,9 +2,8 @@ import { all, fork } from 'redux-saga/effects'
 
 import postWatcher from './articleSaga';
 import commentWatcher from './commentsSaga';
-import logintWatcher from './loginSaga';
+import logintWatcher from './authSaga';
 import newsWatcher from './newsSaga';
-import registertWatcher from './registerSaga';
 
 export function* rootSaga() {
     yield all([
@@ -12,6 +11,5 @@ export function* rootSaga() {
       fork(commentWatcher),
       fork(newsWatcher),
       fork(logintWatcher),
-      fork(registertWatcher)
     ]);
   }

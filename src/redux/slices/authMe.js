@@ -3,12 +3,12 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     user: {},
     isLoading: false,
-    isAuthMe: false,
+    isAuth: false,
     rememberMe: false
 }
 
-const loginInfo = createSlice({
-    name: 'login',
+const authMe = createSlice({
+    name: 'authMe',
     initialState,
     reducers:{
         loginLoading:(state) => {
@@ -17,7 +17,7 @@ const loginInfo = createSlice({
         loginFulfilled:(state, {payload}) => {
             state.user = payload[1]
             state.rememberMe = payload[2]
-            state.isAuthMe = true
+            state.isAuth = true
             state.isLoading = false
         },
         ///........LOG OUT........///
@@ -27,10 +27,19 @@ const loginInfo = createSlice({
         logoutFulfilled:(state) => {
             state.isAuth = false
             state.isLoading = false
-        }
-        
+        },
+         ///........REGISTER........///
+        registerLoading:(state) => {
+            state.isLoading = true
+        },
+        registerFulfilled:(state, {payload}) => {
+            state.user = payload
+            state.isAuth = true
+            state.isLoading = false
+        },
     }
 })
 
-export const { loginLoading, loginFulfilled, logoutLoading, logoutFulfilled } = loginInfo.actions
-export default loginInfo.reducer
+export const { loginLoading, loginFulfilled, registerFulfilled,
+    logoutLoading, logoutFulfilled, registerLoading } = authMe.actions
+export default authMe.reducer

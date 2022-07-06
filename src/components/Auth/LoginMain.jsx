@@ -3,13 +3,13 @@ import React from "react";
 import s from './style.module.css'
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from "react-redux/es/exports";
-import { loginLoading } from "../../redux/slices/login";
 import { Navigate } from "react-router-dom";
+import { loginLoading } from "../../redux/slices/authMe";
 
 const LoginForm = () => {
 
 const dispatch = useDispatch()
-const {isAuthMe} = useSelector(state => state.login)
+const {isAuth} = useSelector(state => state.authMe)
 
 	const formik = useFormik({
 		initialValues: {
@@ -72,7 +72,7 @@ return (
 				
 			</form>
 				<div>
-				{ isAuthMe 
+				{ isAuth 
 					? <Navigate to={'/article'}/>
 					: null
 				}

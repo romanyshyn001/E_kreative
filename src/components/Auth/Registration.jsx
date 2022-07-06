@@ -4,12 +4,12 @@ import * as Yup from 'yup';
 import { useDispatch, useSelector } from "react-redux/es/exports";
 import s from './style.module.css'
 import { Navigate } from "react-router-dom";
-import { registerLoading } from "../../redux/slices/register";
+import { registerLoading } from "../../redux/slices/authMe";
 
 const Register = () => {
 
 const dispatch = useDispatch()
-const {isAuth} = useSelector(state => state.register)
+const {isAuth} = useSelector(state => state.authMe)
 
 const formik = useFormik({
    initialValues: {
