@@ -6,6 +6,7 @@ import Register from './components/Auth/Registration';
 import NavBar from './components/navBar/navigation';
 import NewsMain from './pages/announcements/NewsMain';
 import PostContainer from './pages/post/PostsMain';
+import Profile from './pages/profile/ProfileMain';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
          <Route path='/logout' element={<LogOut/>}/>
          <Route path='/register' element={<Register/>}/>
          <Route path='/announcements' element={<NewsMain/>}/>
+         <Route path='/profile' element={<Profile/>}/>
       </Routes>
    </div>
   );

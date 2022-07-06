@@ -17,7 +17,7 @@ const loginInfo = createSlice({
         loginFulfilled:(state, {payload}) => {
             state.user = payload[1]
             state.rememberMe = payload[2]
-            state.isAuth = true
+            state.isAuthMe = true
             state.isLoading = false
         },
         ///........LOG OUT........///

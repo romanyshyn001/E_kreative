@@ -9,7 +9,7 @@ import { Navigate } from "react-router-dom";
 const LoginForm = () => {
 
 const dispatch = useDispatch()
-const {isAuth} = useSelector(state => state.login)
+const {isAuthMe} = useSelector(state => state.login)
 
 	const formik = useFormik({
 		initialValues: {
@@ -72,7 +72,7 @@ return (
 				
 			</form>
 				<div>
-				{ isAuth 
+				{ isAuthMe 
 					? <Navigate to={'/article'}/>
 					: null
 				}

@@ -20,9 +20,10 @@ const NavBar = () => {
                   </div>
 
                   { localStorage.token != null 
-                  ?  <div className={s.item}>
+                  ?  
+                     <div className={s.item}>
                         <NavLink to='/logout'>Log out</NavLink>
-                     </div>    
+                     </div> 
                   :  <div>
                         <div className={s.auth}>
                               <NavLink to='/auth'>Log In</NavLink>

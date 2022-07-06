@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux/es/exports";
 import s from './s.module.css'
-import ava from './../../assets/photo/RayanR.png'
+import ava from './../../assets/images/RayanR.png'
 
 const Comments = (props) => {
 
