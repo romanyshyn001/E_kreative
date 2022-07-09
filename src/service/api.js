@@ -11,6 +11,17 @@ export const api = {
   postAPI: async(currentPage = 1, perPage = 5) => {
     return await instance.get(`posts?_page=${currentPage}&_limit=${perPage}`)
   },
+  delPost: async(id) => {
+    console.log('id from api =>', id)
+    return await instance.delete(`posts/${id}`)
+      
+  },
+  //Need to put data and then id
+  editPost: async(newData) => {
+    console.log('payload api =>', newData.id)
+    return await instance.put(`posts/${newData.id}`, newData)
+
+  },
   
   commentAPI: async(id) => {
     return await instance.get(`comments`, id)

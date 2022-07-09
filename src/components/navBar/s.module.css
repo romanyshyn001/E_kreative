@@ -41,7 +41,7 @@ nav{
 }
 .auth a{
   color: rgb(252, 252, 252);
-  font-size: 18px;
+  font-size: 15px;
   text-decoration: none;
   padding: 15px;
   font-weight: 700;
@@ -49,10 +49,11 @@ nav{
 .auth{
   margin-bottom: 15px;
   margin-top: 15px;
+
 }
 .auth a:hover{
   color: rgb(21, 226, 86);
   font-weight: 700;
-  font-size: 18px;
+  font-size: 15px;
   text-decoration: none;
 }

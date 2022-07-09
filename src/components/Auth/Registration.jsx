@@ -18,7 +18,7 @@ const formik = useFormik({
       firstName: '',
       lastName: '',
       age: 0,
-      avatar: [],
+      avatar: 'https://www.pngkey.com/png/detail/114-1149878_setting-user-avatar-in-specific-size-without-breaking.png',
       email: '',
       },
    validationSchema: Yup.object({

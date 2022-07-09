@@ -5,7 +5,8 @@ import LogOut from './components/Auth/Logout/LogOut';
 import Register from './components/Auth/Registration';
 import NavBar from './components/navBar/navigation';
 import NewsMain from './pages/announcements/NewsMain';
-import PostContainer from './pages/post/PostsMain';
+import PostMain from './pages/post/PostsMain';
+import UpdatePost from './pages/post/updatePost/updatePostMain';
 import Profile from './pages/profile/ProfileMain';
 
 
@@ -17,12 +18,15 @@ function App() {
       </div>
       <Routes>
          <Route path="/" element={<Navigate replace to="/article" />} />
-         <Route path='/article' element={<PostContainer/>}/>      
+         <Route path={'/article'} element={<PostMain/>}/>      
          <Route path='/auth' element={<LoginForm/>}/>
          <Route path='/logout' element={<LogOut/>}/>
          <Route path='/register' element={<Register/>}/>
          <Route path='/announcements' element={<NewsMain/>}/>
          <Route path='/profile' element={<Profile/>}/>
+
+         {/* <Route path='/myposts' element={<UserPost/>}/> */}
+         <Route path='/article/edit/:id' element={<UpdatePost/>}/>
       </Routes>
    </div>
   );
