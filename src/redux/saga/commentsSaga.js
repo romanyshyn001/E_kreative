@@ -1,6 +1,6 @@
 import { call, put, takeEvery } from "redux-saga/effects";
 import { api, } from "../../service/api";
-import { getcomments } from "../slices/comments";
+import { delComment, getcomments } from "../slices/comments";
 
 function* commentsSaga({payload: id}){
     try{
@@ -12,7 +12,17 @@ function* commentsSaga({payload: id}){
     }
 }
 
+function* delCommenttSaga({payload}){
+    try{ //...........add api///
+        yield call(api.delCommentAPI, payload)
+        yield put(delComment(payload))      
+    } catch (error) {
+        console.log('Error from SAGA',error)
+    }
+}
+
 function* commentWatcher() {
     yield takeEvery('comments/commentsLoading', commentsSaga)
+    yield takeEvery('comments/delCommentLoading', delCommenttSaga)
 }
 export default commentWatcher

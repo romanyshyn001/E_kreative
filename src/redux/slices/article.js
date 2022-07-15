@@ -22,6 +22,18 @@ const postList = createSlice({
             state.currentPage = payload.activePage
             state.isLoading = false
         },
+        //....ADD POST......//
+        addPostLoading:(state) => {
+            state.isLoading = true
+        },
+        addPost:(state, {payload}) => {
+            console.log('hi from article =>', payload)
+            state.post.push(payload)
+            state.post.sort(function(a, b) { 
+                return - ( a.id - b.id );
+              })
+            state.isLoading = false
+        },
         //....DELETE......//
         delPostLoading:(state) => {
             state.isLoading = true
@@ -35,18 +47,17 @@ const postList = createSlice({
             state.isLoading = true
         },
         updatePost:(state, {payload}) => {
-            
-            // const { id, title, body } = payload
-            // const existingPost = state.post.find(p => p.id === payload.id)
-            // console.log('existingPost', existingPost )
-            // if (existingPost) {
-            //   existingPost.title = title
-            //   existingPost.body = body
-            // }
+            const { id, title, body } = payload
+            const existingPost = state.post.find(p => p.id === id)
+            if (existingPost) {
+              existingPost.title = title
+              existingPost.body = body
+            }
             state.isLoading = false
         }
     }
 })
 
-export const { postLoading, getPost, delPostLoading, delPost, updatePostLoading, updatePost} = postList.actions
+export const { postLoading, getPost, addPostLoading, addPost,
+    delPostLoading, delPost, updatePostLoading, updatePost} = postList.actions
 export default postList.reducer

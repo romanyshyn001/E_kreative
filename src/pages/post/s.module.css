@@ -19,6 +19,7 @@
 }
 .info p{
    padding: 10px;
+   font-family:'Times New Roman', Times, serif
 }
 .info  h3{
     border-radius: 15px;
@@ -86,17 +87,17 @@ img{
 }
 
 
-/* UPDATEpoST */
-textarea{
-    width: 500px;
-    height: 250px;
+/* UPDATE POST */
+.textInput{
+    width: 100%;
+    height: 100px;
     resize: none;
 }
-input{
-    width: 300px;
+.postTitle{
+    width: 350px;
     height: 20px;
 }
-button{
+.btn{
     margin: 10px 10px 10px 0px;
     padding: 5px;
     font-size: 15px;
@@ -104,6 +105,23 @@ button{
     background-color: hsl(120, 1%, 83%);
     border-radius: 10px;
 }
-button:hover{
+.btn:hover{
     background-color: hsl(0, 1%, 56%);
+}
+.hidden{
+    color:rgb(173, 7, 7)
+}
+.secContainer{
+    text-align: center;
+}
+
+/* EDIT POST */
+.editBody{
+    width: 80%;
+    height: 200px;
+}
+
+.editTitle{
+    width: 80%;
+
 }

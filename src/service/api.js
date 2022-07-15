@@ -16,15 +16,24 @@ export const api = {
     return await instance.delete(`posts/${id}`)
       
   },
-  //Need to put data and then id
+  addPost: async(newData) => {
+    console.log('payload api =>', newData)
+    return await instance.post('posts/', newData)
+    // .then(res => console.log('res api =>', res))
+
+  },
   editPost: async(newData) => {
     console.log('payload api =>', newData.id)
-    return await instance.put(`posts/${newData.id}`, newData)
-
+    return await instance.patch(`posts/${newData.id}`, newData)
   },
   
   commentAPI: async(id) => {
     return await instance.get(`comments`, id)
+  },
+  delCommentAPI: async(id) => {
+    console.log('id from api =>', id)
+    return await instance.delete(`comments/${id}`)
+      
   },
 
   loginAPI: async(email, password, rememberMe) => {

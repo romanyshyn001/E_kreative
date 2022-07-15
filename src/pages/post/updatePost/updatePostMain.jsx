@@ -2,19 +2,22 @@ import React, { useState } from "react";
 import { updatePostLoading } from "../../../redux/slices/article";
 import { useDispatch, useSelector } from "react-redux/es/exports";
 import s from './../s.module.css'
-import {  useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const UpdatePost = () => {
     const dispatch = useDispatch()
     const params = useParams()
     const user = JSON.parse(window.localStorage.getItem('user'));
+    const navigate = useNavigate()
 
-    const {post} = useSelector((state) => {
+    const {post, posts} = useSelector((state) => {
         return {
-            post: state.posts.post.find(p => p.id == params.id)
-        }}
-        )
-
+            // eslint-disable-next-line eqeqeq
+            post: state.posts.post.find(p => p.id == params.id),
+            posts: state.posts.post
+        }
+    })
+console.log('posts =>', posts)
 const [title, setTitle] = useState(post.title)
 const [body, setBody] = useState(post.body)
 
@@ -30,22 +33,21 @@ const bodyChange = (e) => {
 
     const onSavePostClicked = () => {
         if (title && body) {
-          const options = {
-            id: params.id, title: title, body: 
-            body, userId: user.id, createdAt: null, updatedAt: null}  
-          
+          const options = {id: params.id, title: title, body: body}  
+          //.........ADD DATE TO UPDATED DATE.......//
             dispatch(updatePostLoading(options))
-        //   console.log('options => ', options)
+            navigate('../')    
         }
       }
 
 
     return (
-        <section>
+        <section className={s.secContainer}>
+            
           <h2>Edit Post</h2>
-          <form>
+          <form >
             <label htmlFor="postTitle">Post Title:</label>
-            <input
+            <input className={s.editTitle}
               type="text"
               id="postTitle"
               name="postTitle"
@@ -53,140 +55,20 @@ const bodyChange = (e) => {
               onChange={titleChange}
             />
             <label htmlFor="postContent">Content:</label>
-            <textarea
+            <textarea className={s.editBody}
               id="postContent"
               name="postContent"
               value={body}
               onChange={bodyChange}
             />
           </form>
-          <button type="button" onClick={onSavePostClicked}>
+          <button className={s.btn} type="button" onClick={onSavePostClicked}>
             Save Post
+          </button>
+          <button className={s.btn} type="button" onClick={onSavePostClicked}>
+            Cancel
           </button>
         </section>
       )
 }
 export default UpdatePost
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{/* <button className={s.btn} type="submit" onClick={''}                     >
-                Edit Post
-            </button> */}
-            {/* <form onSubmit={updatePost}>
-                    <div className='my-2'>
-                        <label>Title</label>
-                        <div>
-                            <input
-                                type='text'
-                                className='border border-gray-500 p-1 w-full'
-                                value={props.post.title}
-                                onChange={(e) =>
-                                    console.log('e onChange =>', e)
-                                }
-                            />
-                        </div>
-                    </div>
-
-                    <div >
-                        <label>Description</label>
-                        <div>
-                            <textarea
-                                value={props.post.body}
-                                onChange={(e) =>
-                                   console.log('e onChange =>', e)
-                                }
-                            ></textarea>
-                        </div>
-                    </div>
-
-                    <div>
-                    </div>
-                </form> */}
-
-
-                            {/* {post.map(p => <div>
-            {p.id == params.id
-            ? <div>
-                 <form onSubmit={updatePost}>
-                    <div className='my-2'>
-                        <label>Title</label>
-                        <div>
-                            <input
-                                type='text'
-                                className='border border-gray-500 p-1 w-full'
-                                value={p.title}
-                                onChange={(e) =>
-                                    console.log('e onChange =>', e)
-                                }
-                            />
-                        </div>
-                    </div>
-
-                    <div >
-                        <label>Description</label>
-                        <div>
-                            <textarea
-                                value={p.body}
-                                onChange={(e) =>
-                                   console.log('e onChange =>', e)
-                                }
-                            ></textarea>
-                        </div>
-                    </div>
-
-                    <button type='submit'>
-                            Edit Post
-                    </button>
-                </form>
-            </div>
-            : null}
-        </div>)} */}
-
-
-        // {post.map(p => <div>
-        //     {p.id == params.id
-        //     ? <div>
-        //          <form onSubmit={updatePost}>
-        //             <div className='my-2'>
-        //                 <label>Title</label>
-        //                 <div>
-        //                     <input
-        //                         type='text'
-        //                         className='border border-gray-500 p-1 w-full'
-        //                         value={p.title}
-        //                         onChange={(e) => console.log(e.target.value)}
-        //                     />
-        //                 </div>
-        //             </div>
-
-        //             <div >
-        //                 <label>Description</label>
-        //                 <div>
-        //                     <textarea
-        //                         value={p.body}
-        //                         onChange={(e) =>
-        //                            console.log('e onChange =>', e)
-        //                         }
-        //                     ></textarea>
-        //                 </div>
-        //             </div>
-
-        //             <button type='submit'>
-        //                     Edit Post
-        //             </button>
-        //         </form>
-        //     </div>
-        //     : null}
-        // </div>)}

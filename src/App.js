@@ -6,7 +6,7 @@ import Register from './components/Auth/Registration';
 import NavBar from './components/navBar/navigation';
 import NewsMain from './pages/announcements/NewsMain';
 import PostMain from './pages/post/PostsMain';
-import UpdatePost from './pages/post/updatePost/updatePostMain';
+import UpdatePost from './pages/post/updatePost/UpdatePostMain';
 import Profile from './pages/profile/ProfileMain';
 
 
@@ -18,14 +18,13 @@ function App() {
       </div>
       <Routes>
          <Route path="/" element={<Navigate replace to="/article" />} />
-         <Route path={'/article'} element={<PostMain/>}/>      
+         <Route path='/article' element={<PostMain/>}/>      
          <Route path='/auth' element={<LoginForm/>}/>
          <Route path='/logout' element={<LogOut/>}/>
          <Route path='/register' element={<Register/>}/>
          <Route path='/announcements' element={<NewsMain/>}/>
          <Route path='/profile' element={<Profile/>}/>
 
-         {/* <Route path='/myposts' element={<UserPost/>}/> */}
          <Route path='/article/edit/:id' element={<UpdatePost/>}/>
       </Routes>
    </div>

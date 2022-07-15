@@ -35,15 +35,33 @@ img{
   
 
 
-  .pagination span.active {
-    background-color: dodgerblue;
-    color: white;
-  }
-  .selectedPage {
-    background-color: rgb(200, 209, 128);
-    color: white;
-    font-weight: bold;
-  }
- .pagination span:hover:not(.active) {
-    background-color: rgb(200, 209, 128);
+.pagination span.active {
+  background-color: dodgerblue;
+  color: white;
+}
+.selectedPage {
+  background-color: rgb(200, 209, 128);
+  color: white;
+  font-weight: bold;
+}
+.pagination span:hover:not(.active) {
+  background-color: rgb(200, 209, 128);
+}
+
+
+.removeContainer{
+    display: flex;
+    justify-content: flex-end;
+}
+.btnRemove{
+  margin: 10px 10px -10px 0px;
+  padding: 3px;
+  font-size: 13px;
+  color: rgb(0, 0, 0);
+  border-radius: 10px;
+  background-color: rgb(216, 216, 223);
+  
+}
+.btnRemove:active{
+  background-color: rgb(157, 163, 168);
 }
