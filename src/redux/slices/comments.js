@@ -24,8 +24,30 @@ const commentsList = createSlice({
             state.comments = state.comments.filter(comment => comment.id !== payload)
             state.isLoading = false
         },
+        //.........ADD COMMENT..............///
+        addCommentLoading:(state) => {
+            state.isLoading = true
+        },
+        addComment:(state, {payload}) => {
+            state.comments.push(payload)
+            state.isLoading = false
+        },
+        //....UPDATE......//
+        updateCommentLoading:(state) => {
+            state.isLoading = true
+        },
+        updateComment:(state, {payload}) => {
+            const { id, body } = payload
+            const existingPost = state.comments.find(c => c.id === id)
+            if (existingPost) {
+              existingPost.body = body
+            }
+            state.isLoading = false
+        }
     }
 })
 
-export const { commentsLoading, getcomments, delCommentLoading, delComment} = commentsList.actions
+export const { commentsLoading, getcomments, delCommentLoading, delComment, 
+    addComment, addCommentLoading, updateCommentLoading,
+    updateComment} = commentsList.actions
 export default commentsList.reducer

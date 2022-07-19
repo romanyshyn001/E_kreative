@@ -154,7 +154,7 @@ const formik = useFormik({
       </form>
       <div>
             { isAuth 
-					? <Navigate to={'/article'}/>
+					? <Navigate to={'/posts'}/>
 					: null
 				}
       </div>

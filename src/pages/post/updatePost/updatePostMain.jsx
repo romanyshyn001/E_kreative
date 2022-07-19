@@ -7,34 +7,28 @@ import { useNavigate, useParams } from "react-router-dom";
 const UpdatePost = () => {
     const dispatch = useDispatch()
     const params = useParams()
-    const user = JSON.parse(window.localStorage.getItem('user'));
     const navigate = useNavigate()
 
-    const {post, posts} = useSelector((state) => {
+    const {post, } = useSelector((state) => {
         return {
             // eslint-disable-next-line eqeqeq
             post: state.posts.post.find(p => p.id == params.id),
-            posts: state.posts.post
         }
     })
-console.log('posts =>', posts)
 const [title, setTitle] = useState(post.title)
 const [body, setBody] = useState(post.body)
 
 const titleChange = (e) => {
     setTitle(e.target.value)
-    // console.log('TARGET TITLE=>', e.target.value)
 }
 const bodyChange = (e) => {
     setBody(e.target.value)
-    // console.log('TARGET BODY=>', e.target.value)
 }
-    console.log('user', user.id)
 
     const onSavePostClicked = () => {
         if (title && body) {
+//.........ADD DATE.......//
           const options = {id: params.id, title: title, body: body}  
-          //.........ADD DATE TO UPDATED DATE.......//
             dispatch(updatePostLoading(options))
             navigate('../')    
         }

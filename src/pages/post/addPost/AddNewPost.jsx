@@ -1,30 +1,26 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux/es/exports";
-import { useNavigate, useParams } from "react-router-dom";
+import { useDispatch } from "react-redux/es/exports";
 import { addPostLoading } from "../../../redux/slices/article";
 import s from './../s.module.css'
 
 const AddPost = () => {
-    const dispatch = useDispatch()
-    const user = JSON.parse(window.localStorage.getItem('user'));
+  const dispatch = useDispatch()
+  const user = JSON.parse(window.localStorage.getItem('user'));
 
-const [title, setTitle] = useState('')
-const [body, setBody] = useState('')
+  const [title, setTitle] = useState('')
+  const [body, setBody] = useState('')
 
-const addTitle = (e) => {
-    setTitle(e.target.value)
-}
-const addBody = (e) => {
-    setBody(e.target.value)
-}
+  const addTitle = (e) => {
+      setTitle(e.target.value)
+  }
+  const addBody = (e) => {
+      setBody(e.target.value)
+  }
 
     const onSavePostClicked = () => {
         if (title && body) {
-          const options = { title: title, body: body, userId: user.id}  
-          //console.log('options =>', options)
-          //.........ADD DATE TO UPDATED DATE.......//
+          const options = { title: title, body: body, userId: user.id}
             dispatch(addPostLoading(options))
-            
         }
       }
 

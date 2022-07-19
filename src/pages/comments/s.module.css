@@ -65,3 +65,57 @@ img{
 .btnRemove:active{
   background-color: rgb(157, 163, 168);
 }
+
+/* button reply */
+.btn{
+  margin: 10px 10px 10px 0px;
+  padding: 5px;
+  font-size: 15px;
+  color: rgb(0, 0, 0);
+  background-color: hsl(120, 1%, 83%);
+  border-radius: 10px;
+}
+.btn:hover{
+  background-color: hsl(0, 1%, 56%);
+}
+
+.replyBtn {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.commentPost{
+  resize: none;
+  width: 47vw;
+  margin-top: 5px;
+  padding: 15px;
+  margin-left: 30px;
+  margin-right: 55px;
+  font-size: 18px;
+  background-color: rgb(220, 231, 137);
+  border-radius: 50px 50px 0px 50px;
+}
+.save{
+  display: flex;
+  justify-content: flex-end;
+}
+.commentUpdate{
+  resize: none;
+  margin-top: 5px;
+  padding: 15px;
+  margin-left: 30px;
+  margin-right: 30px;
+  font-size: 18px;
+  width: 35vw;
+  /* background-color: rgb(220, 231, 137); */
+}
+
+.action{
+  display: flex;
+  margin-top: 15px;
+}
+
+.replyBtn{
+  display: flex;
+  box-sizing: border-box;
+}

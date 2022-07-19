@@ -17,15 +17,15 @@ function App() {
          <NavBar/>
       </div>
       <Routes>
-         <Route path="/" element={<Navigate replace to="/article" />} />
-         <Route path='/article' element={<PostMain/>}/>      
+         <Route path="/" element={<Navigate replace to="/posts" />} />
+         <Route path='/posts' element={<PostMain/>}/>      
          <Route path='/auth' element={<LoginForm/>}/>
          <Route path='/logout' element={<LogOut/>}/>
          <Route path='/register' element={<Register/>}/>
          <Route path='/announcements' element={<NewsMain/>}/>
          <Route path='/profile' element={<Profile/>}/>
 
-         <Route path='/article/edit/:id' element={<UpdatePost/>}/>
+         <Route path='/posts/edit/:id' element={<UpdatePost/>}/>
       </Routes>
    </div>
   );

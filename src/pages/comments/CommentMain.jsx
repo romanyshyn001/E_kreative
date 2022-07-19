@@ -3,6 +3,7 @@ import { useSelector } from "react-redux/es/exports";
 import s from './s.module.css'
 import ava from './../../assets/images/RayanR.png'
 import DeleteComment from "./deleteComment/removeComment";
+import UpdateComment from "./updateComment/UpdateReply";
 
 const Comments = (props) => {
   const user = JSON.parse(window.localStorage.getItem('user'));
@@ -25,6 +26,7 @@ const Comments = (props) => {
                       ? 
                       <div className={s.action}>
                         <DeleteComment comment={comment.id}/>
+                        <UpdateComment comment={comment} user={user}/>
                       </div>
                       : null
                       }

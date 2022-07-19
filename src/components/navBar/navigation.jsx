@@ -7,13 +7,12 @@ import Profile from '../../pages/profile/ProfileMain';
 const NavBar = () => {
 
    const { isAuth } = useSelector(state => state.authMe)
-   // console.log('isAuthMe, isAuth', isAuthMe, isAuth)
     return (
          <div className={s.main}>
             <nav>
                   <div className={s.menuMain}>
                      <div className={s.item}>
-                        <NavLink to='/article'>Article</NavLink>
+                        <NavLink to='/posts'>Article</NavLink>
                      </div>
                      <div className={s.item}>
                         <NavLink to='/announcements'>Announcements</NavLink>

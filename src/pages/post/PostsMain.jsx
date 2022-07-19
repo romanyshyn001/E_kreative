@@ -9,6 +9,7 @@ import Comments from "../comments/CommentMain";
 import DeletePost from "./deletePost/DeleteItem";
 import { Link } from "react-router-dom";
 import AddPost from "./addPost/AddNewPost";
+import AddNewComment from "../comments/addComment/AddNewComment";
 
 const PostMain = () => {
   const user = JSON.parse(window.localStorage.getItem('user'));
@@ -29,28 +30,30 @@ const { post, totalPostCount, perPage, currentPage } = useSelector((state) => {
 
   const onChange = (currentPage) => {
       dispatch(postLoading({currentPage, perPage}))
-      dispatch(commentsLoading())
   }
-   
+
   const renderedPosts = post.map(p => (
     
     <article key={p.id}>
         <div className={s.info}>
-        <h3>{p.title}</h3>      
-        <div><p>{p.body}</p></div>
-      </div>
+          <h3>{p.title}</h3>      
+          <div><p>{p.body}</p></div>
+        </div>
       { user != null 
       ? <div >
+        <div className={s.action}>
+          <AddNewComment user={user} post={p}/>
           { user.id === p.userId
           ? <div className={s.action}>
-              <Link to={`/article/edit/${p.id}`} >
+              <Link to={`/posts/edit/${p.id}`} >
                 <button className={s.btn}>Edit</button>
               </Link>
 
               <DeletePost post={p.id}/>
-              </div>
+            </div>
           : null
-          }
+        }
+          </div>
         </div>
       : <h3 className={s.hidden}>Login for more opportunities</h3>
       } 

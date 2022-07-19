@@ -14,7 +14,7 @@ function LogOut() {
 
     return (
         <div>
-            <Navigate to={'/article'}/>
+            <Navigate to={'/posts'}/>
         </div>
     )
 }
