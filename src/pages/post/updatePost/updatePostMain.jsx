@@ -24,7 +24,7 @@ const titleChange = (e) => {
 const bodyChange = (e) => {
     setBody(e.target.value)
 }
-
+console.log('post =>', post)
     const onSavePostClicked = () => {
         if (title && body) {
 //.........ADD DATE.......//
@@ -33,6 +33,11 @@ const bodyChange = (e) => {
             navigate('../')    
         }
       }
+    const onCancelChange = () => {
+      setTitle(post.title)
+      setBody(post.body)
+      navigate('../')    
+    }
 
 
     return (
@@ -59,7 +64,7 @@ const bodyChange = (e) => {
           <button className={s.btn} type="button" onClick={onSavePostClicked}>
             Save Post
           </button>
-          <button className={s.btn} type="button" onClick={onSavePostClicked}>
+          <button className={s.btn} type="button" onClick={onCancelChange}>
             Cancel
           </button>
         </section>

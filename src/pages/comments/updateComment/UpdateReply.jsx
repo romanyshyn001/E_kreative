@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux/es/exports";
 import s from './../s.module.css'
 import { updateCommentLoading } from "../../../redux/slices/comments";
 
-const UpdateComment = (props    ) => {
+const UpdateComment = (props) => {
     const dispatch = useDispatch()
 
 
@@ -26,7 +26,11 @@ const [status, setStatus] = useState(false)
             setStatus(false)
         }
       }
-console.log('status =>', status)
+
+    const onCancelReply = () => {
+        setUpdate(props.comment.body)
+        setStatus(false)
+    }
 
     return (
         <div>
@@ -49,7 +53,7 @@ console.log('status =>', status)
                 <button className={s.btn} type="button" onClick={onSavePostClicked}>
                     Save Post
                 </button>
-                <button className={s.btn} type="button" onClick={onSavePostClicked}>
+                <button className={s.btn} type="button" onClick={onCancelReply}>
                     Cancel
                 </button>
             </div>
