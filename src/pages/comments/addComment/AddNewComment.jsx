@@ -43,7 +43,7 @@ const AddNewComment = (props) => {
                         />
                     </form>
                     <div className={s.save}>
-                        <button className={s.btn} type="button" onClick={onSaveComment}>
+                        <button className={s.btn} type="button" onClick={onSaveComment} disabled={reply === '' }>
                             Save
                         </button>
                     </div>
