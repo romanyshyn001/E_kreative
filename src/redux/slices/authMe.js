@@ -4,7 +4,7 @@ const initialState = {
     user: {},
     isLoading: false,
     isAuth: false,
-    rememberMe: false
+    rememberMe: false,
 }
 
 const authMe = createSlice({

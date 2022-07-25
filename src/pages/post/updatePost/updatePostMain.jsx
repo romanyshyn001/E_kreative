@@ -61,7 +61,7 @@ console.log('post =>', post)
               onChange={bodyChange}
             />
           </form>
-          <button className={s.btn} type="button" onClick={onSavePostClicked} disabled={title || body === '' }>
+          <button className={s.btn} type="button" onClick={onSavePostClicked} disabled={title && body === '' }>
             Save Post
           </button>
           <button className={s.btn} type="button" onClick={onCancelChange}>

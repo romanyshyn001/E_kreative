@@ -26,6 +26,7 @@ function App() {
          <Route path='/profile' element={<Profile/>}/>
 
          <Route path='/posts/edit/:id' element={<UpdatePost/>}/>
+         <Route path='/posts/reply/:id' element={<PostMain/>}/>
       </Routes>
    </div>
   );

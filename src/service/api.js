@@ -9,7 +9,7 @@ export const instance = axios.create({
 
 export const api = {
   postAPI: async(currentPage = 1, perPage = 5) => {
-    return await instance.get(`posts/?_expand=user/&_page=${currentPage}&_imit=${perPage}`).then(resp => {
+    return await instance.get(`posts/?_expand=user&_page=${currentPage}&_imit=${perPage}`).then(resp => {
       return resp
     })  
   },
@@ -28,7 +28,7 @@ export const api = {
     return await instance.patch(`posts/${newData.id}`, newData)
   },
   commentAPI: async(id) => {
-    return await instance.get(`comments`, id)
+    return await instance.get(`comments?_expand=user`, id)
   }, 
   addCommentAPI: async(newData) => {
     // console.log('payload api =>', newData)   

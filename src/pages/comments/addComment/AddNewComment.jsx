@@ -8,7 +8,7 @@ const AddNewComment = (props) => {
     const dispatch = useDispatch()
     const [reply, setReply] = useState('')
     const [status, setStatus] = useState(false)
-
+    
     const handleClick = (event) => {
         setStatus(current => !current)
     }
@@ -19,7 +19,7 @@ const AddNewComment = (props) => {
     const onSaveComment = () => {
         const options = { 
             body: reply, userId: props.user.id, postId: props.post.id,
-            createdAt: null, updatedAt: null
+            createdAt: null, updatedAt: null, user: props.user
          }
 
         dispatch(addCommentLoading(options))
@@ -28,7 +28,7 @@ const AddNewComment = (props) => {
     return (
         <div>
             <div className={s.replyBtn}>
-                <button className={s.btn} onClick={handleClick}>
+                <button className={s.btn} onClick={handleClick} >
                 Reply
                 </button>
             </div>

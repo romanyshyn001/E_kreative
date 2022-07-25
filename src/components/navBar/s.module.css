@@ -9,6 +9,7 @@ nav{
   flex-direction: row;
   justify-content: space-between; 
   position: static;
+  /* flex-wrap: wrap; */
 }
 .item a{
   color: rgb(252, 252, 252);
@@ -25,6 +26,7 @@ nav{
   text-decoration: none;
 }
 
+
 .active a{
   color: rgb(25, 4, 143);
   font-size: 20px;
@@ -38,6 +40,7 @@ nav{
 }
 .menuMain{
   display: flex;
+  flex-wrap: wrap;
 }
 .auth a{
   color: rgb(252, 252, 252);
@@ -56,4 +59,8 @@ nav{
   font-weight: 700;
   font-size: 15px;
   text-decoration: none;
+}
+.userInfo{
+  margin-top: -20px;
+  margin-bottom: 10px;
 }

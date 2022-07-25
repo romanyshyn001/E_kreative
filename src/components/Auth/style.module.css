@@ -175,3 +175,8 @@ label{
     color: rgba(164, 30, 0, 0.829);
     font-weight: bold;
   }
+  .avaContainer img:hover{
+   transform: scale(1.4);
+   cursor: pointer;
+  } 
+  

@@ -58,7 +58,7 @@ const { post, totalPostCount, perPage, currentPage } = useSelector((state) => {
       : <h3 className={s.hidden}>Login for more opportunities</h3>
       } 
       <div>
-        <Comments post={p.id} key={p.id} />
+        <Comments post={p} key={p.id} />
       </div>
     </article>
   ))

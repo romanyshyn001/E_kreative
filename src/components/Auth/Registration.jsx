@@ -5,11 +5,12 @@ import { useDispatch, useSelector } from "react-redux/es/exports";
 import s from './style.module.css'
 import { Navigate } from "react-router-dom";
 import { registerLoading } from "../../redux/slices/authMe";
+import Avatars from "../Avatars";
 
 const Register = () => {
-
-const dispatch = useDispatch()
-const {isAuth} = useSelector(state => state.authMe)
+   const userAva = localStorage.getItem('userAva')
+   const dispatch = useDispatch()
+   const {isAuth} = useSelector(state => state.authMe)
 
 const formik = useFormik({
    initialValues: {
@@ -18,7 +19,7 @@ const formik = useFormik({
       firstName: '',
       lastName: '',
       age: 0,
-      avatar: 'https://www.pngkey.com/png/detail/114-1149878_setting-user-avatar-in-specific-size-without-breaking.png',
+      avatar: userAva,
       email: '',
       },
    validationSchema: Yup.object({
@@ -36,11 +37,13 @@ const formik = useFormik({
          .required('*Required'),
       passwordConfirm: Yup.string()
          .required('*Required')
-         .oneOf([Yup.ref("password")], "Passwords do not match")   
+         .oneOf([Yup.ref("password")], "Passwords do not match"),
+      avatar: Yup.string()   
          
    }),
    onSubmit:(values) => {
       dispatch(registerLoading(values))
+      localStorage.removeItem('userAva');
    }
 })
    return (
@@ -83,7 +86,7 @@ const formik = useFormik({
                ? ( <div className={s.lastName }>{formik.errors.lastName}</div> )
                : null
                }  
-</div>
+   </div>
 {/* ...............BLOCK CREDENTIALS.................. */}
          <label htmlFor="email">Username</label>
          <input className={s.text}
@@ -146,7 +149,8 @@ const formik = useFormik({
                ? ( <div className={s.age}>{formik.errors.age}</div> )
                : null
                } 
-
+         <label htmlFor="Avatar">Avatar</label>
+           <Avatars/>
          <div>		
             <button className={s.btnreg} type="submit">Register</button>
          </div>	
