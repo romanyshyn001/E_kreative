@@ -33,7 +33,6 @@ function* delCommenttSaga({payload}){
 function* addCommentSaga (value) {
     try {
         const newData = yield call(commentApi.addComment, value.payload)
-        console.log('ValueSAGA', newData)
         yield put(addComment(newData.data)) 
     } catch (error) {
         console.log('Error from SAGA', error)
