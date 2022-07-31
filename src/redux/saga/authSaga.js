@@ -1,12 +1,12 @@
 import { call, put, takeEvery } from "redux-saga/effects";
-import { api } from "../../service/api";
+import { authApi } from "../../service/api";
 import { loginFulfilled, logoutFulfilled, registerFulfilled } from "../slices/authMe";
 
 function* loginSaga({payload}){
     try{
-        const res = yield call(api.loginAPI , payload.email, payload.password, payload.rememberMe)       
+        const res = yield call(authApi.login, payload.email, payload.password, payload.rememberMe)       
         localStorage.setItem('token', JSON.stringify(res[0]))      
-        localStorage.setItem('user', JSON.stringify(res[1]))      
+        localStorage.setItem('user', JSON.stringify(res[1]))     
         yield put(loginFulfilled(res))         
     } catch (error) {
         console.log('Wrong password or mail => ', error)
@@ -24,7 +24,7 @@ function* logoutSaga(){
 
 function* registerSaga({payload}){
     try{
-        const res = yield call(api.register, payload.email, payload.password, payload.lastName, payload.firstName, payload.age, payload.avatar )       
+        const res = yield call(authApi.register, payload.email, payload.password, payload.lastName, payload.firstName, payload.age, payload.avatar )       
         localStorage.setItem('token', JSON.stringify(res.data.accessToken))      
         localStorage.setItem('user', JSON.stringify(res.data.user))
         yield put(registerFulfilled(res.data.user))         

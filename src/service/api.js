@@ -7,74 +7,115 @@ export const instance = axios.create({
     }
   })
 
-export const api = {
-  postAPI: async(currentPage = 1, perPage = 5) => {
-    return await instance.get(`posts/?_expand=user&_page=${currentPage}&_imit=${perPage}`).then(resp => {
-      return resp
-    })  
+export const postApi = {
+  getPost: async(currentPage = 1, perPage = 5) => {
+    try{
+      return await instance.get(`posts/?_expand=user&_page=${currentPage}&_imit=${perPage}`).then(resp => {
+        return resp
+      })  
+    } catch(err) {
+      console.log(err)
+    }
   },
+  
   delPost: async(id) => {
-    console.log('id from api =>', id)
-    return await instance.delete(`posts/${id}`)
-      
-  },
-  addPost: async(newData) => {
-    console.log('payload api =>', newData)
-    return await instance.post('posts/', newData)
-    // .then(res => console.log('res api =>', res))
-  },
-  editPost: async(newData) => {
-    console.log('payload api =>', newData.id)
-    return await instance.patch(`posts/${newData.id}`, newData)
-  },
-  commentAPI: async(id) => {
-    return await instance.get(`comments?_expand=user`, id)
-  }, 
-  addCommentAPI: async(newData) => {
-    // console.log('payload api =>', newData)   
-      return await instance.post('comments/', newData)
-    // .then(res => console.log('res api =>', res))
-  },
-  editCommentAPI: async(newData) => {
-    console.log('payload api =>', newData)
-    return await instance.patch(`comments/${newData.id}`, newData)
-  },
-  delCommentAPI: async(id) => {
-    console.log('id from api =>', id)
-    return await instance.delete(`comments/${id}`)
+    try{
+      return await instance.delete(`posts/${id}`)
+    } catch(err) {
+      console.log(err)
+    }
       
   },
 
-  
-  loginAPI: async(email, password, rememberMe) => {
-    return await instance.post('login', {email, password})
-    .then(resp => {
-      if(resp.status === 200){
+  addPost: async(newData) => {
+    try{
+      return await instance.post('posts/', newData)
+    } catch(err) {
+      console.log(err)
+    }
+  },
+
+  editPost: async(newData) => {
+    try{
+      return await instance.patch(`posts/${newData.id}`, newData)
+    } catch(err) {
+      console.log(err)
+    }
+  },
+}
+
+export const commentApi = {
+  getComments: async(id) => {
+    try{
+      return await instance.get(`comments?_expand=user`, id)
+    } catch(err){
+      console.log(err)
+    }
+  }, 
+
+  addComment: async(newData) => {
+    try{
+      return await instance.post('comments/', newData)
+    } catch(err) {
+      console.log(err)
+    }
+  },
+
+  editComment: async(newData) => {
+    try{
+      return await instance.patch(`comments/${newData.id}`, newData)
+    } catch(err) {
+      console.log(err)
+    }
+  },
+
+  delComment: async(id) => {
+    try{
+      return await instance.delete(`comments/${id}`)
+    } catch(err) {
+      console.log(err)
+    }
+  }
+}
+
+export const authApi = {
+  login: async(email, password, rememberMe) => {
+    try{
+      return await instance.post('login', {email, password})
+      .then(resp => {
         let token = resp.data.accessToken
         let user = resp.data.user
-        return [token, user, rememberMe]
-      } else {
-        console.log('Bad Request =>')
-      }
-    })
+          return [token, user, rememberMe]
+      })
+    } catch (err) {
+      console.log(err)
+    }
   },
-
   register: async(email, password, fistName, lastName, age, avatar) => {
-    const payload = {email, password, fistName, lastName, age, avatar}
-      return await instance.post('register', payload )
-        .then(resp => {
-          return resp
-        })
-      },
+    try{
+      const payload = {email, password, fistName, lastName, age, avatar}
+        return await instance.post('register', payload )
+          .then(resp => {
+            return resp
+          })
+    } catch(err){
+      console.log(err)
+    }
+  }
+}
+
+export const newsApi = {
   announcements: async(news) =>{
-    return await instance.get('announcements', news)
-    .then(res => {
-      return res.data
-    })
+    try{
+      return await instance.get('announcements', news)
+      .then(res => {
+        return res.data
+      })
+    } catch(err) {
+      console.log(err)
+    }
   },
 
 }
 
-//Переробити коментарі, додати логіку в запиті api, а не в компоненті
-// let arr = 1
-// api.commentAPIqwerty(arr)
+

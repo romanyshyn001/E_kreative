@@ -13,7 +13,7 @@ const delPost = (value) => {
 
     return (
         <div > 
-            <button className={s.btn} type="submit" onClick={() =>  delPost(props.post)}>remove</button>
+            <button className={s.btn} type="submit" onClick={() => delPost(props.post)}>remove</button>
         </div>
     )
 }

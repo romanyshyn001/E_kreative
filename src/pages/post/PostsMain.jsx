@@ -40,7 +40,7 @@ const { post, totalPostCount, perPage, currentPage } = useSelector((state) => {
           <div><p>{p.body}</p></div>
         </div>
       { user != null 
-      ? <div >
+      ? <div>
         <div className={s.action}>
           <AddNewComment user={user} post={p}/>
           { user.id === p.userId
@@ -52,7 +52,7 @@ const { post, totalPostCount, perPage, currentPage } = useSelector((state) => {
               <DeletePost post={p.id}/>
             </div>
           : null
-        }
+          }
           </div>
         </div>
       : <h3 className={s.hidden}>Login for more opportunities</h3>

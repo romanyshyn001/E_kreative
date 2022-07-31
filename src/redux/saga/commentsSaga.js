@@ -1,12 +1,12 @@
 import { call, put, takeEvery } from "redux-saga/effects";
-import { api, } from "../../service/api";
+import { commentApi } from "../../service/api";
 import { addComment, delComment, getcomments, updateComment } from "../slices/comments";
 
 function* commentsSaga({payload: id}){
     //console.log('переробити виведення коментарів Saga =>', id)   
     ///переробити виведення коментарів 
     try{
-        const res = yield call(api.commentAPI, id)
+        const res = yield call(commentApi.getComments, id)
         let data = res.data
         yield put(getcomments(data))      
     } catch (error) {
@@ -15,7 +15,7 @@ function* commentsSaga({payload: id}){
 }
 function* updateCommentSaga (value) {
     try {
-        const newData = yield call(api.editCommentAPI, value.payload )
+        const newData = yield call(commentApi.editComment, value.payload )
         yield put(updateComment(newData.data)) 
     } catch (error) {
         console.log('Error from SAGA', error)
@@ -24,7 +24,7 @@ function* updateCommentSaga (value) {
 
 function* delCommenttSaga({payload}){
     try{ 
-        yield call(api.delCommentAPI, payload)
+        yield call(commentApi.delComment, payload)
         yield put(delComment(payload))      
     } catch (error) {
         console.log('Error from SAGA',error)
@@ -32,7 +32,7 @@ function* delCommenttSaga({payload}){
 }
 function* addCommentSaga (value) {
     try {
-        const newData = yield call(api.addCommentAPI, value.payload)
+        const newData = yield call(commentApi.addComment, value.payload)
         console.log('ValueSAGA', newData)
         yield put(addComment(newData.data)) 
     } catch (error) {
