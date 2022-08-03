@@ -2,12 +2,12 @@ import React from "react";
 import { useFormik } from "formik";
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from "react-redux/es/exports";
-import s from './style.module.css'
+import s from './Registration.module.css'
 import { Navigate } from "react-router-dom";
-import { registerLoading } from "../../redux/slices/authMe";
-import Avatars from "../Avatars";
+import { registerLoading } from "../../../redux/slices/authMe";
+import Avatars from "../../UserAvatars/Avatars";
 
-const Register = () => {
+export const Registration = () => {
    const userAva = localStorage.getItem('userAva')
    const dispatch = useDispatch()
    const {isAuth} = useSelector(state => state.authMe)
@@ -52,10 +52,9 @@ const formik = useFormik({
          <div className={s.shape}></div>
          <div className={s.shape}></div>
       </div>
-      <form  className={s.registration} onSubmit={formik.handleSubmit}>
+      <form className={s.registration} onSubmit={formik.handleSubmit}>
          <div></div>
          <h3>Register Here</h3>
-{/* ............BLOCK INFO............... */}
       <div className={s.name}>
          <label htmlFor="Name">First Name</label>
          <input className={s.text}
@@ -67,9 +66,9 @@ const formik = useFormik({
                onBlur={formik.handleBlur}
                value={formik.values.firstName  }/>
          
-               {  formik.touched.firstName  && formik.errors.firstName 
-               ? ( <div className={s.firstName }>{formik.errors.firstName}</div> )
-               : null
+               {  
+                  formik.touched.firstName  && formik.errors.firstName 
+                  && ( <div className={s.firstName }>{formik.errors.firstName}</div> )
                }       
 
          <label htmlFor="Last Name">Last name</label>
@@ -82,12 +81,11 @@ const formik = useFormik({
                onBlur={formik.handleBlur}
                value={formik.values.lastName }/>
 
-               {  formik.touched.lastName  && formik.errors.lastName 
-               ? ( <div className={s.lastName }>{formik.errors.lastName}</div> )
-               : null
+               {  
+                  formik.touched.lastName  && formik.errors.lastName 
+                  && ( <div className={s.lastName }>{formik.errors.lastName}</div> )
                }  
    </div>
-{/* ...............BLOCK CREDENTIALS.................. */}
          <label htmlFor="email">Username</label>
          <input className={s.text}
                type="email" 
@@ -98,9 +96,9 @@ const formik = useFormik({
                onBlur={formik.handleBlur}
                value={formik.values.email}/>
 
-               {  formik.touched.email && formik.errors.email 
-               ? ( <div className={s.email}>{formik.errors.email}</div> )
-               : null
+               {  
+                  formik.touched.email && formik.errors.email 
+                  && ( <div className={s.email}>{formik.errors.email}</div> )
                } 
 
          <label htmlFor="password">Password</label>
@@ -113,9 +111,9 @@ const formik = useFormik({
                onBlur={formik.handleBlur}
                value={formik.values.password}/>
          
-               {  formik.touched.password && formik.errors.password 
-               ? ( <div className={s.password}>{formik.errors.password}</div> )
-               : null
+               {  
+                  formik.touched.password && formik.errors.password 
+                  && ( <div className={s.password}>{formik.errors.password}</div> )
                } 
       
          <label htmlFor="passwordConfirm">Confirm password</label>
@@ -128,12 +126,11 @@ const formik = useFormik({
                onBlur={formik.handleBlur}
                value={formik.values.passwordConfirm}/>
 
-               {  formik.touched.passwordConfirm && formik.errors.passwordConfirm 
-               ? ( <div className={s.passwordConfirm}>{formik.errors.passwordConfirm}</div> )
-               : null
+               {  
+                  formik.touched.passwordConfirm && formik.errors.passwordConfirm 
+                  && ( <div className={s.passwordConfirm}>{formik.errors.passwordConfirm}</div> )
                } 
             
-
          <label htmlFor="Age">Age</label>
          <input className={s.text}
                type="number" 
@@ -145,10 +142,11 @@ const formik = useFormik({
                value={formik.values.age}
                max={120}/>
 
-               {  formik.touched.age && formik.errors.age 
-               ? ( <div className={s.age}>{formik.errors.age}</div> )
-               : null
+               {  
+                  formik.touched.age && formik.errors.age 
+                  && ( <div className={s.age}>{formik.errors.age}</div> )
                } 
+               
          <label htmlFor="Avatar">Avatar</label>
            <Avatars/>
          <div>		
@@ -157,16 +155,15 @@ const formik = useFormik({
          
       </form>
       <div>
-            { isAuth 
-					? <Navigate to={'/posts'}/>
-					: null
+            { 
+               isAuth && <Navigate to={'/posts'}/>
 				}
       </div>
    </div>
       
       )
 }
-export default Register
+export default Registration
 
 
 

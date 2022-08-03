@@ -1,10 +1,10 @@
 import { NavLink } from 'react-router-dom';
-import s from './s.module.css';  
+import s from './NavigationMain.module.css';  
 import React from 'react';
 import { useSelector } from "react-redux/es/exports";
-import Profile from '../../pages/profile/ProfileMain';
+import Profile from '../../pages/Profile/ProfileMain';
 
-const NavBar = () => {
+const NavigationMain = () => {
 	const user = JSON.parse(window.localStorage.getItem('user'));
    const { isAuth } = useSelector(state => state.authMe)
 
@@ -48,4 +48,4 @@ const NavBar = () => {
     )
 }
 
-export default NavBar;
+export default NavigationMain;

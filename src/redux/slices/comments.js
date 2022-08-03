@@ -5,7 +5,7 @@ const initialState = {
     isLoading: false
 }
 
-const commentsList = createSlice({
+const comments = createSlice({
     name: 'comments',
     initialState,
     reducers:{
@@ -16,7 +16,6 @@ const commentsList = createSlice({
             state.comments = payload
             state.isLoading = false
         },
-        //.............DELETE COMMENT.........../
         delCommentLoading:(state) => {
             state.isLoading = true
         },
@@ -24,7 +23,6 @@ const commentsList = createSlice({
             state.comments = state.comments.filter(comment => comment.id !== payload)
             state.isLoading = false
         },
-        //.........ADD COMMENT..............///
         addCommentLoading:(state) => {
             state.isLoading = true
         },
@@ -32,13 +30,12 @@ const commentsList = createSlice({
             state.comments.push(payload)
             state.isLoading = false
         },
-        //....UPDATE......//
         updateCommentLoading:(state) => {
             state.isLoading = true
         },
         updateComment:(state, {payload}) => {
             const { id, body } = payload
-            const existingPost = state.comments.find(c => c.id === id)
+            const existingPost = state.comments.find(comment => comment.id === id)
             if (existingPost) {
               existingPost.body = body
             }
@@ -49,5 +46,5 @@ const commentsList = createSlice({
 
 export const { commentsLoading, getcomments, delCommentLoading, delComment, 
     addComment, addCommentLoading, updateCommentLoading,
-    updateComment} = commentsList.actions
-export default commentsList.reducer
+    updateComment} = comments.actions
+export default comments.reducer

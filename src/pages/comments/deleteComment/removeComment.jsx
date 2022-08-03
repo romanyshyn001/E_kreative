@@ -1,7 +1,7 @@
 import React from "react";
-import { useDispatch} from "react-redux/es/exports";
+import { useDispatch } from "react-redux/es/exports";
 import { delCommentLoading } from "../../../redux/slices/comments";
-import s from './../s.module.css'
+import s from './RemoveComment.module.css'
 
 const DeleteComment = (props) => {
     const dispatch = useDispatch()
@@ -11,8 +11,8 @@ const DeleteComment = (props) => {
     }
 
     return (
-        <div className={'s.removeContainer'}> 
-            <button className={s.btn} type="submit" onClick={() =>  delOnclick(props.comment)}>remove</button>
+        <div> 
+            <button className={s.btn} type="submit" onClick={() => delOnclick(props.comment)}>remove</button>
         </div>
     )
 }

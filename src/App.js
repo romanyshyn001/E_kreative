@@ -1,32 +1,35 @@
 import { Route, Routes, Navigate } from 'react-router-dom';
 import s from'./App.module.css';
-import LoginForm from './components/Auth/LoginMain';
-import LogOut from './components/Auth/Logout/LogOut';
-import Register from './components/Auth/Registration';
-import NavBar from './components/navBar/navigation';
-import NewsMain from './pages/announcements/NewsMain';
-import PostMain from './pages/post/PostsMain';
-import UpdatePost from './pages/post/updatePost/UpdatePostMain';
-import Profile from './pages/profile/ProfileMain';
+import LoginMain from './components/Auth/Login/LoginMain';
+import LogOutMain from './components/Auth/Logout/LogOutMain';
+import Registration from './components/Auth/Register/Registration';
+
+import NavigationMain from './components/NavBar/NavigationMain';
+import AnnouncementsMain from './pages/Announcements/AnnouncementsMain';
+import PostMain from './pages/Post/PostsMain';
+import UpdatePost from './pages/Post/UpdatePost/UpdatePostMain';
+import ProfileMain from './pages/Profile/ProfileMain';
 
 
-function App() {
+const App = () => {
   return (
-    <div className={s.main}>
+    <div>
       <div className={s.App_header}>
-         <NavBar/>
+         <NavigationMain/>
       </div>
       <Routes>
          <Route path="/" element={<Navigate replace to="/posts" />} />
-         <Route path='/posts' element={<PostMain/>}/>      
-         <Route path='/auth' element={<LoginForm/>}/>
-         <Route path='/logout' element={<LogOut/>}/>
-         <Route path='/register' element={<Register/>}/>
-         <Route path='/announcements' element={<NewsMain/>}/>
-         <Route path='/profile' element={<Profile/>}/>
+         <Route path='/announcements' element={<AnnouncementsMain/>}/>
+         <Route path='/profile' element={<ProfileMain/>}/>
 
-         <Route path='/posts/edit/:id' element={<UpdatePost/>}/>
-         <Route path='/posts/reply/:id' element={<PostMain/>}/>
+         <Route path='/auth' element={<LoginMain/>}/>
+         <Route path='/logout' element={<LogOutMain/>}/>
+         <Route path='/register' element={<Registration/>}/>
+
+         <Route path='/posts' element={<PostMain/>}/>
+            <Route path='/posts/edit/:id' element={<UpdatePost/>}/>
+            <Route path='/posts/reply/:id' element={<PostMain/>}/>         
+         <Route/>      
       </Routes>
    </div>
   );

@@ -1,0 +1,24 @@
+.comment{
+    margin-top:25px;
+    padding: 15px;
+    margin-left: 30px;
+    margin-right: 55px;
+
+    font-size: 18px;
+    background-color: rgb(220, 231, 137);
+    border-radius: 50px 50px 0px 50px;
+}
+img{
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    margin-top: -10px;
+}
+.ava{
+    display: flex;
+    justify-content:flex-end;
+}
+.action{
+  display: flex;
+  margin-top: 15px;
+}

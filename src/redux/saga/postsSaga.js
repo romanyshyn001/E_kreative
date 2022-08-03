@@ -1,6 +1,6 @@
 import { call, put, takeEvery } from "redux-saga/effects";
 import { postApi } from "../../service/api";
-import { addPost, delPost, getPost, updatePost } from "../slices/article";
+import { addPost, delPost, getPost, updatePost } from "../slices/posts";
 
 function* postSaga({payload}){
     try{

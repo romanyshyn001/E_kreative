@@ -1,25 +1,26 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux/es/exports";
-import { newsLoading } from "../../redux/slices/announcements";
-import s from "./s.module.css"
-const NewsMain = () => {
+import { announcementsLoading } from "../../redux/slices/announcements";
+import s from "./AnnouncementsMain.module.css"
+
+const AnnouncementsMain = () => {
     const dispatch = useDispatch()
     const {announcements} = useSelector(state => state.announcements)
 
     useEffect(() => {
-        dispatch(newsLoading())
+        dispatch(announcementsLoading())
     }, [dispatch])
     
     return(
     <div className={s.container}>
         <div>
-            { announcements.map(b => <div key={b.id}>
+            { announcements.map(announcement => <div key={announcement.id}>
                 <div className={s.info}>
-                <span>{b.title}</span>
+                <span>{announcement.title}</span>
                 <div>
-                    <p>{b.body}</p>
-                    <p>{b.updatedAt.split('T')[0]}</p>
+                    <p>{announcement.body}</p>
+                    <p>{announcement.updatedAt.split('T')[0]}</p>
                 </div>
                 </div>
                 
@@ -34,4 +35,4 @@ const NewsMain = () => {
     </div>
     )
 } 
-export default NewsMain;
+export default AnnouncementsMain;

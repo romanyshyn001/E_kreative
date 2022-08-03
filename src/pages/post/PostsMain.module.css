@@ -1,0 +1,50 @@
+.containerPost{
+    display: flex;
+    justify-content: center;
+}
+.container{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    margin-right: 100px;
+    margin-left: 100px;
+}
+.info div{
+    background-color: hsl(120, 1%, 83%);
+    width:100%;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+.info p{
+   padding: 10px;
+   font-family:'Times New Roman', Times, serif
+}
+.info h3{
+    border-radius: 15px;
+    font-size: 20px;
+    background-color: hsl(120, 1%, 83%);
+    padding: 15px;
+}
+.action{
+    display:  flex;
+    justify-content: flex-end;    
+}
+.action a{
+    cursor:none;
+}
+.btn{
+    margin: 10px 10px 10px 0px;
+    padding: 5px;
+    font-size: 15px;
+    color: rgb(0, 0, 0);
+    background-color: hsl(120, 1%, 83%);
+    border-radius: 10px;
+}
+.btn:hover{
+    background-color: hsl(0, 1%, 56%);
+}
+.hidden{
+    color:rgb(173, 7, 7)
+}

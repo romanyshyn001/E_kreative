@@ -2,14 +2,14 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addCommentLoading } from "../../../redux/slices/comments";
-import s from './../s.module.css'
+import s from './AddNewComment.module.css'
 
 const AddNewComment = (props) => {
     const dispatch = useDispatch()
     const [reply, setReply] = useState('')
     const [status, setStatus] = useState(false)
     
-    const handleClick = (event) => {
+    const handleClick = () => {
         setStatus(current => !current)
     }
     const addCommentHandle = (e) => {

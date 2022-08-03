@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    post: [],
+    posts: [],
     currentPage: 1,
     perPage: 8,
     totalPostCount: 100,
@@ -9,7 +9,7 @@ const initialState = {
     postEdit: true
 }
 
-const postList = createSlice({
+const posts = createSlice({
     name: 'posts',
     initialState,
     reducers:{
@@ -17,33 +17,30 @@ const postList = createSlice({
             state.isLoading = true
         },
         getPost:(state, {payload}) => {
-            state.post = payload.data
+            state.posts = payload.data
             state.currentPage = payload.activePage
             state.isLoading = false
         },
-        //....ADD POST......//
         addPostLoading:(state) => {
             state.isLoading = true
         },
         addPost:(state, {payload}) => {
-            state.post.push(payload)
+            state.posts.push(payload)
             state.isLoading = false
         },
-        //....DELETE......//
         delPostLoading:(state) => {
             state.isLoading = true
         },
         delPost:(state, {payload}) => {
-            state.post = state.post.filter(p => p.id !== payload)
+            state.posts = state.posts.filter(post => post.id !== payload)
             state.isLoading = false
         },
-        //....UPDATE......//
         updatePostLoading:(state) => {
             state.isLoading = true
         },
         updatePost:(state, {payload}) => {
             const { id, title, body } = payload
-            const existingPost = state.post.find(p => p.id === id)
+            const existingPost = state.posts.find(post => post.id === id)
             if (existingPost) {
               existingPost.title = title
               existingPost.body = body
@@ -54,5 +51,5 @@ const postList = createSlice({
 })
 
 export const { postLoading, getPost, addPostLoading, addPost,
-    delPostLoading, delPost, updatePostLoading, updatePost } = postList.actions
-export default postList.reducer
+    delPostLoading, delPost, updatePostLoading, updatePost } = posts.actions
+export default posts.reducer

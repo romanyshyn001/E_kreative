@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux/es/exports";
-import s from './../s.module.css'
+import s from './UpdateReply.module.css'
 import { updateCommentLoading } from "../../../redux/slices/comments";
 
 const UpdateComment = (props) => {
@@ -14,7 +14,7 @@ const [status, setStatus] = useState(false)
     const bodyChange = (e) => {
         setUpdate(e.target.value)
     }
-    const handleClick = (event) => {
+    const handleClick = () => {
         setStatus(true)
     }
     const onSavePostClicked = () => {
@@ -34,13 +34,13 @@ const [status, setStatus] = useState(false)
 
     return (
         <div>
-            <div className={'s.replyBtn'}>
+            <div >
                 <button className={s.btn} onClick={handleClick}>
                 update
                 </button>
             </div>
             {status && ( 
-                <section className={'s.secContainer'}>
+                <section >
             <form >
                 <textarea className={s.commentUpdate}
                 id="postContent"

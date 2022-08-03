@@ -20,7 +20,6 @@ const authMe = createSlice({
             state.isAuth = true
             state.isLoading = false
         },
-        ///........LOG OUT........///
         logoutLoading:(state) => {
             state.isLoading = true
         },
@@ -28,7 +27,6 @@ const authMe = createSlice({
             state.isAuth = false
             state.isLoading = false
         },
-         ///........REGISTER........///
         registerLoading:(state) => {
             state.isLoading = true
         },

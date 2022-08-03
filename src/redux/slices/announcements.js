@@ -9,18 +9,18 @@ const initialState = {
 }
 
 const announcements = createSlice({
-    name: 'news',
+    name: 'announcements',
     initialState,
     reducers:{
-        newsLoading:(state) => {
+        announcementsLoading:(state) => {
             state.isLoading = true
         },
-        getNews:(state, {payload}) => {
+        getAnnouncements:(state, {payload}) => {
             state.announcements = payload
             state.isLoading = false
         }
     }
 })
 
-export const { newsLoading, getNews } = announcements.actions
+export const { announcementsLoading, getAnnouncements } = announcements.actions
 export default announcements.reducer

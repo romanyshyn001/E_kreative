@@ -1,12 +1,12 @@
 import { useFormik } from "formik";
 import React from "react";
-import s from './style.module.css'
+import s from './LoginMain.module.css'
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from "react-redux/es/exports";
 import { Navigate } from "react-router-dom";
-import { loginLoading } from "../../redux/slices/authMe";
+import { loginLoading } from "../../../redux/slices/authMe";
 
-const LoginForm = () => {
+const LoginMain = () => {
 
 const dispatch = useDispatch()
 const {isAuth} = useSelector(state => state.authMe)
@@ -72,12 +72,11 @@ return (
 				
 			</form>
 				<div>
-				{ isAuth 
-					? <Navigate to={'/posts'}/>
-					: null
+				{ 
+					isAuth && <Navigate to={'/posts'}/>
 				}
 				</div>
 		</div>
       )
 }
-export default LoginForm
+export default LoginMain

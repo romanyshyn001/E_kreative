@@ -1,5 +1,5 @@
 import React from "react";
-import s from './s.module.css'
+import s from './PostPagination.module.css'
 
 const PostPagination = (props) => {
 
@@ -15,7 +15,7 @@ const PostPagination = (props) => {
                 return <span className={props.currentPage === p ? s.selectedPage : null}
                         onClick={() => props.onChange(p)}  key={p}>{p}</span> })
             }
-        </nav>
+          </nav>
     )
 }
 export default PostPagination

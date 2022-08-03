@@ -27,7 +27,7 @@ function* delCommenttSaga({payload}){
         yield call(commentApi.delComment, payload)
         yield put(delComment(payload))      
     } catch (error) {
-        console.log('Error from SAGA',error)
+        console.log('Error from SAGA', error)
     }
 }
 function* addCommentSaga (value) {

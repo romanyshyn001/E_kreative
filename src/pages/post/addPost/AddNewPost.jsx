@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux/es/exports";
-import { addPostLoading } from "../../../redux/slices/article";
-import s from './../s.module.css'
+import { addPostLoading } from "../../../redux/slices/posts";
+import s from './AddNewPost.module.css'
 
 const AddPost = () => {
   const dispatch = useDispatch()
@@ -17,12 +17,14 @@ const AddPost = () => {
       setBody(e.target.value)
   }
 
-    const onSavePostClicked = () => {
-        if (title && body) {
-          const options = { title: title, body: body, userId: user.id}
-            dispatch(addPostLoading(options))
-        }
+  const onSavePostClicked = () => {
+      if (title && body) {
+        const options = { title: title, body: body, userId: user.id}
+          dispatch(addPostLoading(options))
+          setTitle('')
+          setBody('')
       }
+    }
 
     
     return (
@@ -36,12 +38,14 @@ const AddPost = () => {
               id="postTitle"
               name="postTitle"
               onChange={addTitle}
+              value={title}
             />
             <label htmlFor="postContent">Content:</label>
             <textarea className={s.textInput}
               id="postContent"
               name="postContent"
               onChange={addBody}
+              value={body}
             />
           </form>
           <button className={s.btn} type="button" onClick={onSavePostClicked}>

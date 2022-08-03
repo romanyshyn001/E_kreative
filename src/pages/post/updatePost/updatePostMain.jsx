@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { updatePostLoading } from "../../../redux/slices/article";
+import { updatePostLoading } from "../../../redux/slices/posts";
 import { useDispatch, useSelector } from "react-redux/es/exports";
-import s from './../s.module.css'
+import s from './UpdatePostMain.module.css'
 import { useNavigate, useParams } from "react-router-dom";
 
 const UpdatePost = () => {
@@ -9,14 +9,14 @@ const UpdatePost = () => {
    const params = useParams()
    const navigate = useNavigate()
 
-   const {post} = useSelector((state) => {
+   const { posts } = useSelector((state) => {
       return {
             // eslint-disable-next-line eqeqeq
-            post: state.posts.post.find(p => p.id == params.id),
+            posts: state.posts.posts.find(post => post.id == params.id),
       }
    })
-   const [title, setTitle] = useState(post.title)
-   const [body, setBody] = useState(post.body)
+   const [title, setTitle] = useState(posts.title)
+   const [body, setBody] = useState(posts.body)
 
    const titleChange = (e) => {
       setTitle(e.target.value)
@@ -33,11 +33,10 @@ const UpdatePost = () => {
       }
    }
    const onCancelChange = () => {
-      setTitle(post.title)
-      setBody(post.body)
+      setTitle(posts.title)
+      setBody(posts.body)
       navigate('../')    
    }
-
 
     return (
          <section className={s.secContainer}>
@@ -61,10 +60,10 @@ const UpdatePost = () => {
             />
             </form>
             <button className={s.btn} type="button" onClick={onSavePostClicked} disabled={title && body === '' }>
-            Save Post
+               Save Post
             </button>
             <button className={s.btn} type="button" onClick={onCancelChange}>
-            Cancel
+               Cancel
             </button>
          </section>
    )

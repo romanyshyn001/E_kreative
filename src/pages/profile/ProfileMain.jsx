@@ -1,8 +1,8 @@
 import React from "react";
-import s from './s.module.css'
+import s from './ProfileMain.module.css'
 import empty from './../../assets/images/empty.jpg'
 
-const Profile = () => {
+const ProfileMain = () => {
     const user = JSON.parse(localStorage.getItem('user'))
     
     return (
@@ -16,4 +16,4 @@ const Profile = () => {
     )
 }
 
-export default Profile
+export default ProfileMain
