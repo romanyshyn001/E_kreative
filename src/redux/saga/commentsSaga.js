@@ -1,5 +1,5 @@
 import { call, put, takeEvery } from "redux-saga/effects";
-import { commentApi } from "../../service/api";
+import commentApi from "../../service/commentsApi";
 import { addComment, delComment, getcomments, updateComment } from "../slices/comments";
 
 function* commentsSaga({payload: id}){

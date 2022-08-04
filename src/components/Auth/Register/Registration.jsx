@@ -19,7 +19,7 @@ const formik = useFormik({
       firstName: '',
       lastName: '',
       age: 0,
-      avatar: userAva,
+      avatar: 'userAva',
       email: '',
       },
    validationSchema: Yup.object({

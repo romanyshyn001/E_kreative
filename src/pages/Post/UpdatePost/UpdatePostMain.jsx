@@ -25,11 +25,11 @@ const UpdatePost = () => {
       setBody(e.target.value)
    }
    const onSavePostClicked = () => {
-      if (title && body) {
-   //.........ADD DATE.......//
-      const options = {id: params.id, title: title, body: body}  
-         dispatch(updatePostLoading(options))  
-         navigate('../')    
+      const updatedAt = new Date().toISOString()
+         if (title && body) {
+         const options = {id: params.id, title: title, body: body, updatedAt: updatedAt}  
+            dispatch(updatePostLoading(options))  
+            navigate('../')    
       }
    }
    const onCancelChange = () => {

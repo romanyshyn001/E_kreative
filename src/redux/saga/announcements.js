@@ -1,11 +1,11 @@
 import { call, put, takeEvery } from "redux-saga/effects";
-import { newsApi } from "../../service/api";
+import announcementsApi from "../../service/announcementsApi";
 import { getAnnouncements } from "../slices/announcements";
 
-function* announcementsSaga({payload: id}){
+function* announcementsSaga(){
     try{
-        const res = yield call(newsApi.announcements, id)
-        yield put(getAnnouncements(res.data))      
+        const res = yield call(announcementsApi.getAnnouncementsApi, )
+        yield put(getAnnouncements (res.data))      
     } catch (error) {
         console.log(error)
     }

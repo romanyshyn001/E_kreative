@@ -1,5 +1,5 @@
 import { call, put, takeEvery } from "redux-saga/effects";
-import { postApi } from "../../service/api";
+import postApi from "../../service/postApi";
 import { addPost, delPost, getPost, updatePost } from "../slices/posts";
 
 function* postSaga({payload}){
@@ -32,6 +32,7 @@ function* updatePostSaga (value) {
 }
 
 function* addPostSaga (value) {
+    console.log('saga=>)', value)
     try {
         const newData = yield call(postApi.addPost, value.payload )
         yield put(addPost(newData.data)) 

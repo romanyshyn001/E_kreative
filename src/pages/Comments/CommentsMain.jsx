@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux/es/exports";
-import s from './CommentMain.module.css'
+import s from './CommentsMain.module.css'
 import ava from './../../assets/images/empty.jpg'
 import DeleteComment from "./DeleteComment/RemoveComment";
 import UpdateComment from "./UpdateComment/UpdateReply";

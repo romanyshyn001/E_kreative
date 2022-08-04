@@ -4,7 +4,7 @@ import s from './PostsMain.module.css'
 
 import DeletePost from "./DeletePost/DeleteItem";
 import AddNewComment from "../Comments/AddComment/AddNewComment";
-import CommentsMain from "../Comments/CommentMain";
+import CommentsMain from "../Comments/CommentsMain";
 
 const PostsManage = (props) => {
     const user = JSON.parse(localStorage.getItem('user'));

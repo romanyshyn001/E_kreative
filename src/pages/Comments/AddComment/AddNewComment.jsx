@@ -17,9 +17,11 @@ const AddNewComment = (props) => {
     }
     
     const onSaveComment = () => {
+        const createdAt = new Date().toISOString()
+        
         const options = { 
             body: reply, userId: props.user.id, postId: props.post.id,
-            createdAt: null, updatedAt: null, user: props.user
+            createdAt: createdAt,  user: props.user
          }
 
         dispatch(addCommentLoading(options))

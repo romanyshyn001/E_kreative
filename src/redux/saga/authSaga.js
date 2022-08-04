@@ -1,5 +1,5 @@
 import { call, put, takeEvery } from "redux-saga/effects";
-import { authApi } from "../../service/api";
+import authApi from "../../service/authApi";
 import { loginFulfilled, logoutFulfilled, registerFulfilled } from "../slices/authMe";
 
 function* loginSaga(credentials){

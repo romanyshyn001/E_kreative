@@ -18,13 +18,14 @@ const AddPost = () => {
   }
 
   const onSavePostClicked = () => {
+    const createdAt = new Date().toISOString()
       if (title && body) {
-        const options = { title: title, body: body, userId: user.id}
+        const options = { title: title, body: body, userId: user.id, createdAt: createdAt}
           dispatch(addPostLoading(options))
           setTitle('')
           setBody('')
-      }
     }
+  }
 
     
     return (

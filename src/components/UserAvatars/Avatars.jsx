@@ -10,7 +10,7 @@ const Avatars = () => {
      }
      
      const images = importAll(require.context('../../assets/images', false, /\.(png|jpe?g|svg)$/))
-
+// console.log('images', images)
      const add = (() => {
         let counter = 0
         return () => {
@@ -20,8 +20,10 @@ const Avatars = () => {
       })();
 
       const handleClick = (e) => {
+        console.log('e=>', e.target.src)
         localStorage.setItem('userAva', e.target.src)       
       }
+
         return (
             <div className={s.avaContainer} onClick={handleClick}>
                 <img src={images[`ava${add()}.png`]} alt='avatar1' height={150} width={150}/>
@@ -38,3 +40,4 @@ const Avatars = () => {
         )
 }
 export default Avatars
+

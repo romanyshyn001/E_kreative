@@ -18,14 +18,15 @@ const [status, setStatus] = useState(false)
         setStatus(true)
     }
     const onSavePostClicked = () => {
+        const updatedAt = new Date().toISOString()
+
         if (updateComment) {
-            //.........ADD DATE.......//
           const options = {id: props.comment.id, userId: props.user.id, body: updateComment,
-            createdAt: null, updatedAt: null, postId: props.comment.postId}  
+            updatedAt: updatedAt, postId: props.comment.postId}  
             dispatch(updateCommentLoading(options))
             setStatus(false)
         }
-      }
+    }
 
     const onCancelReply = () => {
         setUpdate(props.comment.body)
