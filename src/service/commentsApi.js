@@ -1,4 +1,4 @@
-import mainURL from "./api";
+import mainURL from "./mainUrl";
 
 
 export const commentApi = {

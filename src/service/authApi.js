@@ -1,4 +1,4 @@
-import mainURL  from "./api";
+import mainURL from "./mainUrl";
 
 const authApi = {
     login: async(...credentials) => {

@@ -1,4 +1,4 @@
-import mainURL from "./api";
+import mainURL from "./mainUrl";
 
 export const postApi = {
     getPost: async(currentPage = 1, perPage = 5) => {
