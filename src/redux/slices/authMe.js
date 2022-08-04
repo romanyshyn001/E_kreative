@@ -15,8 +15,7 @@ const authMe = createSlice({
             state.isLoading = true
         },
         loginFulfilled:(state, {payload}) => {
-            state.user = payload[1]
-            state.rememberMe = payload[2]
+            state.user = payload.user
             state.isAuth = true
             state.isLoading = false
         },

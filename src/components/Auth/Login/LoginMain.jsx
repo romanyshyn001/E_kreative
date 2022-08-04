@@ -25,8 +25,8 @@ const {isAuth} = useSelector(state => state.authMe)
 				.email('Invalid Email')
 				.required('*Required')
 		}),
-		onSubmit:(values) => {
-			dispatch(loginLoading(values))
+		onSubmit:(credentials) => {
+			dispatch(loginLoading(credentials))
 		}
 	})
 

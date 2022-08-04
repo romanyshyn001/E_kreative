@@ -41,8 +41,8 @@ const formik = useFormik({
       avatar: Yup.string()   
          
    }),
-   onSubmit:(values) => {
-      dispatch(registerLoading(values))
+   onSubmit:(credentials) => {
+      dispatch(registerLoading(credentials))
       localStorage.removeItem('userAva');
    }
 })

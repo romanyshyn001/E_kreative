@@ -9,7 +9,7 @@ const ProfileMain = () => {
         <div className={s.container}>
                 <img src={user.avatar || empty} alt="avatar" />
             <div>
-                <span>{user.fistName}</span>
+                <span>{user.firstName}</span>
                 <span> {user.lastName}</span>
             </div>
         </div>

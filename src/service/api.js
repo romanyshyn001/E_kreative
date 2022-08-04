@@ -42,31 +42,18 @@ export const commentApi = {
       return await instance.delete(`comments/${id}`)
   }
 }
-//обробити .then в saga
 export const authApi = {
-  login: async(email, password, rememberMe) => {
-      return await instance.post('login', {email, password})
-      .then(resp => {
-        let token = resp.data.accessToken
-        let user = resp.data.user
-          return [token, user, rememberMe]
-      })
+  login: async(...credentials) => {
+      return await instance.post('login', ...credentials)
   },
-  register: async(email, password, fistName, lastName, age, avatar) => {
-      const payload = {email, password, fistName, lastName, age, avatar}
-        return await instance.post('register', payload )
-          .then(resp => {
-            return resp
-          })
+  register: async(...credentials) => {
+    return await instance.post('register', ...credentials )
   }
 }
 
 export const newsApi = {
   announcements: async(news) =>{
-      return await instance.get('announcements', news)
-      .then(res => {
-        return res.data
-      })
+    return await instance.get('announcements', news)
   },
 }
 
