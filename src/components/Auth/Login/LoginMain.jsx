@@ -1,10 +1,10 @@
 import { useFormik } from "formik";
 import React from "react";
 import s from './LoginMain.module.css'
-import * as Yup from 'yup';
 import { useDispatch, useSelector } from "react-redux/es/exports";
 import { Navigate } from "react-router-dom";
 import { loginLoading } from "../../../redux/slices/authMe";
+import validationSchema from '../../../utils/validators/validators'
 
 const LoginMain = () => {
 
@@ -17,14 +17,7 @@ const {isAuth} = useSelector(state => state.authMe)
 			email: '',
 			rememberMe: false
 		 },
-		validationSchema: Yup.object({
-			password: Yup.string()
-				.max(15, 'Must be at least 20 char')
-				.required('Required'),
-			email: Yup.string()
-				.email('Invalid Email')
-				.required('*Required')
-		}),
+		validationSchema,
 		onSubmit:(credentials) => {
 			dispatch(loginLoading(credentials))
 		}
