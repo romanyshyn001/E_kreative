@@ -132,4 +132,10 @@ font-weight: bold;
 transform: scale(1.4);
 cursor: pointer;
 } 
+
+
+.avacontainer{
+    display: flex;
+    /* flex-flow: column; */
+}
   

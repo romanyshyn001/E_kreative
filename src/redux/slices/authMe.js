@@ -5,6 +5,7 @@ const initialState = {
     isLoading: false,
     isAuth: false,
     rememberMe: false,
+    userAva: '' 
 }
 
 const authMe = createSlice({
@@ -26,6 +27,13 @@ const authMe = createSlice({
             state.isAuth = false
             state.isLoading = false
         },
+        setUserAvatar: (state ) => {
+            state.isLoading = true
+        },
+        getUserAvatar: (state, {payload}) => {
+            state.userAva = payload
+            state.isLoading = false
+        },
         registerLoading:(state) => {
             state.isLoading = true
         },
@@ -38,5 +46,5 @@ const authMe = createSlice({
 })
 
 export const { loginLoading, loginFulfilled, registerFulfilled,
-    logoutLoading, logoutFulfilled, registerLoading } = authMe.actions
+    logoutLoading, logoutFulfilled, registerLoading, getUserAvatar, setUserAvatar } = authMe.actions
 export default authMe.reducer

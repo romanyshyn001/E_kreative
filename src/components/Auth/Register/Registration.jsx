@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from "react-redux/es/exports";
@@ -7,11 +7,15 @@ import { Navigate } from "react-router-dom";
 import { registerLoading } from "../../../redux/slices/authMe";
 import Avatars from "../../UserAvatars/Avatars";
 
+
 export const Registration = () => {
    const userAva = localStorage.getItem('userAva')
    const dispatch = useDispatch()
-   const {isAuth} = useSelector(state => state.authMe)
-
+   const {isAuth} = useSelector((state) => {
+      return {
+         isAuth:state.authMe.isAuth
+      }})
+// console.log('userAva')
 const formik = useFormik({
    initialValues: {
       password: '',
@@ -19,7 +23,7 @@ const formik = useFormik({
       firstName: '',
       lastName: '',
       age: 0,
-      avatar: 'userAva',
+      avatar: userAva ,
       email: '',
       },
    validationSchema: Yup.object({
@@ -46,13 +50,17 @@ const formik = useFormik({
       localStorage.removeItem('userAva');
    }
 })
+
    return (
       <div className={s.authContainer}>
       <div className={s.background}>
          <div className={s.shape}></div>
          <div className={s.shape}></div>
       </div>
-      <form className={s.registration} onSubmit={formik.handleSubmit}>
+
+      
+         
+      <form  className={s.registration} onSubmit={formik.handleSubmit}>
          <div></div>
          <h3>Register Here</h3>
       <div className={s.name}>
@@ -148,12 +156,13 @@ const formik = useFormik({
                } 
                
          <label htmlFor="Avatar">Avatar</label>
-           <Avatars/>
+            <Avatars/>
          <div>		
             <button className={s.btnreg} type="submit">Register</button>
          </div>	
          
       </form>
+      
       <div>
             { 
                isAuth && <Navigate to={'/posts'}/>
