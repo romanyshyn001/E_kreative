@@ -6,4 +6,6 @@
   background-color: hsl(120, 1%, 83%);
   border-radius: 10px;
 }
-
+.btn:hover{
+  background-color: hsl(0, 1%, 56%);
+} 

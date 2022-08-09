@@ -23,5 +23,12 @@
   font-size: 18px;
   width: 40vw;
 }
-
+.container{
+  display: flex;
+  height: 90vh;
+  justify-content: center;
+}
+.container h3{
+  text-align: center;
+}
 

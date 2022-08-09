@@ -94,3 +94,9 @@ label{
     justify-content: center;
     padding-bottom: 150px;
 }
+
+.ErrorMessage{
+    color: red;
+    margin-top:5px
+}
+

@@ -104,30 +104,7 @@ label{
     color: red;
     margin-top:5px
   }
-.email  {
-color: rgba(164, 30, 0, 0.829);
-font-weight: bold;
-}  
-.password  {
-color: rgba(164, 30, 0, 0.829);
-font-weight: bold;
-}  
-.age{
-color: rgba(164, 30, 0, 0.829);
-font-weight: bold;
-}
-.firstName{
-color: rgba(164, 30, 0, 0.829);
-font-weight: bold;
-}
-.lastName{
-color: rgba(164, 30, 0, 0.829);
-font-weight: bold;
-}
-.passwordConfirm{
-color: rgba(164, 30, 0, 0.829);
-font-weight: bold;
-}
+
 .avaContainer img:hover{
 transform: scale(1.4);
 cursor: pointer;

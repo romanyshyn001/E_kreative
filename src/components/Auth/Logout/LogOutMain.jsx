@@ -5,16 +5,16 @@ import { Navigate } from "react-router-dom";
 import { logoutLoading } from "../../../redux/slices/authMe";
 
 const LogOutMain = () => {
-    const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(logoutLoading())
-    }, [dispatch])
+  useEffect(() => {
+    dispatch(logoutLoading());
+  }, [dispatch]);
 
-    return (
-        <div>
-            <Navigate to={'/posts'}/>
-        </div>
-    )
-}
-export default LogOutMain
+  return (
+    <div>
+      <Navigate to={"/posts"} />
+    </div>
+  );
+};
+export default LogOutMain;

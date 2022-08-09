@@ -6,8 +6,6 @@
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    margin-right: 100px;
-    margin-left: 100px;
 }
 .info div{
     background-color: hsl(120, 1%, 83%);
@@ -47,4 +45,9 @@
 }
 .hidden{
     color:rgb(173, 7, 7)
+}
+.mainSection{
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-bottom: 150px;
 }
