@@ -18,6 +18,7 @@ const Avatars = () => {
   const images = importAll(
     require.context("../../assets/avatarIcon", false, /\.(png|jpe?g|svg)$/)
   );
+  
   const keys = Object.keys(images);
 
   const handleClick = (e) => {
