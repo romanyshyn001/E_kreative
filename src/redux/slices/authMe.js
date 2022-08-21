@@ -3,9 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   user: {},
   isLoading: false,
-  isAuth: false,
+  isAuthorized: false,
   rememberMe: false,
-  userAva: "",
+  userAvatar: "",
 };
 
 const authMe = createSlice({
@@ -17,21 +17,18 @@ const authMe = createSlice({
     },
     loginFulfilled: (state, { payload }) => {
       state.user = payload.user;
-      state.isAuth = true;
+      state.isAuthorized = true;
       state.isLoading = false;
     },
     logoutLoading: (state) => {
       state.isLoading = true;
     },
     logoutFulfilled: (state) => {
-      state.isAuth = false;
+      state.isAuthorized = false;
       state.isLoading = false;
     },
-    setUserAvatar: (state) => {
-      state.isLoading = true;
-    },
-    getUserAvatar: (state, { payload }) => {
-      state.userAva = payload;
+    setUserAvatar: (state, { payload }) => {
+      state.userAvatar = payload;
       state.isLoading = false;
     },
     registerLoading: (state) => {
@@ -39,7 +36,7 @@ const authMe = createSlice({
     },
     registerFulfilled: (state, { payload }) => {
       state.user = payload;
-      state.isAuth = true;
+      state.isAuthorized = true;
       state.isLoading = false;
     },
   },
@@ -52,7 +49,6 @@ export const {
   logoutLoading,
   logoutFulfilled,
   registerLoading,
-  getUserAvatar,
   setUserAvatar,
 } = authMe.actions;
 export default authMe.reducer;

@@ -7,7 +7,7 @@ const PostPagination = (props) => {
   for (let i = 1; i <= pagesCount; i++) {
     pages.push(i);
   }
-
+  
   return (
     <nav className={s.pagination}>
       {pages.map((p) => {

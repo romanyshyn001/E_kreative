@@ -16,7 +16,7 @@ const posts = createSlice({
     postLoading: (state) => {
       state.isLoading = true;
     },
-    getPost: (state, { payload }) => {
+    getAllPosts: (state, { payload }) => {
       state.posts = payload.data;
       state.currentPage = payload.activePage;
       state.isLoading = false;
@@ -28,10 +28,10 @@ const posts = createSlice({
       state.posts.push(payload);
       state.isLoading = false;
     },
-    delPostLoading: (state) => {
+    removePostLoading: (state) => {
       state.isLoading = true;
     },
-    delPost: (state, { payload }) => {
+    removePost: (state, { payload }) => {
       state.posts = state.posts.filter((post) => post.id !== payload);
       state.isLoading = false;
     },
@@ -52,11 +52,11 @@ const posts = createSlice({
 
 export const {
   postLoading,
-  getPost,
+  getAllPosts,
   addPostLoading,
   addPost,
-  delPostLoading,
-  delPost,
+  removePostLoading,
+  removePost,
   updatePostLoading,
   updatePost,
 } = posts.actions;

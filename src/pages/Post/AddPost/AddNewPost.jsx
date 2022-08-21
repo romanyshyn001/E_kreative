@@ -1,14 +1,18 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux/es/exports";
-import { addPostLoading } from "../../../redux/slices/posts";
+import { addPostLoading, postLoading } from "../../../redux/slices/posts";
 import s from "./AddNewPost.module.css";
 
-const AddPost = () => {
+const AddPost = (props) => {
+  const currentPage = props.currentPage;
+  const perPage = props.perPage;
+
   const dispatch = useDispatch();
   const user = JSON.parse(window.localStorage.getItem("user"));
 
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
+  const [buttonStatus, setButtonStatus] = useState(false);
 
   const addTitle = (e) => {
     setTitle(e.target.value);
@@ -19,17 +23,22 @@ const AddPost = () => {
 
   const onSavePostClicked = () => {
     const createdAt = new Date().toISOString();
-    if (title && body) {
-      const options = {
-        title: title,
-        body: body,
-        userId: user.id,
-        createdAt: createdAt,
-      };
-      dispatch(addPostLoading(options));
-      setTitle("");
-      setBody("");
+    if (user) {
+      if (title && body) {
+        const options = {
+          title: title,
+          body: body,
+          userId: user.id,
+          createdAt: createdAt,
+        };
+        dispatch(addPostLoading(options));
+        setTitle("");
+        setBody("");
+      }
+    } else {
+      setButtonStatus(true);
     }
+    dispatch(postLoading({ currentPage, perPage }));
   };
 
   return (
@@ -54,9 +63,14 @@ const AddPost = () => {
           value={body}
         />
       </form>
-      <button className={s.btn} type="button" onClick={onSavePostClicked}>
-        Add post
-      </button>
+      <div className={s.handlesPostStatus}>
+        {buttonStatus ? (
+          <h1 className={s.userError}> *You are not autorized</h1>
+        ) : null}
+        <button className={s.btn} type="button" onClick={onSavePostClicked}>
+          Add post
+        </button>
+      </div>
     </section>
   );
 };

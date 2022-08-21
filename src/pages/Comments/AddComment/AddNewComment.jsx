@@ -7,10 +7,10 @@ import s from "./AddNewComment.module.css";
 const AddNewComment = (props) => {
   const dispatch = useDispatch();
   const [reply, setReply] = useState("");
-  const [status, setStatus] = useState(false);
+  const [buttonStatus, setButtonStatus] = useState(false);
 
   const handleClick = () => {
-    setStatus((current) => !current);
+    setButtonStatus((current) => !current);
     setReply("");
   };
   const addCommentHandle = (e) => {
@@ -28,7 +28,7 @@ const AddNewComment = (props) => {
     };
 
     dispatch(addCommentLoading(options));
-    setStatus((current) => !current);
+    setButtonStatus((current) => !current);
   };
 
   return (
@@ -38,7 +38,7 @@ const AddNewComment = (props) => {
           Reply
         </button>
       </div>
-      {status && (
+      {buttonStatus && (
         <section>
           <form>
             <textarea

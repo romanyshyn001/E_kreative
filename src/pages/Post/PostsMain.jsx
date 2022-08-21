@@ -22,7 +22,7 @@ const PostMain = () => {
       };
     }
   );
-
+  
   useEffect(() => {
     dispatch(postLoading({ currentPage, perPage }));
     dispatch(commentsLoading());
@@ -40,7 +40,7 @@ const PostMain = () => {
           <p>{post.body}</p>
         </div>
       </div>
-      <PostsManage post={post} />
+      <PostsManage post={post} perPage={perPage} currentPage={currentPage}/>
     </article>
   ));
 
@@ -53,7 +53,7 @@ const PostMain = () => {
         onChange={onChange}
       />
       <section className={s.mainSection}>
-        <AddPost />
+        <AddPost perPage={perPage} currentPage={currentPage} />
         {renderedPosts}
       </section>
     </div>

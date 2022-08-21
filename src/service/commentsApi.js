@@ -13,7 +13,7 @@ export const commentApi = {
     return await mainURL.patch(`comments/${newData.id}`, newData);
   },
 
-  delComment: async (id) => {
+  deleteComment: async (id) => {
     return await mainURL.delete(`comments/${id}`);
   },
 };

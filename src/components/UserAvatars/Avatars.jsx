@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { getUserAvatar } from "../../redux/slices/authMe";
+import { setUserAvatar } from "../../redux/slices/authMe";
 import s from "./Avatars.module.css";
 
 const Avatars = () => {
@@ -15,24 +15,29 @@ const Avatars = () => {
     return images;
   };
 
+  const [selectedAvatar, setAvatar] = useState();
+
   const images = importAll(
     require.context("../../assets/avatarIcon", false, /\.(png|jpe?g|svg)$/)
   );
-  
+
   const keys = Object.keys(images);
 
   const handleClick = (e) => {
-    dispatch(getUserAvatar(e.target.src));
+    dispatch(setUserAvatar(e.target.src));
+    setAvatar(e.target.alt);
+    console.log('e.target.src=>', e.target.src)
   };
 
   return (
-    <div className={s.avaContainer} onClick={handleClick}>
+    <div className={s.avatarContainer} onClick={handleClick}>
       {keys.map((key) => {
         return (
           <img
+            className={selectedAvatar === key ? s.userAvatar : null}
             key={key}
             src={require(`../../assets/avatarIcon/${key}`)}
-            alt="avatar2"
+            alt={key}
             height={150}
             width={150}
           />

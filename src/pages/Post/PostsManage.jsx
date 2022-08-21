@@ -25,7 +25,7 @@ const PostsManage = (props) => {
                   <button className={s.btn}>Edit</button>
                 </Link>
 
-                <DeleteItem post={post.id} />
+                <DeleteItem post={post.id} perPage={props.perPage} currentPage={props.currentPage}/>
               </div>
             )}
           </div>

@@ -6,7 +6,7 @@ import Profile from "../../pages/Profile/ProfileMain";
 
 const NavigationMain = () => {
   const user = JSON.parse(window.localStorage.getItem("user"));
-  const { isAuth } = useSelector((state) => state.authMe);
+  const { isAuthorized } = useSelector((state) => state.authMe);
 
   return (
     <div className={s.main}>
@@ -23,7 +23,7 @@ const NavigationMain = () => {
           </div>
         </div>
 
-        {localStorage.token != null || isAuth ? (
+        {localStorage.token != null || isAuthorized ? (
           <div className={s.auth}>
             <Profile />
             <div className={s.userInfo}>

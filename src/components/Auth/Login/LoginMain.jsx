@@ -8,7 +8,7 @@ import validators from "../../../utils/validators/validators";
 
 const LoginMain = () => {
   const dispatch = useDispatch();
-  const { isAuth } = useSelector((state) => state.authMe);
+  const { isAuthorized } = useSelector((state) => state.authMe.authorize);
 
   const formik = useFormik({
     initialValues: {
@@ -75,7 +75,7 @@ const LoginMain = () => {
           </button>
         </div>
       </form>
-      <div>{isAuth && <Navigate to={"/posts"} />}</div>
+      <div>{isAuthorized && <Navigate to={"/posts"} />}</div>
     </div>
   );
 };

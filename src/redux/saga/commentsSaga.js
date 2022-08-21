@@ -2,14 +2,12 @@ import { call, put, takeEvery } from "redux-saga/effects";
 import commentApi from "../../service/commentsApi";
 import {
   addComment,
-  delComment,
+  removeComment,
   getcomments,
   updateComment,
 } from "../slices/comments";
 
 function* commentsSaga({ payload: id }) {
-  //console.log('переробити виведення коментарів Saga =>', id)
-  ///переробити виведення коментарів
   try {
     const res = yield call(commentApi.getComments, id);
     let data = res.data;
@@ -27,10 +25,10 @@ function* updateCommentSaga(value) {
   }
 }
 
-function* delCommenttSaga({ payload }) {
+function* removeCommentSaga({ payload }) {
   try {
-    yield call(commentApi.delComment, payload);
-    yield put(delComment(payload));
+    yield call(commentApi.deleteComment, payload);
+    yield put(removeComment(payload));
   } catch (error) {
     console.log("Error from SAGA", error);
   }
@@ -45,7 +43,7 @@ function* addCommentSaga(value) {
 }
 function* commentWatcher() {
   yield takeEvery("comments/commentsLoading", commentsSaga);
-  yield takeEvery("comments/delCommentLoading", delCommenttSaga);
+  yield takeEvery("comments/removeCommentLoading", removeCommentSaga);
   yield takeEvery("comments/addCommentLoading", addCommentSaga);
   yield takeEvery("comments/updateCommentLoading", updateCommentSaga);
 }

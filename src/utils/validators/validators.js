@@ -11,7 +11,7 @@ export const validators = {
     }),
     validationRegister: Yup.object({
         password: Yup.string()
-            .max(5, 'Must contain at least 20 char')
+            .max(15, 'Must contain at least 20 char')
             .required('*Required'),
         email: Yup.string()
             .email('Invalid Email')

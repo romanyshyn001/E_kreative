@@ -1,6 +1,6 @@
 import { call, put, takeEvery } from "redux-saga/effects";
 import postApi from "../../service/postApi";
-import { addPost, delPost, getPost, updatePost } from "../slices/posts";
+import { addPost, removePost, getAllPosts, updatePost } from "../slices/posts";
 
 function* postSaga({ payload }) {
   try {
@@ -9,18 +9,18 @@ function* postSaga({ payload }) {
       payload.currentPage,
       payload.perPage
     );
-    let data = res.data;
+    let data = res;
     let activePage = payload.currentPage;
-    yield put(getPost({ data, activePage }));
+    yield put(getAllPosts({ data, activePage }));
   } catch (error) {
     console.log("Error from SAGA", error);
   }
 }
 
-function* delPostSaga({ payload }) {
+function* deletePostSaga({ payload }) {
   try {
-    yield call(postApi.delPost, payload);
-    yield put(delPost(payload));
+    yield call(postApi.deletePost, payload);
+    yield put(removePost(payload));
   } catch (error) {
     console.log("Error from SAGA", error);
   }
@@ -45,7 +45,7 @@ function* addPostSaga(value) {
 }
 function* postWatcher() {
   yield takeEvery("posts/postLoading", postSaga);
-  yield takeEvery("posts/delPostLoading", delPostSaga);
+  yield takeEvery("posts/removePostLoading", deletePostSaga);
   yield takeEvery("posts/updatePostLoading", updatePostSaga);
   yield takeEvery("posts/addPostLoading", addPostSaga);
 }

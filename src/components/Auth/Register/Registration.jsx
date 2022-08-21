@@ -9,10 +9,10 @@ import RegisterForm from "./RegisterForm";
 
 export const Registration = () => {
   const dispatch = useDispatch();
-  const { isAuth, userAva } = useSelector((state) => {
+  const { isAuthorized, userAvatar } = useSelector((state) => {
     return {
-      isAuth: state.authMe.isAuth,
-      userAva: state.authMe.userAva,
+      isAuthorized: state.authMe.authorize.isAuthorized,
+      userAvatar: state.authMe.authorize.userAvatar,
     };
   });
 
@@ -28,7 +28,7 @@ export const Registration = () => {
     },
     validationSchema: validators.validationRegister,
     onSubmit: (setCredentials) => {
-      const credentials = Object.assign(setCredentials, { avatar: userAva });
+      const credentials = Object.assign(setCredentials, { avatar: userAvatar });
       dispatch(registerLoading(credentials));
     },
   });
@@ -42,7 +42,7 @@ export const Registration = () => {
       <div className={s.registration}>
         <RegisterForm formik={formik} />
       </div>
-      <div>{isAuth && <Navigate to={"/posts"} />}</div>
+      <div>{isAuthorized && <Navigate to={"/posts"} />}</div>
     </div>
   );
 };

@@ -1,13 +1,13 @@
 import React from "react";
 import { useDispatch } from "react-redux/es/exports";
-import { delCommentLoading } from "../../../redux/slices/comments";
+import { removeCommentLoading } from "../../../redux/slices/comments";
 import s from "./RemoveComment.module.css";
 
-const DeleteComment = (props) => {
+const RemoveComment = (props) => {
   const dispatch = useDispatch();
 
-  const delOnclick = (value) => {
-    dispatch(delCommentLoading(value));
+  const removeCommentHandle = (value) => {
+    dispatch(removeCommentLoading(value));
   };
 
   return (
@@ -15,11 +15,11 @@ const DeleteComment = (props) => {
       <button
         className={s.btn}
         type="submit"
-        onClick={() => delOnclick(props.comment)}
+        onClick={() => removeCommentHandle(props.comment)}
       >
         remove
       </button>
     </div>
   );
 };
-export default DeleteComment;
+export default RemoveComment;

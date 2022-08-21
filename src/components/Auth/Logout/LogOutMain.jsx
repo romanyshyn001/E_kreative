@@ -9,6 +9,7 @@ const LogOutMain = () => {
 
   useEffect(() => {
     dispatch(logoutLoading());
+    
   }, [dispatch]);
 
   return (

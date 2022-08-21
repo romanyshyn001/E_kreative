@@ -16,10 +16,10 @@ const comments = createSlice({
       state.comments = payload;
       state.isLoading = false;
     },
-    delCommentLoading: (state) => {
+    removeCommentLoading: (state) => {
       state.isLoading = true;
     },
-    delComment: (state, { payload }) => {
+    removeComment: (state, { payload }) => {
       state.comments = state.comments.filter(
         (comment) => comment.id !== payload
       );
@@ -49,11 +49,12 @@ const comments = createSlice({
 export const {
   commentsLoading,
   getcomments,
-  delCommentLoading,
-  delComment,
+  removeCommentLoading,
+  removeComment,
   addComment,
   addCommentLoading,
   updateCommentLoading,
   updateComment,
 } = comments.actions;
+
 export default comments.reducer;
