@@ -18,6 +18,7 @@ const PostMain = () => {
     currentPage,
     postError,
     editPostError,
+    user
   } = useSelector((state) => {
     return {
       posts: state.posts.posts,
@@ -27,6 +28,7 @@ const PostMain = () => {
       postError: state.posts.postError,
       //use later with Failure
       editPostError: state.posts.editPostError,
+      user: state.authMe.authorize.user
     };
   });
   useEffect(() => {
@@ -51,6 +53,7 @@ const PostMain = () => {
         perPage={perPage}
         currentPage={currentPage}
         editPostError={editPostError}
+        user={user}
       />
     </article>
   ));

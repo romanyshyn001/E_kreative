@@ -7,9 +7,9 @@ import AddNewComment from "../Comments/AddComment/AddNewComment";
 import CommentsMain from "../Comments/CommentsMain";
 
 const PostsManage = (props) => {
-  const user = JSON.parse(localStorage.getItem("user"));
+  const user = props.user
   const post = props.post;
-
+// console.log(props.user)
   return (
     <div>
       {user != null ? (

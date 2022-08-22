@@ -6,7 +6,7 @@ import {
   getAllPosts,
   updatePost,
   getPostFailure,
-  // editFailure,
+  editFailure,
 } from "../slices/posts";
 
 function* postSaga({ payload }) {
