@@ -26,7 +26,6 @@ const Avatars = () => {
   const handleClick = (e) => {
     dispatch(setUserAvatar(e.target.src));
     setAvatar(e.target.alt);
-    console.log('e.target.src=>', e.target.src)
   };
 
   return (

@@ -6,7 +6,11 @@ import CommentsManage from "./CommentsManage";
 
 const CommentsMain = (props) => {
   const user = JSON.parse(window.localStorage.getItem("user"));
-  const { comments } = useSelector((state) => state.comment);
+  const { comments } = useSelector((state) => {
+    return {
+      comments: state.comment.comments,
+    };
+  });
 
   return (
     <div>

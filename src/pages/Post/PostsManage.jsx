@@ -20,12 +20,19 @@ const PostsManage = (props) => {
               <div className={s.action}>
                 <Link
                   to={`edit/${post.id}`}
-                  state={{ user: user, post: post }}
+                  state={{
+                    user: user,
+                    post: post,
+                  }}
                 >
                   <button className={s.btn}>Edit</button>
                 </Link>
 
-                <DeleteItem post={post.id} perPage={props.perPage} currentPage={props.currentPage}/>
+                <DeleteItem
+                  post={post.id}
+                  perPage={props.perPage}
+                  currentPage={props.currentPage}
+                />
               </div>
             )}
           </div>

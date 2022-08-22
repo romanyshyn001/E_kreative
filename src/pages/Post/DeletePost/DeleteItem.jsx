@@ -16,13 +16,22 @@ const DeleteItem = (props) => {
 
   return (
     <div>
-      <button
-        className={s.btn}
-        type="submit"
-        onClick={() => removePostHandle(props.post)}
-      >
-        remove
-      </button>
+      <div>
+        <button
+          className={s.btn}
+          type="submit"
+          onClick={() => removePostHandle(props.post)}
+        >
+          remove
+        </button>
+      </div>
+      <div>
+        {props.removePostError ? (
+          <span className={s.messageError}>
+            *Can't remove post, try again later
+          </span>
+        ) : null}
+      </div>
     </div>
   );
 };

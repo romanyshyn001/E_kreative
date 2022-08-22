@@ -101,9 +101,9 @@ label{
     justify-content: center;
 }
 .ErrorMessage{
-    color: red;
+    color: #ba3939;
     margin-top:5px
-  }
+}
 
 .avaContainer img:hover{
 transform: scale(1.4);

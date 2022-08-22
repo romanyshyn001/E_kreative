@@ -11,18 +11,24 @@ import PostsManage from "./PostsManage";
 
 const PostMain = () => {
   const dispatch = useDispatch();
-
-  const { posts, totalPostCount, perPage, currentPage } = useSelector(
-    (state) => {
-      return {
-        posts: state.posts.posts,
-        perPage: state.posts.perPage,
-        totalPostCount: state.posts.totalPostCount,
-        currentPage: state.posts.currentPage,
-      };
-    }
-  );
-  
+  const {
+    posts,
+    totalPostCount,
+    perPage,
+    currentPage,
+    postError,
+    editPostError,
+  } = useSelector((state) => {
+    return {
+      posts: state.posts.posts,
+      perPage: state.posts.perPage,
+      totalPostCount: state.posts.totalPostCount,
+      currentPage: state.posts.currentPage,
+      postError: state.posts.postError,
+      //use later with Failure
+      editPostError: state.posts.editPostError,
+    };
+  });
   useEffect(() => {
     dispatch(postLoading({ currentPage, perPage }));
     dispatch(commentsLoading());
@@ -40,7 +46,12 @@ const PostMain = () => {
           <p>{post.body}</p>
         </div>
       </div>
-      <PostsManage post={post} perPage={perPage} currentPage={currentPage}/>
+      <PostsManage
+        post={post}
+        perPage={perPage}
+        currentPage={currentPage}
+        editPostError={editPostError}
+      />
     </article>
   ));
 
@@ -52,9 +63,16 @@ const PostMain = () => {
         currentPage={currentPage}
         onChange={onChange}
       />
+
       <section className={s.mainSection}>
-        <AddPost perPage={perPage} currentPage={currentPage} />
-        {renderedPosts}
+        {currentPage === 1 && (
+          <AddPost perPage={perPage} currentPage={currentPage} />
+        )}
+        {postError ? (
+          <span className={s.messageError}>*Something go wrong</span>
+        ) : (
+          renderedPosts
+        )}
       </section>
     </div>
   );

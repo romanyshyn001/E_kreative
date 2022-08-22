@@ -52,6 +52,11 @@ const RegisterForm = (props) => {
         onBlur={formik.handleBlur}
         value={formik.values.email}
       />
+      {props.messageError && (
+        <div className={s.ErrorMessage}>
+          Email already exist.
+        </div>
+      )}
 
       {formik.touched.email && formik.errors.email && (
         <div className={s.ErrorMessage}>{formik.errors.email}</div>

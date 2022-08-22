@@ -8,7 +8,7 @@ export const postApi = {
     return await mainURL.get(
       `posts${configSortData}&_expand=user${page}`
     ).then((responce) => { 
-      return responce.data    
+      return responce.data 
   });
   },
 

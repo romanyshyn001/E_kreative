@@ -1,6 +1,13 @@
 import { call, put, takeEvery } from "redux-saga/effects";
 import postApi from "../../service/postApi";
-import { addPost, removePost, getAllPosts, updatePost } from "../slices/posts";
+import {
+  addPost,
+  removePost,
+  getAllPosts,
+  updatePost,
+  getPostFailure,
+  // editFailure,
+} from "../slices/posts";
 
 function* postSaga({ payload }) {
   try {
@@ -13,7 +20,7 @@ function* postSaga({ payload }) {
     let activePage = payload.currentPage;
     yield put(getAllPosts({ data, activePage }));
   } catch (error) {
-    console.log("Error from SAGA", error);
+    yield put(getPostFailure());
   }
 }
 
@@ -22,7 +29,7 @@ function* deletePostSaga({ payload }) {
     yield call(postApi.deletePost, payload);
     yield put(removePost(payload));
   } catch (error) {
-    console.log("Error from SAGA", error);
+    console.log();
   }
 }
 
@@ -31,7 +38,8 @@ function* updatePostSaga(value) {
     const newData = yield call(postApi.editPost, value.payload);
     yield put(updatePost(newData.data));
   } catch (error) {
-    console.log("Error from SAGA", error);
+    // yield put(editFailure());
+    console.log('bad news')
   }
 }
 

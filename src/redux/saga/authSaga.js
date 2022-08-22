@@ -1,6 +1,7 @@
 import { call, put, takeEvery } from "redux-saga/effects";
 import authApi from "../../service/authApi";
 import {
+  authorizeFailure,
   loginFulfilled,
   logoutFulfilled,
   registerFulfilled,
@@ -13,16 +14,16 @@ function* loginSaga(credentials) {
     localStorage.setItem("user", JSON.stringify(res.data.user));
     yield put(loginFulfilled(res.data));
   } catch (error) {
-    console.log("Wrong password or mail => ", error);
+    yield put(authorizeFailure());
   }
 }
 
 function* logoutSaga() {
   try {
+    throw new Error();
+  } catch (error) {
     localStorage.clear();
     yield put(logoutFulfilled());
-  } catch (error) {
-    console.log("Something went wrong! Try later => ", error);
   }
 }
 
@@ -33,7 +34,7 @@ function* registerSaga(credentials) {
     localStorage.setItem("user", JSON.stringify(res.data.user));
     yield put(registerFulfilled(res.data.user));
   } catch (error) {
-    console.log("Wrong password or mail => ", error);
+    yield put(authorizeFailure());
   }
 }
 

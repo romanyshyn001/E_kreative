@@ -6,6 +6,7 @@ const initialState = {
   isAuthorized: false,
   rememberMe: false,
   userAvatar: "",
+  authorizeError: false
 };
 
 const authMe = createSlice({
@@ -19,6 +20,7 @@ const authMe = createSlice({
       state.user = payload.user;
       state.isAuthorized = true;
       state.isLoading = false;
+      state.authorizeError = false
     },
     logoutLoading: (state) => {
       state.isLoading = true;
@@ -26,6 +28,10 @@ const authMe = createSlice({
     logoutFulfilled: (state) => {
       state.isAuthorized = false;
       state.isLoading = false;
+      state.user = {}
+    },
+    authorizeFailure: (state,) => {
+      state.authorizeError = true;
     },
     setUserAvatar: (state, { payload }) => {
       state.userAvatar = payload;
@@ -50,5 +56,6 @@ export const {
   logoutFulfilled,
   registerLoading,
   setUserAvatar,
+  authorizeFailure
 } = authMe.actions;
 export default authMe.reducer;

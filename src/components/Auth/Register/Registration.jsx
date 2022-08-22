@@ -9,10 +9,11 @@ import RegisterForm from "./RegisterForm";
 
 export const Registration = () => {
   const dispatch = useDispatch();
-  const { isAuthorized, userAvatar } = useSelector((state) => {
+  const { isAuthorized, userAvatar, messageError } = useSelector((state) => {
     return {
       isAuthorized: state.authMe.authorize.isAuthorized,
       userAvatar: state.authMe.authorize.userAvatar,
+      messageError: state.authMe.authorize.authorizeError,
     };
   });
 
@@ -40,7 +41,7 @@ export const Registration = () => {
         <div className={s.shape}></div>
       </div>
       <div className={s.registration}>
-        <RegisterForm formik={formik} />
+        <RegisterForm formik={formik} messageError={messageError} />
       </div>
       <div>{isAuthorized && <Navigate to={"/posts"} />}</div>
     </div>

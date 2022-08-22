@@ -8,8 +8,12 @@ import validators from "../../../utils/validators/validators";
 
 const LoginMain = () => {
   const dispatch = useDispatch();
-  const { isAuthorized } = useSelector((state) => state.authMe.authorize);
-
+  const { isAuthorized,  authorizeError } = useSelector((state) => {
+    return {
+      isAuthorized: state.authMe.authorize.isAuthorized,
+      authorizeError: state.authMe.authorize.authorizeError,
+    };
+  });
   const formik = useFormik({
     initialValues: {
       password: "",
@@ -59,6 +63,9 @@ const LoginMain = () => {
         />
         {formik.touched.password && formik.errors.password && (
           <div className={s.ErrorMessage}>{formik.errors.password}</div>
+        )}
+        { authorizeError && (
+          <div className={s.ErrorMessage}>Invalid mail or password</div>
         )}
         <label htmlFor="rememberMe">Remember me</label>
         <input

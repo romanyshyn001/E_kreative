@@ -21,17 +21,19 @@ import storage from "redux-persist/lib/storage";
 export const rootReducer = combineReducers({
   authorize: authMe,
 });
+
+
 export const persistConfig = {
   key: "root",
   storage, 
 };
+
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 let sagaMiddleware = createSagaMiddleware();
 const middleware = [sagaMiddleware];
 
-storage.removeItem('persist:root')
 const store = configureStore({
   reducer: {
     posts,

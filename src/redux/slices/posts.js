@@ -6,9 +6,10 @@ const initialState = {
   perPage: 9,
   totalPostCount: 100,
   isLoading: false,
-  postEdit: true,
-};
 
+  postError: false,
+  editPostError: '',
+};
 const posts = createSlice({
   name: "posts",
   initialState,
@@ -21,13 +22,24 @@ const posts = createSlice({
       state.currentPage = payload.activePage;
       state.isLoading = false;
     },
+    getPostFailure: (state) => {
+      state.postError = true
+    },
     addPostLoading: (state) => {
       state.isLoading = true;
     },
     addPost: (state, { payload }) => {
       state.posts.push(payload);
       state.isLoading = false;
+    }, 
+    addPostFailure: (state) => {
+      state.addPostError = true
     },
+    //Use later with errors
+    // editFailure: (state) => {
+    //   state.editPostError = 'Post was not updated'
+    // },
+
     removePostLoading: (state) => {
       state.isLoading = true;
     },
@@ -46,6 +58,7 @@ const posts = createSlice({
         existingPost.body = body;
       }
       state.isLoading = false;
+      state.removePostError = false
     },
   },
 });
@@ -59,5 +72,9 @@ export const {
   removePost,
   updatePostLoading,
   updatePost,
+  getPostFailure,
+  removePostFailure,
+  positiveFailure,
+  // editFailure
 } = posts.actions;
 export default posts.reducer;
