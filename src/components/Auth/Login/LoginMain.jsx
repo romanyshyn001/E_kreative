@@ -1,14 +1,14 @@
 import { useFormik } from "formik";
-import React from "react";
+import React, { useEffect } from "react";
 import s from "./LoginMain.module.css";
 import { useDispatch, useSelector } from "react-redux/es/exports";
 import { Navigate } from "react-router-dom";
-import { loginLoading } from "../../../redux/slices/authMe";
+import { authorizeSuccess, loginLoading } from "../../../redux/slices/authMe";
 import validators from "../../../utils/validators/validators";
 
 const LoginMain = () => {
   const dispatch = useDispatch();
-  const { isAuthorized,  authorizeError } = useSelector((state) => {
+  const { isAuthorized, authorizeError } = useSelector((state) => {
     return {
       isAuthorized: state.authMe.authorize.isAuthorized,
       authorizeError: state.authMe.authorize.authorizeError,
@@ -25,6 +25,14 @@ const LoginMain = () => {
       dispatch(loginLoading(credentials));
     },
   });
+
+  useEffect(() => {
+    if (authorizeError) {
+      setTimeout(() => {
+        dispatch(authorizeSuccess());
+      }, 3000);
+    }
+  }, [authorizeError, dispatch]);
 
   return (
     <div className={s.authContainer}>
@@ -64,7 +72,7 @@ const LoginMain = () => {
         {formik.touched.password && formik.errors.password && (
           <div className={s.ErrorMessage}>{formik.errors.password}</div>
         )}
-        { authorizeError && (
+        {authorizeError && (
           <div className={s.ErrorMessage}>Invalid mail or password</div>
         )}
         <label htmlFor="rememberMe">Remember me</label>

@@ -30,8 +30,11 @@ const authMe = createSlice({
       state.isLoading = false;
       state.user = {}
     },
-    authorizeFailure: (state,) => {
+    authorizeFailure: (state) => {
       state.authorizeError = true;
+    },
+    authorizeSuccess: (state) => {
+      state.authorizeError = false;
     },
     setUserAvatar: (state, { payload }) => {
       state.userAvatar = payload;
@@ -56,6 +59,7 @@ export const {
   logoutFulfilled,
   registerLoading,
   setUserAvatar,
-  authorizeFailure
+  authorizeFailure,
+  authorizeSuccess
 } = authMe.actions;
 export default authMe.reducer;

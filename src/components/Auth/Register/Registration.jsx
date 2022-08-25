@@ -3,17 +3,21 @@ import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux/es/exports";
 import s from "./Registration.module.css";
 import { Navigate } from "react-router-dom";
-import { registerLoading } from "../../../redux/slices/authMe";
+import {
+  authorizeSuccess,
+  registerLoading,
+} from "../../../redux/slices/authMe";
 import validators from "../../../utils/validators/validators";
 import RegisterForm from "./RegisterForm";
+import { useEffect } from "react";
 
 export const Registration = () => {
   const dispatch = useDispatch();
-  const { isAuthorized, userAvatar, messageError } = useSelector((state) => {
+  const { isAuthorized, userAvatar, authorizeError } = useSelector((state) => {
     return {
       isAuthorized: state.authMe.authorize.isAuthorized,
       userAvatar: state.authMe.authorize.userAvatar,
-      messageError: state.authMe.authorize.authorizeError,
+      authorizeError: state.authMe.authorize.authorizeError,
     };
   });
 
@@ -34,6 +38,14 @@ export const Registration = () => {
     },
   });
 
+  useEffect(() => {
+    if (authorizeError) {
+      setTimeout(() => {
+        dispatch(authorizeSuccess());
+      }, 3000);
+    }
+  }, [authorizeError, dispatch]);
+
   return (
     <div className={s.authContainer}>
       <div className={s.background}>
@@ -41,7 +53,7 @@ export const Registration = () => {
         <div className={s.shape}></div>
       </div>
       <div className={s.registration}>
-        <RegisterForm formik={formik} messageError={messageError} />
+        <RegisterForm formik={formik} authorizeError={authorizeError} />
       </div>
       <div>{isAuthorized && <Navigate to={"/posts"} />}</div>
     </div>
