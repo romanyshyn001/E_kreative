@@ -6,7 +6,7 @@ const initialState = {
   perPage: 9,
   totalPostCount: 100,
   isLoading: false,
-
+  postAdded: false,
   postError: false,
   editPostError: '',
 };
@@ -27,10 +27,12 @@ const posts = createSlice({
     },
     addPostLoading: (state) => {
       state.isLoading = true;
+      state.postAdded = true
     },
     addPost: (state, { payload }) => {
       state.posts.push(payload);
       state.isLoading = false;
+      state.postAdded = false
     }, 
     addPostFailure: (state) => {
       state.addPostError = true

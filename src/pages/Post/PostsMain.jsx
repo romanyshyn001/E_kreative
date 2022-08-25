@@ -18,7 +18,8 @@ const PostMain = () => {
     currentPage,
     postError,
     editPostError,
-    user
+    user,
+    postAdded
   } = useSelector((state) => {
     return {
       posts: state.posts.posts,
@@ -26,15 +27,21 @@ const PostMain = () => {
       totalPostCount: state.posts.totalPostCount,
       currentPage: state.posts.currentPage,
       postError: state.posts.postError,
+      postAdded: state.posts.postAdded,
       //use later with Failure
+
       editPostError: state.posts.editPostError,
       user: state.authMe.authorize.user
     };
   });
   useEffect(() => {
+    if(postAdded){
+      dispatch(postLoading({ currentPage, perPage }));
+    }
+
     dispatch(postLoading({ currentPage, perPage }));
     dispatch(commentsLoading());
-  }, [dispatch, currentPage, perPage]);
+  }, [dispatch, currentPage, perPage, postAdded]);
 
   const onChange = (currentPage) => {
     dispatch(postLoading({ currentPage, perPage }));
