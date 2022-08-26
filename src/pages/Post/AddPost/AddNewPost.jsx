@@ -38,7 +38,6 @@ const AddPost = (props) => {
     } else {
       setButtonStatus(true);
     }
-    dispatch(postLoading({ currentPage, perPage }));
   };
 
   return (

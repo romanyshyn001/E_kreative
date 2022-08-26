@@ -2,14 +2,14 @@ import mainURL from "./mainUrl";
 
 export const postApi = {
   getPost: async (currentPage = 1, perPage = 9) => {
-    let page = `&_page=${currentPage}&_limit=${perPage}`
-    const configSortData = `?_sort=id&_order=desc`
+    let page = `&_page=${currentPage}&_limit=${perPage}`;
+    const configSortData = `?_sort=id&_order=desc`;
 
-    return await mainURL.get(
-      `posts${configSortData}&_expand=user${page}`
-    ).then((responce) => { 
-      return responce.data 
-  });
+    return await mainURL
+      .get(`posts${configSortData}&_expand=user${page}`)
+      .then((responce) => {
+        return responce.data;
+      });
   },
 
   deletePost: async (id) => {

@@ -1,15 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import s from "./PostsMain.module.css";
+import { useDispatch } from "react-redux/es/exports";
 
 import DeleteItem from "./DeletePost/DeleteItem";
 import AddNewComment from "../Comments/AddComment/AddNewComment";
 import CommentsMain from "../Comments/CommentsMain";
+import { commentsLoading } from "../../redux/slices/comments";
 
 const PostsManage = (props) => {
-  const user = props.user
   const post = props.post;
-// console.log(props.user)
+  const user = JSON.parse(window.localStorage.getItem("user"));
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(commentsLoading());
+  }, [dispatch]);
+
   return (
     <div>
       {user != null ? (

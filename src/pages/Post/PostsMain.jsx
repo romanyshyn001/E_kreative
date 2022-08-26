@@ -3,8 +3,6 @@ import { useDispatch, useSelector } from "react-redux/es/exports";
 import s from "./PostsMain.module.css";
 
 import { postLoading } from "../../redux/slices/posts";
-import { commentsLoading } from "../../redux/slices/comments";
-
 import PostPagination from "./Pagination/PostPagination";
 import AddPost from "./AddPost/AddNewPost";
 import PostsManage from "./PostsManage";
@@ -18,8 +16,8 @@ const PostMain = () => {
     currentPage,
     postError,
     editPostError,
-    user,
-    postAdded
+    //user,
+    postAdded,
   } = useSelector((state) => {
     return {
       posts: state.posts.posts,
@@ -28,20 +26,20 @@ const PostMain = () => {
       currentPage: state.posts.currentPage,
       postError: state.posts.postError,
       postAdded: state.posts.postAdded,
-      //use later with Failure
-
       editPostError: state.posts.editPostError,
-      user: state.authMe.authorize.user
+      // при авторизації сторінка не рендириться, а якщо user витягую з localStorage все гуд
+      // user: state.authMe.authorize.user
     };
   });
+  const user = JSON.parse(window.localStorage.getItem("user"));
+
   useEffect(() => {
-    if(postAdded){
+    if (postAdded) {
       dispatch(postLoading({ currentPage, perPage }));
     }
 
     dispatch(postLoading({ currentPage, perPage }));
-    dispatch(commentsLoading());
-  }, [dispatch, currentPage, perPage, postAdded]);
+  }, [dispatch, currentPage, perPage, postAdded, editPostError]);
 
   const onChange = (currentPage) => {
     dispatch(postLoading({ currentPage, perPage }));
@@ -59,7 +57,6 @@ const PostMain = () => {
         post={post}
         perPage={perPage}
         currentPage={currentPage}
-        editPostError={editPostError}
         user={user}
       />
     </article>
@@ -73,7 +70,6 @@ const PostMain = () => {
         currentPage={currentPage}
         onChange={onChange}
       />
-
       <section className={s.mainSection}>
         {currentPage === 1 && (
           <AddPost perPage={perPage} currentPage={currentPage} />

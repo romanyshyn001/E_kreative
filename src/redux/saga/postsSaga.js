@@ -29,17 +29,17 @@ function* deletePostSaga({ payload }) {
     yield call(postApi.deletePost, payload);
     yield put(removePost(payload));
   } catch (error) {
-    console.log();
+    console.log('bad news');
   }
 }
 
 function* updatePostSaga(value) {
   try {
+    // throw new Error();
     const newData = yield call(postApi.editPost, value.payload);
     yield put(updatePost(newData.data));
   } catch (error) {
-    // yield put(editFailure());
-    console.log('bad news')
+    yield put(editFailure());
   }
 }
 

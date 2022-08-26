@@ -8,7 +8,7 @@ const initialState = {
   isLoading: false,
   postAdded: false,
   postError: false,
-  editPostError: '',
+  editPostError: "",
 };
 const posts = createSlice({
   name: "posts",
@@ -23,25 +23,26 @@ const posts = createSlice({
       state.isLoading = false;
     },
     getPostFailure: (state) => {
-      state.postError = true
+      state.postError = true;
     },
     addPostLoading: (state) => {
       state.isLoading = true;
-      state.postAdded = true
+      state.postAdded = true;
     },
     addPost: (state, { payload }) => {
       state.posts.push(payload);
       state.isLoading = false;
-      state.postAdded = false
-    }, 
-    addPostFailure: (state) => {
-      state.addPostError = true
+      state.postAdded = false;
     },
-    //Use later with errors
-    // editFailure: (state) => {
-    //   state.editPostError = 'Post was not updated'
-    // },
-
+    addPostFailure: (state) => {
+      state.addPostError = true;
+    },
+    editFailure: (state) => {
+      state.editPostError = "decline";
+    },
+    editEmptyError: (state) => {
+      state.editPostError = "";
+    },
     removePostLoading: (state) => {
       state.isLoading = true;
     },
@@ -53,6 +54,7 @@ const posts = createSlice({
       state.isLoading = true;
     },
     updatePost: (state, { payload }) => {
+      state.editPostError = "success";
       const { id, title, body } = payload;
       const existingPost = state.posts.find((post) => post.id === id);
       if (existingPost) {
@@ -60,7 +62,7 @@ const posts = createSlice({
         existingPost.body = body;
       }
       state.isLoading = false;
-      state.removePostError = false
+      state.removePostError = false;
     },
   },
 });
@@ -77,6 +79,7 @@ export const {
   getPostFailure,
   removePostFailure,
   positiveFailure,
-  // editFailure
+  editFailure,
+  editEmptyError,
 } = posts.actions;
 export default posts.reducer;

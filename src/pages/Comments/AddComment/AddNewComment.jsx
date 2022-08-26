@@ -12,7 +12,6 @@ const AddNewComment = (props) => {
   const handleClick = () => {
     setButtonStatus((current) => !current);
     setReply("");
-
   };
   const addCommentHandle = (e) => {
     setReply(e.target.value);
