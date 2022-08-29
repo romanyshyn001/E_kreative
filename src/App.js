@@ -29,9 +29,6 @@ const App = () => {
         <Route path="/comment/edit/:id" element={<UpdateReply />} />
 
         <Route path="/posts" element={<PostMain />} />
-
-        <Route path="posts/edit/:id" element={<UpdatePostMain />} />
-
       </Routes>
     </div>
   );

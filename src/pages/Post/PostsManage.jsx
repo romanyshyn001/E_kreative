@@ -7,6 +7,7 @@ import DeleteItem from "./DeletePost/DeleteItem";
 import AddNewComment from "../Comments/AddComment/AddNewComment";
 import CommentsMain from "../Comments/CommentsMain";
 import { commentsLoading } from "../../redux/slices/comments";
+import UpdatePostMain from "./UpdatePost/UpdatePostMain";
 
 const PostsManage = (props) => {
   const post = props.post;
@@ -20,29 +21,24 @@ const PostsManage = (props) => {
   return (
     <div>
       {user != null ? (
-        <div>
-          <div className={s.action}>
+        <div className={s.action}>
+          <div>
             <AddNewComment user={user} post={post} />
-            {user.id === post.userId && (
-              <div className={s.action}>
-                <Link
-                  to={`edit/${post.id}`}
-                  state={{
-                    user: user,
-                    post: post,
-                  }}
-                >
-                  <button className={s.btn}>Edit</button>
-                </Link>
-
+          </div>
+          {user.id === post.userId && (
+            <div className={s.action}>
+              <div>
+                <UpdatePostMain user={user} post={post} />
+              </div>
+              <div>
                 <DeleteItem
                   post={post.id}
                   perPage={props.perPage}
                   currentPage={props.currentPage}
                 />
               </div>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       ) : (
         <h3 className={s.hidden}>Login for more opportunities</h3>

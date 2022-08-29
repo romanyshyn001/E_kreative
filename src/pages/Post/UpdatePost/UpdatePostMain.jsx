@@ -2,18 +2,19 @@ import React, { useState } from "react";
 import { editEmptyError, updatePostLoading } from "../../../redux/slices/posts";
 import { useDispatch, useSelector } from "react-redux/es/exports";
 import s from "./UpdatePostMain.module.css";
-import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
-const UpdatePostMain = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const location = useLocation();
-  const user = location.state.user;
-  const post = location.state.post;
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Modal, Button, Form } from "react-bootstrap";
 
-  const [title, setTitle] = useState(post.title);
-  const [body, setBody] = useState(post.body);
+const UpdatePostMain = (props) => {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const dispatch = useDispatch();
+
+  const [title, setTitle] = useState(props.post.title);
+  const [body, setBody] = useState(props.post.body);
   const [postStatus, setpostStatus] = useState();
 
   const { editPostError } = useSelector((state) => state.posts);
@@ -29,11 +30,11 @@ const UpdatePostMain = () => {
 
     if (title && body) {
       const options = {
-        id: post.id,
+        id: props.post.id,
         title: title,
         body: body,
         updatedAt: updatedAt,
-        userId: user.id,
+        userId: props.user.id,
       };
       dispatch(updatePostLoading(options));
     }
@@ -43,61 +44,65 @@ const UpdatePostMain = () => {
       setpostStatus("Saving...");
       setTimeout(() => {
         setpostStatus("");
-        navigate("../");
-        dispatch(editEmptyError());
+        handleClose();
       }, 500);
     } else if (editPostError === "decline") {
       setpostStatus("Post not saved. Try again later...");
       setTimeout(() => {
         setpostStatus("");
-        dispatch(editEmptyError());
       }, 5000);
     }
-  }, [dispatch, editPostError, navigate]);
-
-  const onCancelChange = () => {
-    dispatch(editEmptyError());
-    setTitle(post.title);
-    setBody(post.body);
-    navigate("../");
-  };
+    return () => {
+      dispatch(editEmptyError());
+    };
+  }, [dispatch, editPostError]);
 
   return (
     <section className={s.secContainer}>
-      <h2>Edit Post</h2>
-      <form>
-        <label htmlFor="postTitle">Post Title:</label>
-        <input
-          className={s.editTitle}
-          type="text"
-          id="postTitle"
-          name="postTitle"
-          value={title}
-          onChange={titleChange}
-        />
-        <label htmlFor="postContent">Content:</label>
-        <textarea
-          className={s.editBody}
-          id="postContent"
-          name="postContent"
-          value={body}
-          onChange={bodyChange}
-        />
-      </form>
-      <div>
-        <span className={s.notifyPostStatus}>{postStatus}</span>
-      </div>
-      <button
-        className={s.btn}
-        type="button"
-        onClick={onSavePostClicked}
-        disabled={title && body === ""}
-      >
-        Save Post
-      </button>
-      <button className={s.btn} type="button" onClick={onCancelChange}>
-        Cancel
-      </button>
+      <Button bsPrefix={s.btn} onClick={handleShow}>
+        Edit
+      </Button>
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Edit Post</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Label>Post title</Form.Label>
+            <Form.Control
+              as="textarea"
+              rows={1}
+              placeholder={"Add your text"}
+              value={title}
+              onChange={titleChange}
+            />
+            <Form.Label>Post body</Form.Label>
+            <Form.Control
+              as="textarea"
+              rows={4}
+              placeholder={"Add your text"}
+              value={body}
+              onChange={bodyChange}
+            />
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button
+            variant="primary"
+            onClick={onSavePostClicked}
+            disabled={editPostError === "decline"}
+          >
+            Save Changes
+          </Button>
+          <div>
+            <span className={s.notifyPostStatus}>{postStatus}</span>
+          </div>
+        </Modal.Footer>
+      </Modal>
     </section>
   );
 };

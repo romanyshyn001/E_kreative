@@ -7,6 +7,7 @@ import {
   updatePost,
   getPostFailure,
   editFailure,
+  removePostFailure,
 } from "../slices/posts";
 
 function* postSaga({ payload }) {
@@ -26,10 +27,11 @@ function* postSaga({ payload }) {
 
 function* deletePostSaga({ payload }) {
   try {
+    // throw new Error();
     yield call(postApi.deletePost, payload);
     yield put(removePost(payload));
   } catch (error) {
-    console.log('bad news');
+    yield put(removePostFailure());
   }
 }
 

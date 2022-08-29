@@ -14,7 +14,7 @@ const PostMain = () => {
     totalPostCount,
     perPage,
     currentPage,
-    postError,
+    getPostsError,
     editPostError,
     //user,
     postAdded,
@@ -24,7 +24,7 @@ const PostMain = () => {
       perPage: state.posts.perPage,
       totalPostCount: state.posts.totalPostCount,
       currentPage: state.posts.currentPage,
-      postError: state.posts.postError,
+      getPostsError: state.posts.getPostsError,
       postAdded: state.posts.postAdded,
       editPostError: state.posts.editPostError,
       // при авторизації сторінка не рендириться, а якщо user витягую з localStorage все гуд
@@ -74,7 +74,7 @@ const PostMain = () => {
         {currentPage === 1 && (
           <AddPost perPage={perPage} currentPage={currentPage} />
         )}
-        {postError ? (
+        {getPostsError ? (
           <span className={s.messageError}>*Something go wrong</span>
         ) : (
           renderedPosts

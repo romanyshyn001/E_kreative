@@ -14,10 +14,14 @@
     color: #ba3939;
     margin: 4px;
     padding-left: 5px;
-    font-size: 25px;
-    font-weight: 500;
+    font-size: 15px;
+    font-weight: 600;
 }
 .action{
-    display:  flex;
-    justify-content: flex-end;    
+    display: flex;
+    justify-content: flex-end;
+}
+
+.removePost{
+    
 }
