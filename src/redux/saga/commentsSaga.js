@@ -5,40 +5,48 @@ import {
   removeComment,
   getcomments,
   updateComment,
+  editCommentFailure,
+  getCommentFailure,
+  removeCommentFailure,
+  addCommentFailure,
 } from "../slices/comments";
 
 function* commentsSaga({ payload: id }) {
   try {
+    // throw new Error()
     const res = yield call(commentApi.getComments, id);
     let data = res.data;
     yield put(getcomments(data));
   } catch (error) {
-    console.log(error);
+    yield put(getCommentFailure());
   }
 }
 function* updateCommentSaga(value) {
   try {
+    // throw new Error()
     const newData = yield call(commentApi.editComment, value.payload);
     yield put(updateComment(newData.data));
   } catch (error) {
-    console.log("Error from SAGA", error);
+    yield put(editCommentFailure());
   }
 }
 
 function* removeCommentSaga({ payload }) {
   try {
+    // throw new Error()
     yield call(commentApi.deleteComment, payload);
     yield put(removeComment(payload));
   } catch (error) {
-    console.log("Error from SAGA", error);
+    yield put(removeCommentFailure());
   }
 }
 function* addCommentSaga(value) {
   try {
+    // throw new Error()
     const newData = yield call(commentApi.addComment, value.payload);
     yield put(addComment(newData.data));
   } catch (error) {
-    console.log("Error from SAGA", error);
+    yield put(addCommentFailure());
   }
 }
 function* commentWatcher() {

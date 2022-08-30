@@ -21,6 +21,8 @@ img{
 .action{
   display: flex;
   margin-top: 15px;
+  justify-content: flex-end;
+  margin-bottom: -20px;
 }
 .btn{
     margin: 10px 10px 10px 0px;

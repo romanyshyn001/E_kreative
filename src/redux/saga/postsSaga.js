@@ -8,6 +8,7 @@ import {
   getPostFailure,
   editFailure,
   removePostFailure,
+  addPostFailure,
 } from "../slices/posts";
 
 function* postSaga({ payload }) {
@@ -47,10 +48,11 @@ function* updatePostSaga(value) {
 
 function* addPostSaga(value) {
   try {
+    // throw new Error();
     const newData = yield call(postApi.addPost, value.payload);
     yield put(addPost(newData.data));
   } catch (error) {
-    console.log("Error from SAGA", error);
+    yield put(addPostFailure());
   }
 }
 function* postWatcher() {

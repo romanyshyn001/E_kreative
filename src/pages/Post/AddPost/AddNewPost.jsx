@@ -1,15 +1,15 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux/es/exports";
-import { addPostLoading, postLoading } from "../../../redux/slices/posts";
+import { addEmptyError, addPostLoading } from "../../../redux/slices/posts";
 import s from "./AddNewPost.module.css";
 
 const AddPost = (props) => {
-  const currentPage = props.currentPage;
-  const perPage = props.perPage;
-
+  const addPostError = props.addPostError;
   const dispatch = useDispatch();
   const user = JSON.parse(window.localStorage.getItem("user"));
 
+  const [errorMessage, setErrorMessage] = useState("");
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [buttonStatus, setButtonStatus] = useState(false);
@@ -40,6 +40,20 @@ const AddPost = (props) => {
     }
   };
 
+  useEffect(() => {
+    if (addPostError === "reject") {
+      setErrorMessage("*Something went wrong... Try again later");
+    }
+
+    return () => {
+      setTimeout(() => {
+        dispatch(addEmptyError());
+        setErrorMessage("");
+      }, 10000);
+      setButtonStatus(false);
+    };
+  }, [dispatch, setErrorMessage, addPostError]);
+
   return (
     <section>
       <h2>What's on your mind?</h2>
@@ -63,9 +77,14 @@ const AddPost = (props) => {
         />
       </form>
       <div className={s.handlesPostStatus}>
-        {buttonStatus ? (
-          <h1 className={s.userError}> *You are not autorized</h1>
-        ) : null}
+        {buttonStatus && (
+          <div>
+            <span className={s.userError}>*You are not autorized</span>
+          </div>
+        )}
+        <div>
+          <span className={s.userError}>{errorMessage}</span>
+        </div>
         <button className={s.btn} type="button" onClick={onSavePostClicked}>
           Add post
         </button>

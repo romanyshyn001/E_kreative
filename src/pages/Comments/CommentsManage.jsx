@@ -1,7 +1,7 @@
 import React from "react";
 import RemoveComment from "./DeleteComment/RemoveComment";
 import s from "./CommentsMain.module.css";
-import { Link } from "react-router-dom";
+import UpdateReply from "./UpdateComment/UpdateReply";
 
 const CommentsManage = (props) => {
   return (
@@ -11,12 +11,7 @@ const CommentsManage = (props) => {
           {props.user.id === props.comment.userId && (
             <div className={s.action}>
               <RemoveComment comment={props.comment.id} />
-              <Link
-                to={`/comment/edit/${props.comment.id}`}
-                state={{ user: props.user, comment: props.comment }}
-              >
-                <button className={s.btn}>Edit</button>
-              </Link>
+              <UpdateReply user={props.user} comment={props.comment}/>
             </div>
           )}
         </div>

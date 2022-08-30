@@ -58,5 +58,11 @@
     font-size: 25px;
     font-weight: 500;
 }
+.addComment{
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 15px;
+    height: 100px;
+}
 
 

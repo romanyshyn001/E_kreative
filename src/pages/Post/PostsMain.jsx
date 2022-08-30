@@ -16,6 +16,7 @@ const PostMain = () => {
     currentPage,
     getPostsError,
     editPostError,
+    addPostError,
     //user,
     postAdded,
   } = useSelector((state) => {
@@ -27,6 +28,7 @@ const PostMain = () => {
       getPostsError: state.posts.getPostsError,
       postAdded: state.posts.postAdded,
       editPostError: state.posts.editPostError,
+      addPostError: state.posts.addPostError
       // при авторизації сторінка не рендириться, а якщо user витягую з localStorage все гуд
       // user: state.authMe.authorize.user
     };
@@ -72,7 +74,7 @@ const PostMain = () => {
       />
       <section className={s.mainSection}>
         {currentPage === 1 && (
-          <AddPost perPage={perPage} currentPage={currentPage} />
+          <AddPost perPage={perPage} currentPage={currentPage} addPostError={addPostError}/>
         )}
         {getPostsError ? (
           <span className={s.messageError}>*Something go wrong</span>

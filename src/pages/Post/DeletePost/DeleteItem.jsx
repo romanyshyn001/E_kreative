@@ -32,19 +32,17 @@ const DeleteItem = (props) => {
         setRemoveStatus("");
       }, 2000);
     }
-    dispatch(postLoading({ currentPage, perPage }));
   }, [dispatch, removeError, currentPage, perPage]);
 
-  // console.log(removeError);
   return (
     <div>
-      <div >
+      <div>
         <button
           className={s.btn}
           type="submit"
           onClick={() => removePostHandle(props.post)}
         >
-          remove
+          Remove
         </button>
       </div>
       <div className={s.removePost}>

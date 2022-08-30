@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
 import s from "./PostsMain.module.css";
-import { useDispatch } from "react-redux/es/exports";
+import { useDispatch, useSelector } from "react-redux/es/exports";
 
 import DeleteItem from "./DeletePost/DeleteItem";
 import AddNewComment from "../Comments/AddComment/AddNewComment";
@@ -13,6 +12,11 @@ const PostsManage = (props) => {
   const post = props.post;
   const user = JSON.parse(window.localStorage.getItem("user"));
   const dispatch = useDispatch();
+  const { getCommentError } = useSelector((state) => {
+    return {
+      getCommentError: state.comment.getCommentError,
+    };
+  });
 
   useEffect(() => {
     dispatch(commentsLoading());
@@ -20,8 +24,13 @@ const PostsManage = (props) => {
 
   return (
     <div>
+      <div>
+        {getCommentError && (
+          <span className={s.messageError}>Can't upload comments</span>
+        )}
+      </div>
       {user != null ? (
-        <div className={s.action}>
+        <div className={s.addComment}>
           <div>
             <AddNewComment user={user} post={post} />
           </div>

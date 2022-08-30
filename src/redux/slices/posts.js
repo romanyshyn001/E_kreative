@@ -6,6 +6,7 @@ const initialState = {
   perPage: 9,
   totalPostCount: 100,
   isLoading: false,
+  addPostError: "",
   postAdded: false,
   getPostsError: false,
   removeError: "",
@@ -59,7 +60,10 @@ const posts = createSlice({
       state.getPostsError = true;
     },
     addPostFailure: (state) => {
-      state.addPostError = true;
+      state.addPostError = 'reject';
+    },
+    addEmptyError: (state) => {
+      state.addPostError = ""
     },
     editFailure: (state) => {
       state.editPostError = "decline";
@@ -85,11 +89,12 @@ export const {
   removePost,
   updatePostLoading,
   updatePost,
-
   getPostFailure,
   removePostFailure,
   editFailure,
   editEmptyError,
   removeEmptyError,
+  addEmptyError,
+  addPostFailure
 } = posts.actions;
 export default posts.reducer;

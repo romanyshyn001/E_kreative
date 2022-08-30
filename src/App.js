@@ -25,9 +25,6 @@ const App = () => {
         <Route path="/auth" element={<LoginMain />} />
         <Route path="/logout" element={<LogOutMain />} />
         <Route path="/register" element={<Registration />} />
-
-        <Route path="/comment/edit/:id" element={<UpdateReply />} />
-
         <Route path="/posts" element={<PostMain />} />
       </Routes>
     </div>

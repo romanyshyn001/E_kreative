@@ -14,8 +14,8 @@
     color: #ba3939;
     margin: 4px;
     padding-left: 5px;
-    font-size: 15px;
-    font-weight: 600;
+    font-size: 20px;
+    font-weight: 500;
 }
 .action{
     display: flex;
@@ -23,5 +23,7 @@
 }
 
 .removePost{
-    
+    display: flex;
+    justify-content: flex-end;
+    margin-left: -145px;
 }
