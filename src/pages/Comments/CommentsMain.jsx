@@ -11,7 +11,7 @@ const CommentsMain = (props) => {
       comments: state.comment.comments,
     };
   });
-
+  console.log('render C')
   return (
     <div>
       {comments.map((comment) => (

@@ -6,6 +6,16 @@ import { postLoading } from "../../redux/slices/posts";
 import PostPagination from "./Pagination/PostPagination";
 import AddPost from "./AddPost/AddNewPost";
 import PostsManage from "./PostsManage";
+import {
+  allPosts,
+  getAllPosts,
+  getCurrentPage,
+  getPerPage,
+  getPosts,
+  getTotalPostCount,
+  postsError,
+} from "../../redux/slices/postController/postsSelectors";
+import { commentsLoading } from "../../redux/slices/comments";
 
 const PostMain = () => {
   const dispatch = useDispatch();
@@ -15,20 +25,19 @@ const PostMain = () => {
     perPage,
     currentPage,
     getPostsError,
-    editPostError,
     addPostError,
     //user,
     postAdded,
   } = useSelector((state) => {
     return {
-      posts: state.posts.posts,
-      perPage: state.posts.perPage,
-      totalPostCount: state.posts.totalPostCount,
-      currentPage: state.posts.currentPage,
-      getPostsError: state.posts.getPostsError,
+      posts: getPosts(state),
+      perPage: getPerPage(state),
+      totalPostCount: getTotalPostCount(state),
+      currentPage: getCurrentPage(state),
+
+      getPostsError: postsError(state),
       postAdded: state.posts.postAdded,
-      editPostError: state.posts.editPostError,
-      addPostError: state.posts.addPostError
+      addPostError: state.posts.addPostError,
       // при авторизації сторінка не рендириться, а якщо user витягую з localStorage все гуд
       // user: state.authMe.authorize.user
     };
@@ -41,7 +50,8 @@ const PostMain = () => {
     }
 
     dispatch(postLoading({ currentPage, perPage }));
-  }, [dispatch, currentPage, perPage, postAdded, editPostError]);
+    dispatch(commentsLoading())
+  }, [dispatch, currentPage, perPage, postAdded]);
 
   const onChange = (currentPage) => {
     dispatch(postLoading({ currentPage, perPage }));
@@ -60,12 +70,15 @@ const PostMain = () => {
         perPage={perPage}
         currentPage={currentPage}
         user={user}
+
+        postAdded={postAdded}
       />
     </article>
   ));
 
   return (
     <div className={s.container}>
+      {console.log("render")}
       <PostPagination
         totalPostCount={totalPostCount}
         perPage={perPage}
@@ -74,7 +87,11 @@ const PostMain = () => {
       />
       <section className={s.mainSection}>
         {currentPage === 1 && (
-          <AddPost perPage={perPage} currentPage={currentPage} addPostError={addPostError}/>
+          <AddPost
+            perPage={perPage}
+            currentPage={currentPage}
+            addPostError={addPostError}
+          />
         )}
         {getPostsError ? (
           <span className={s.messageError}>*Something go wrong</span>

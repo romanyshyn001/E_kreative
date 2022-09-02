@@ -1,26 +1,22 @@
-import React, { useEffect } from "react";
+import React  from "react";
 import s from "./PostsMain.module.css";
-import { useDispatch, useSelector } from "react-redux/es/exports";
+import { useSelector } from "react-redux/es/exports";
 
 import DeleteItem from "./DeletePost/DeleteItem";
 import AddNewComment from "../Comments/AddComment/AddNewComment";
 import CommentsMain from "../Comments/CommentsMain";
-import { commentsLoading } from "../../redux/slices/comments";
 import UpdatePostMain from "./UpdatePost/UpdatePostMain";
 
 const PostsManage = (props) => {
   const post = props.post;
   const user = JSON.parse(window.localStorage.getItem("user"));
-  const dispatch = useDispatch();
+
   const { getCommentError } = useSelector((state) => {
     return {
       getCommentError: state.comment.getCommentError,
     };
   });
 
-  useEffect(() => {
-    dispatch(commentsLoading());
-  }, [dispatch]);
 
   return (
     <div>

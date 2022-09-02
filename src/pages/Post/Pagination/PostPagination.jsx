@@ -10,14 +10,14 @@ const PostPagination = (props) => {
   
   return (
     <nav className={s.pagination}>
-      {pages.map((p) => {
+      {pages.map((page) => {
         return (
           <span
-            className={props.currentPage === p ? s.selectedPage : null}
-            onClick={() => props.onChange(p)}
-            key={p}
+            className={props.currentPage === page ? s.selectedPage : null}
+            onClick={() => props.onChange(page)}
+            key={page}
           >
-            {p}
+            {page}
           </span>
         );
       })}
