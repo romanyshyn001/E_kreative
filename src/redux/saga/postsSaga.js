@@ -9,7 +9,7 @@ import {
   editFailure,
   removePostFailure,
   addPostFailure,
-} from "../slices/posts";
+} from "../slices/postSlices/posts";
 
 function* postSaga({ payload }) {
   try {

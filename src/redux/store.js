@@ -1,7 +1,7 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { rootSaga } from "./saga/rootSaga";
 import createSagaMiddleware from "@redux-saga/core";
-import posts from "./slices/posts";
+import posts from "./slices/postSlices/posts";
 import comment from "./slices/comments";
 import authMe from "./slices/authMe";
 import announcements from "./slices/announcements";
@@ -17,17 +17,14 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
-
 export const rootReducer = combineReducers({
   authorize: authMe,
 });
 
-
 export const persistConfig = {
   key: "root",
-  storage, 
+  storage,
 };
-
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 

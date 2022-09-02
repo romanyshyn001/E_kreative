@@ -6,11 +6,10 @@ const initialState = {
   perPage: 9,
   totalPostCount: 100,
   isLoading: false,
-  addPostError: "",
-  postAdded: false,
+
+  errorStatus: "",
   getPostsError: false,
-  removeError: "",
-  editPostError: "",
+
 };
 const posts = createSlice({
   name: "posts",
@@ -26,18 +25,15 @@ const posts = createSlice({
     },
     addPostLoading: (state) => {
       state.isLoading = true;
-      state.postAdded = true;
     },
     addPost: (state, { payload }) => {
       state.posts.push(payload);
       state.isLoading = false;
-      state.postAdded = false;
     },
     removePostLoading: (state) => {
       state.isLoading = true;
     },
     removePost: (state, { payload }) => {
-      state.removeError = "success";
       state.posts = state.posts.filter((post) => post.id !== payload);
       state.isLoading = false;
     },
@@ -45,7 +41,7 @@ const posts = createSlice({
       state.isLoading = true;
     },
     updatePost: (state, { payload }) => {
-      state.editPostError = "success";
+      state.errorStatus = "editSuccess";
       const { id, title, body } = payload;
       const existingPost = state.posts.find((post) => post.id === id);
       if (existingPost) {
@@ -53,29 +49,22 @@ const posts = createSlice({
         existingPost.body = body;
       }
       state.isLoading = false;
-      state.removePostError = false;
     },
     //Errors
     getPostFailure: (state) => {
       state.getPostsError = true;
     },
     addPostFailure: (state) => {
-      state.addPostError = 'reject';
+      state.errorStatus = "addRejected";
     },
-    addEmptyError: (state) => {
-      state.addPostError = ""
+    defaultError: (state) => {
+      state.errorStatus = "";
     },
     editFailure: (state) => {
-      state.editPostError = "decline";
-    },
-    editEmptyError: (state) => {
-      state.editPostError = "";
+      state.errorStatus = "editRejected";
     },
     removePostFailure: (state) => {
-      state.removeError = "reject";
-    },
-    removeEmptyError: (state) => {
-      state.removeError = "";
+      state.errorStatus = "removeRejected";
     },
   },
 });
@@ -89,12 +78,11 @@ export const {
   removePost,
   updatePostLoading,
   updatePost,
+
   getPostFailure,
   removePostFailure,
   editFailure,
-  editEmptyError,
-  removeEmptyError,
-  addEmptyError,
-  addPostFailure
+  defaultError,
+  addPostFailure,
 } = posts.actions;
 export default posts.reducer;

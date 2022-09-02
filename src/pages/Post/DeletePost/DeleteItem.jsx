@@ -1,20 +1,20 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux/es/exports";
+import { useDispatch } from "react-redux/es/exports";
 import {
+  defaultError,
   postLoading,
-  removeEmptyError,
   removePostLoading,
-} from "../../../redux/slices/posts";
+} from "../../../redux/slices/postSlices/posts";
 import s from "./DeleteItem.module.css";
 
 const DeleteItem = (props) => {
   const currentPage = props.currentPage;
   const perPage = props.perPage;
+  const errorStatus = props.errorStatus;
 
   const [removeStatus, setRemoveStatus] = useState("");
-  const { removeError } = useSelector((state) => state.posts);
   const dispatch = useDispatch();
 
   const removePostHandle = (value) => {
@@ -23,16 +23,14 @@ const DeleteItem = (props) => {
   };
 
   useEffect(() => {
-    if (removeError === "sucess") {
-      dispatch(removeEmptyError());
-    } else if (removeError === "reject") {
+    if (errorStatus === "removeRejected") {
       setRemoveStatus("*Can not remove post.");
       setTimeout(() => {
-        dispatch(removeEmptyError());
+        dispatch(defaultError());
         setRemoveStatus("");
       }, 2000);
     }
-  }, [dispatch, removeError, currentPage, perPage]);
+  }, [dispatch, errorStatus]);
 
   return (
     <div>

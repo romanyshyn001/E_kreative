@@ -1,5 +1,8 @@
 import React, { useState } from "react";
-import { editEmptyError, updatePostLoading } from "../../../redux/slices/posts";
+import {
+  defaultError,
+  updatePostLoading,
+} from "../../../redux/slices/postSlices/posts";
 import { useDispatch, useSelector } from "react-redux/es/exports";
 import s from "./UpdatePostMain.module.css";
 import { useEffect } from "react";
@@ -8,11 +11,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Modal, Button, Form } from "react-bootstrap";
 
 const UpdatePostMain = (props) => {
+  const errorStatus = props.errorStatus;
+
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const dispatch = useDispatch();
-
   const [title, setTitle] = useState(props.post.title);
   const [body, setBody] = useState(props.post.body);
   const [postStatus, setpostStatus] = useState();
@@ -40,22 +44,22 @@ const UpdatePostMain = (props) => {
     }
   };
   useEffect(() => {
-    if (editPostError === "success") {
+    if (errorStatus === "editSuccess") {
       setpostStatus("Saving...");
       setTimeout(() => {
         setpostStatus("");
         handleClose();
       }, 500);
-    } else if (editPostError === "decline") {
+    } else if (errorStatus === "editRejected") {
       setpostStatus("Post not saved. Try again later...");
       setTimeout(() => {
         setpostStatus("");
       }, 5000);
     }
     return () => {
-      dispatch(editEmptyError());
+      dispatch(defaultError());
     };
-  }, [dispatch, editPostError]);
+  }, [dispatch, errorStatus]);
 
   return (
     <section className={s.secContainer}>

@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux/es/exports";
-import { addEmptyError, addPostLoading } from "../../../redux/slices/posts";
+import {
+  addPostLoading,
+  defaultError,
+} from "../../../redux/slices/postSlices/posts";
 import s from "./AddNewPost.module.css";
 
 const AddPost = (props) => {
-  const addPostError = props.addPostError;
+  const errorStatus = props.errorStatus;
   const dispatch = useDispatch();
   const user = JSON.parse(window.localStorage.getItem("user"));
 
@@ -41,18 +44,18 @@ const AddPost = (props) => {
   };
 
   useEffect(() => {
-    if (addPostError === "reject") {
+    if (errorStatus === "addRejected") {
       setErrorMessage("*Something went wrong... Try again later");
     }
 
     return () => {
       setTimeout(() => {
-        dispatch(addEmptyError());
+        dispatch(defaultError());
         setErrorMessage("");
       }, 10000);
       setButtonStatus(false);
     };
-  }, [dispatch, setErrorMessage, addPostError]);
+  }, [dispatch, setErrorMessage, errorStatus]);
 
   return (
     <section>
