@@ -3,14 +3,13 @@ import { useSelector } from "react-redux/es/exports";
 import s from "./CommentsMain.module.css";
 import ava from "./../../assets/images/empty.jpg";
 import CommentsManage from "./CommentsManage";
+import { commentSelector } from "../../redux/slices/commentSlices/commentSelectors";
 
 const CommentsMain = (props) => {
   const user = JSON.parse(window.localStorage.getItem("user"));
-  const { comments } = useSelector((state) => {
-    return {
-      comments: state.comment.comments,
-    };
-  });
+
+  const { comments, errorStatus } = useSelector((state) => commentSelector(state));
+
   return (
     <div>
       {comments.map((comment) => (
@@ -24,7 +23,11 @@ const CommentsMain = (props) => {
                   </div>
                 </div>
                 <div>
-                  <CommentsManage user={user} comment={comment} />
+                  <CommentsManage
+                    user={user}
+                    comment={comment}
+                    errorStatus={errorStatus}
+                  />
                 </div>
               </div>
               <div className={s.ava}>

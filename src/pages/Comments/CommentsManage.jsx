@@ -2,10 +2,8 @@ import React from "react";
 import RemoveComment from "./DeleteComment/RemoveComment";
 import s from "./CommentsMain.module.css";
 import UpdateReply from "./UpdateComment/UpdateReply";
-import { useSelector } from "react-redux";
 
 const CommentsManage = (props) => {
-  const { errorStatus } = useSelector((state) => state.comment);
 
   return (
     <div>
@@ -15,12 +13,12 @@ const CommentsManage = (props) => {
             <div className={s.action}>
               <RemoveComment
                 comment={props.comment.id}
-                errorStatus={errorStatus}
+                errorStatus={props.errorStatus}
               />
               <UpdateReply
                 user={props.user}
                 comment={props.comment}
-                errorStatus={errorStatus}
+                errorStatus={props.errorStatus}
               />
             </div>
           )}

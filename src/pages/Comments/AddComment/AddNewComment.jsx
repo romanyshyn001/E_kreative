@@ -6,9 +6,9 @@ import {
   defaultError,
 } from "../../../redux/slices/commentSlices/comments";
 import s from "./AddNewComment.module.css";
-// remove later
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Modal, Button, Form } from "react-bootstrap";
+import { commentSelector } from "../../../redux/slices/commentSlices/commentSelectors";
 
 const AddNewComment = (props) => {
   const dispatch = useDispatch();
@@ -19,7 +19,7 @@ const AddNewComment = (props) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const { errorStatus } = useSelector((state) => state.comment);
+  const { errorStatus } = useSelector((state) => commentSelector(state));
 
   const addCommentHandle = (e) => {
     setReply(e.target.value);
