@@ -27,7 +27,12 @@ const PostsManage = (props) => {
       {user != null ? (
         <div className={s.addComment}>
           <div>
-            <AddNewComment user={user} post={post} />
+            <AddNewComment
+              user={user}
+              post={post}
+              perPage={props.perPage}
+              currentPage={props.currentPage}
+            />
           </div>
           {user.id === post.userId && (
             <div className={s.action}>

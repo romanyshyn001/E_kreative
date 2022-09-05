@@ -7,7 +7,7 @@ import PostPagination from "./Pagination/PostPagination";
 import AddPost from "./AddPost/AddNewPost";
 import PostsManage from "./PostsManage";
 import { postsSelector } from "../../redux/slices/postSlices/postsSelectors";
-import { commentsLoading } from "../../redux/slices/comments";
+import { commentsLoading } from "../../redux/slices/commentSlices/comments";
 
 const PostMain = () => {
   const dispatch = useDispatch();
@@ -17,20 +17,18 @@ const PostMain = () => {
     perPage,
     currentPage,
     getPostsError,
-    addPostError,
-    postAdded,
-    errorStatus
+    errorStatus,
   } = useSelector((state) => postsSelector(state));
 
   const user = JSON.parse(window.localStorage.getItem("user"));
 
   useEffect(() => {
-    if (postAdded) {
+    if (errorStatus === "addSuccess") {
       dispatch(postLoading({ currentPage, perPage }));
     }
     dispatch(postLoading({ currentPage, perPage }));
     dispatch(commentsLoading());
-  }, [dispatch, currentPage, perPage, postAdded]);
+  }, [dispatch, currentPage, perPage, errorStatus]);
 
   const onChange = (currentPage) => {
     dispatch(postLoading({ currentPage, perPage }));
@@ -49,7 +47,6 @@ const PostMain = () => {
         perPage={perPage}
         currentPage={currentPage}
         user={user}
-        postAdded={postAdded}
         errorStatus={errorStatus}
       />
     </article>
@@ -68,7 +65,6 @@ const PostMain = () => {
           <AddPost
             perPage={perPage}
             currentPage={currentPage}
-            addPostError={addPostError}
             errorStatus={errorStatus}
           />
         )}

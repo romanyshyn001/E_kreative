@@ -3,10 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   comments: [],
   isLoading: false,
-  editCommentError: "",
   getCommentError: false,
-  removeError: "",
-  addCommentError: "",
+  errorStatus: "",
 };
 
 const comments = createSlice({
@@ -34,7 +32,7 @@ const comments = createSlice({
       state.isLoading = true;
     },
     addComment: (state, { payload }) => {
-      state.addCommentError = "success";
+      state.errorStatus = "addSuccess";
       state.comments.push(payload);
       state.isLoading = false;
     },
@@ -42,7 +40,7 @@ const comments = createSlice({
       state.isLoading = true;
     },
     updateComment: (state, { payload }) => {
-      state.editCommentError = "success";
+      state.errorStatus = "editSuccess";
       const { id, body } = payload;
       const existingPost = state.comments.find((comment) => comment.id === id);
       if (existingPost) {
@@ -52,25 +50,19 @@ const comments = createSlice({
     },
     // Errors
     editCommentFailure: (state) => {
-      state.editCommentError = "reject";
+      state.errorStatus = "editRejected";
     },
-    editErrorEmpty: (state) => {
-      state.editCommentError = "";
+    defaultError: (state) => {
+      state.errorStatus = "";
     },
     getCommentFailure: (state) => {
       state.getCommentError = true;
     },
     removeCommentFailure: (state) => {
-      state.removeError = "reject";
-    },
-    removeEmptyError: (state) => {
-      state.removeError = "";
+      state.errorStatus = "removeRejected";
     },
     addCommentFailure: (state) => {
-      state.addCommentError = "reject";
-    },
-    addEmptyError: (state) => {
-      state.addCommentError = "";
+      state.errorStatus = "addRejected";
     },
   },
 });
@@ -86,12 +78,10 @@ export const {
   updateComment,
 
   editCommentFailure,
-  editErrorEmpty,
+  defaultError,
   getCommentFailure,
   removeCommentFailure,
-  removeEmptyError,
   addCommentFailure,
-  addEmptyError,
 } = comments.actions;
 
 export default comments.reducer;

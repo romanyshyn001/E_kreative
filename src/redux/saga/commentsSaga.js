@@ -9,7 +9,7 @@ import {
   getCommentFailure,
   removeCommentFailure,
   addCommentFailure,
-} from "../slices/comments";
+} from "../slices/commentSlices/comments";
 
 function* commentsSaga({ payload: id }) {
   try {

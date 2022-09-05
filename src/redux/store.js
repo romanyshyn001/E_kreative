@@ -2,7 +2,7 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { rootSaga } from "./saga/rootSaga";
 import createSagaMiddleware from "@redux-saga/core";
 import posts from "./slices/postSlices/posts";
-import comment from "./slices/comments";
+import comment from "./slices/commentSlices/comments";
 import authMe from "./slices/authMe";
 import announcements from "./slices/announcements";
 import {

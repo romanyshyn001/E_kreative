@@ -27,6 +27,7 @@ const posts = createSlice({
       state.isLoading = true;
     },
     addPost: (state, { payload }) => {
+      state.errorStatus = "addSuccess"
       state.posts.push(payload);
       state.isLoading = false;
     },

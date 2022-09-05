@@ -6,7 +6,7 @@ import {
 import { useDispatch, useSelector } from "react-redux/es/exports";
 import s from "./UpdatePostMain.module.css";
 import { useEffect } from "react";
-
+// remove later
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Modal, Button, Form } from "react-bootstrap";
 

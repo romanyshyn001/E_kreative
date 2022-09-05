@@ -3,10 +3,10 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addCommentLoading,
-  addEmptyError,
-} from "../../../redux/slices/comments";
+  defaultError,
+} from "../../../redux/slices/commentSlices/comments";
 import s from "./AddNewComment.module.css";
-
+// remove later
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Modal, Button, Form } from "react-bootstrap";
 
@@ -19,11 +19,7 @@ const AddNewComment = (props) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const { addCommentError } = useSelector((state) => {
-    return {
-      addCommentError: state.comment.addCommentError,
-    };
-  });
+  const { errorStatus } = useSelector((state) => state.comment);
 
   const addCommentHandle = (e) => {
     setReply(e.target.value);
@@ -44,18 +40,18 @@ const AddNewComment = (props) => {
   };
 
   useEffect(() => {
-    if (addCommentError === "reject") {
-      setErrorMessage("Can not add comment");
+    if (errorStatus === "addRejected") {
+      setErrorMessage("*Can not add comment");
       setTimeout(() => {
         setErrorMessage("");
       }, 4000);
-    } else if (addCommentError === "success") {
+    } else if (errorStatus === "addSuccess") {
       handleClose();
     }
     return () => {
-      dispatch(addEmptyError());
+      dispatch(defaultError());
     };
-  }, [dispatch, addCommentError]);
+  }, [dispatch, errorStatus]);
 
   return (
     <>

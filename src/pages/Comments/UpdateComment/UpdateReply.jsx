@@ -1,20 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux/es/exports";
+import { useDispatch } from "react-redux/es/exports";
 import s from "./UpdateReply.module.css";
 import {
-  editErrorEmpty,
+  defaultError,
   updateCommentLoading,
-} from "../../../redux/slices/comments";
-import "bootstrap/dist/css/bootstrap.min.css";
+} from "../../../redux/slices/commentSlices/comments";
+// remove later
+// import "bootstrap/dist/css/bootstrap.min.css";
 import { Modal, Button, Form } from "react-bootstrap";
 
 const UpdateReply = (props) => {
   const dispatch = useDispatch();
-  const { editCommentError } = useSelector((state) => {
-    return {
-      editCommentError: state.comment.editCommentError,
-    };
-  });
+
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -44,19 +41,19 @@ const UpdateReply = (props) => {
   };
 
   useEffect(() => {
-    if (editCommentError === "reject") {
+    if (props.errorStatus === "editRejected") {
       setErrorCommentMessage("Can not update post");
       setTimeout(() => {
         setErrorCommentMessage("");
       }, 5000);
-    } else if (editCommentError === "success") {
+    } else if (props.errorStatus === "editSuccess") {
       handleClose();
     }
 
     return () => {
-      dispatch(editErrorEmpty());
+      dispatch(defaultError());
     };
-  }, [dispatch, editCommentError]);
+  }, [dispatch, props.errorStatus]);
 
   return (
     <section className={s.secContainer}>
