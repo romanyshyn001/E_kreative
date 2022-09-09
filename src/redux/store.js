@@ -4,7 +4,7 @@ import createSagaMiddleware from "@redux-saga/core";
 import posts from "./slices/postSlices/posts";
 import comment from "./slices/commentSlices/comments";
 import authMe from "./slices/authMe";
-import announcements from "./slices/announcements";
+import announcements from "./slices/announcementSlices/announcements";
 import {
   persistStore,
   persistReducer,

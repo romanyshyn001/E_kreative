@@ -16,7 +16,7 @@ const NavigationMain = () => {
             <NavLink to="/posts">Article</NavLink>
           </div>
           <div className={s.item}>
-            <NavLink to="/announcements">News</NavLink>
+            <NavLink to="/announcements">Announcements</NavLink>
           </div>
           <div className={s.item}>
             <NavLink to="/users">Users</NavLink>

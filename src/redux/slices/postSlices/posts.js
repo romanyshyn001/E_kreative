@@ -9,7 +9,6 @@ const initialState = {
 
   errorStatus: "",
   getPostsError: false,
-
 };
 const posts = createSlice({
   name: "posts",
@@ -27,7 +26,7 @@ const posts = createSlice({
       state.isLoading = true;
     },
     addPost: (state, { payload }) => {
-      state.errorStatus = "addSuccess"
+      state.errorStatus = "addSuccess";
       state.posts.push(payload);
       state.isLoading = false;
     },
