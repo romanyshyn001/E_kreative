@@ -26,6 +26,7 @@ const PostMain = () => {
     if (errorStatus === "addSuccess") {
       dispatch(postLoading({ currentPage, perPage }));
     }
+    
     dispatch(postLoading({ currentPage, perPage }));
     dispatch(commentsLoading());
   }, [dispatch, currentPage, perPage, errorStatus]);

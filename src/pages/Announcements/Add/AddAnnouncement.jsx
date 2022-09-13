@@ -4,7 +4,6 @@ import s from "./AddArticle.module.css";
 import { useDispatch } from "react-redux";
 import {
   addAnnouncementLoading,
-  announcementsLoading,
   defaultError,
 } from "../../../redux/slices/announcementSlices/announcements";
 
@@ -14,7 +13,6 @@ const AddAnnoucement = (props) => {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [buttonStatus, setButtonStatus] = useState(false);
-
   const addTitle = (e) => {
     setTitle(e.target.value);
   };
@@ -51,13 +49,12 @@ const AddAnnoucement = (props) => {
         setErrorMessage("");
       }, 10000);
       setButtonStatus(false);
-      dispatch(announcementsLoading());
     };
   }, [dispatch, setErrorMessage, props.errorStatus]);
 
   return (
     <section>
-      <h2>Tell us</h2>
+      <h2>Announcement</h2>
       <form>
         <label htmlFor="postTitle">Title:</label>
         <input

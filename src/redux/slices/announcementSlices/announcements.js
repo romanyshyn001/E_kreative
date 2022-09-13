@@ -2,9 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   announcements: [],
-  currentPage: 1,
-  perPage: 10,
-  totalPostCount: 30,
+  pageNumber: 1,
+  totalOnPage: 10,
+  totalAnnouncementCount: 30,
   isLoading: false,
 
   errorStatus: "",
@@ -19,7 +19,8 @@ const announcements = createSlice({
       state.isLoading = true;
     },
     getAnnouncements: (state, { payload }) => {
-      state.announcements = payload;
+      state.announcements = payload.data;
+      state.pageNumber = payload.activePage;
       state.isLoading = false;
     },
     addAnnouncementLoading: (state) => {
@@ -31,7 +32,6 @@ const announcements = createSlice({
       state.isLoading = false;
     },
 
-    //
     removeAnnouncementLoading: (state) => {
       state.isLoading = true;
     },
@@ -41,9 +41,34 @@ const announcements = createSlice({
       );
       state.isLoading = false;
     },
+    updateAnnouncementLoading: (state) => {
+      state.isLoading = true;
+    },
 
+    updateAnnouncement: (state, { payload }) => {
+      state.errorStatus = "editSuccess";
+      const { id, title, body } = payload;
+      const existingAnnouncement = state.announcements.find(
+        (announcement) => announcement.id === id
+      );
+      if (existingAnnouncement) {
+        existingAnnouncement.title = title;
+        existingAnnouncement.body = body;
+      }
+      state.isLoading = false;
+    },
+
+    getAnnouncementFailure: (state) => {
+      state.getAnnouncementError = true;
+    },
+    editAnnouncementFailure: (state) => {
+      state.errorStatus = "editRejected";
+    },
     addAnnouncementFailure: (state) => {
       state.errorStatus = "addRejected";
+    },
+    removeAnnouncementFailure: (state) => {
+      state.errorStatus = "removeRejected";
     },
     defaultError: (state) => {
       state.errorStatus = "";
@@ -58,7 +83,12 @@ export const {
   addAnnouncementLoading,
   removeAnnouncementLoading,
   removeAnnouncement,
+  updateAnnouncementLoading,
+  updateAnnouncement,
 
+  getAnnouncementFailure,
+  editAnnouncementFailure,
+  removeAnnouncementFailure,
   addAnnouncementFailure,
   defaultError,
 } = announcements.actions;

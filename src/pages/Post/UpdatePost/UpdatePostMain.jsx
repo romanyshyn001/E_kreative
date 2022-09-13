@@ -21,8 +21,6 @@ const UpdatePostMain = (props) => {
   const [body, setBody] = useState(props.post.body);
   const [postStatus, setpostStatus] = useState();
 
-  const { editPostError } = useSelector((state) => state.posts);
-
   const titleChange = (e) => {
     setTitle(e.target.value);
   };
@@ -95,11 +93,7 @@ const UpdatePostMain = (props) => {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button
-            variant="primary"
-            onClick={onSavePostClicked}
-            disabled={editPostError === "decline"}
-          >
+          <Button variant="primary" onClick={onSavePostClicked}>
             Save Changes
           </Button>
           <div>
