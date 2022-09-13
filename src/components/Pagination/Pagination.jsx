@@ -1,7 +1,7 @@
 import React from "react";
-import s from "./PostPagination.module.css";
+import s from "./Pagination.module.css";
 
-const PostPagination = (props) => {
+const Pagination = (props) => {
   let pagesCount = Math.ceil(props.totalPostCount / props.perPage);
   let pages = [];
   for (let i = 1; i <= pagesCount; i++) {
@@ -24,4 +24,4 @@ const PostPagination = (props) => {
     </nav>
   );
 };
-export default PostPagination;
+export default Pagination;

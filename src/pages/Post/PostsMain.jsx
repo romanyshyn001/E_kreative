@@ -3,11 +3,11 @@ import { useDispatch, useSelector } from "react-redux/es/exports";
 import s from "./PostsMain.module.css";
 
 import { postLoading } from "../../redux/slices/postSlices/posts";
-import PostPagination from "./Pagination/PostPagination";
 import AddPost from "./AddPost/AddNewPost";
 import PostsManage from "./PostsManage";
 import { postsSelector } from "../../redux/slices/postSlices/postsSelectors";
 import { commentsLoading } from "../../redux/slices/commentSlices/comments";
+import Pagination from "../../components/Pagination/Pagination";
 
 const PostMain = () => {
   const dispatch = useDispatch();
@@ -26,7 +26,7 @@ const PostMain = () => {
     if (errorStatus === "addSuccess") {
       dispatch(postLoading({ currentPage, perPage }));
     }
-    
+
     dispatch(postLoading({ currentPage, perPage }));
     dispatch(commentsLoading());
   }, [dispatch, currentPage, perPage, errorStatus]);
@@ -55,7 +55,7 @@ const PostMain = () => {
 
   return (
     <div className={s.container}>
-      <PostPagination
+      <Pagination
         totalPostCount={totalPostCount}
         perPage={perPage}
         currentPage={currentPage}

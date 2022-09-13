@@ -1,12 +1,12 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux/es/exports";
+import Pagination from "../../components/Pagination/Pagination";
 import { announcementsLoading } from "../../redux/slices/announcementSlices/announcements";
 import { announcementSelector } from "../../redux/slices/announcementSlices/announcementSelectors";
 import AddAnnoucement from "./Add/AddAnnouncement";
 import s from "./AnnouncementsMain.module.css";
 import DeleteAnnoucement from "./Delete/DeleteAnnouncements";
-import AnnouncementPagination from "./PageNumber/AnnouncementPagination";
 import UpdateAnnoucement from "./Update/UpdateAnnouncements";
 
 const AnnouncementsMain = () => {
@@ -43,18 +43,15 @@ const AnnouncementsMain = () => {
         ) : (
           <div>
             <div>
-              <AnnouncementPagination
+              <Pagination
                 totalPostCount={totalAnnouncementCount}
-                totalOnPage={totalOnPage}
-                pageNumber={pageNumber}
+                perPage={totalOnPage}
+                currentPage={pageNumber}
                 onChange={onChange}
               />
             </div>
             <div>
-              <AddAnnoucement
-                user={user}
-                errorStatus={errorStatus}
-              />
+              <AddAnnoucement user={user} errorStatus={errorStatus} />
             </div>
             {announcements.map((announcement) => (
               <div key={announcement.id}>
