@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import {
-  // announcementsLoading,
   defaultError,
   removeAnnouncementLoading,
 } from "../../../redux/slices/announcementSlices/announcements";
+import s from "./DeleteAnnouncements.module.css";
 
 const DeleteAnnoucement = (props) => {
   const errorStatus = props.errorStatus;
@@ -18,7 +18,7 @@ const DeleteAnnoucement = (props) => {
 
   useEffect(() => {
     if (errorStatus === "removeRejected") {
-      setRemoveStatus("*Can not remove announcements.");
+      setRemoveStatus("*Can not remove announcement.");
       setTimeout(() => {
         dispatch(defaultError());
         setRemoveStatus("");
@@ -30,15 +30,15 @@ const DeleteAnnoucement = (props) => {
     <div>
       <div>
         <button
-          className={"s.btn"}
+          className={s.btn}
           type="submit"
           onClick={() => removeAnnouncementHandle(announcement)}
         >
           Remove
         </button>
       </div>
-      <div className={"s.removePost"}>
-        <span className={"s.messageError"}>{removeStatus}</span>
+      <div className={s.removePost}>
+        <span className={s.messageError}>{removeStatus}</span>
       </div>
     </div>
   );

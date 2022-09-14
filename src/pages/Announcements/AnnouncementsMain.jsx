@@ -67,15 +67,15 @@ const AnnouncementsMain = () => {
                       {user.id === announcement.userId && (
                         <div className={s.action}>
                           <div>
-                            <DeleteAnnoucement
-                              announcement={announcement.id}
+                            <UpdateAnnoucement
+                              user={user}
+                              announcement={announcement}
                               errorStatus={errorStatus}
                             />
                           </div>
                           <div>
-                            <UpdateAnnoucement
-                              user={user}
-                              announcement={announcement}
+                            <DeleteAnnoucement
+                              announcement={announcement.id}
                               errorStatus={errorStatus}
                             />
                           </div>

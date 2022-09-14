@@ -6,6 +6,7 @@ import {
 import { useDispatch } from "react-redux/es/exports";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Modal, Button, Form } from "react-bootstrap";
+import s from "./UpdateAnnouncements.module.css";
 
 const UpdateAnnouncementMain = (props) => {
   const errorStatus = props.errorStatus;
@@ -58,8 +59,8 @@ const UpdateAnnouncementMain = (props) => {
   }, [dispatch, errorStatus]);
 
   return (
-    <section className={"s.secContainer"}>
-      <Button bsPrefix={"s.btn"} onClick={handleShow}>
+    <section>
+      <Button bsPrefix={s.btn} onClick={handleShow}>
         Edit
       </Button>
 
@@ -95,7 +96,7 @@ const UpdateAnnouncementMain = (props) => {
             Save Changes
           </Button>
           <div>
-            <span className={"s.notifyPostStatus"}>{announcementStatus}</span>
+            <span className={s.notifyPostStatus}>{announcementStatus}</span>
           </div>
         </Modal.Footer>
       </Modal>

@@ -29,7 +29,6 @@ function* getAnnouncementsSaga({ payload }) {
 function* addAnnouncementSaga(value) {
   try {
     // throw new Error();
-
     const res = yield call(announcementsApi.add, value.payload);
     yield put(addAnnouncement(res.data));
   } catch (error) {
@@ -47,7 +46,7 @@ function* deleteAnnouncementSaga({ payload }) {
 }
 function* updateAnnouncementSaga(value) {
   try {
-    // throw new Error();
+    throw new Error();
     const newData = yield call(announcementsApi.edit, value.payload);
     yield put(updateAnnouncement(newData.data));
   } catch (error) {

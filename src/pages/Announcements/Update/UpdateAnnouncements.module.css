@@ -1,0 +1,32 @@
+.btn{
+    margin: 10px 10px 10px 0px;
+    padding: 5px;
+    font-size: 15px;
+    color: rgb(0, 0, 0);
+    background-color: hsl(120, 1%, 83%);
+    border-radius: 10px;
+}
+.btn:hover{
+    background-color: hsl(0, 1%, 56%);
+}
+
+.editBody{
+    width: 600px;
+    height: 200px;
+    resize: none;
+}
+.editTitle{
+    width: 500px;
+}
+.messageError{
+    color: #ba3939;
+    margin: 4px;
+    padding-left: 5px;
+    font-size: 20px;
+    font-weight: 500;
+}
+.notifyPostStatus{
+    font-size: 20px;
+    font-weight: bold;
+    color: red;
+}
