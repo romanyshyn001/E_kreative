@@ -20,5 +20,3 @@ root.render(
     </BrowserRouter>
   </React.StrictMode>
 );
-//DELETE STORE LATER
-window.store = store;
