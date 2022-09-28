@@ -1,4 +1,9 @@
-import { Route, Routes, Navigate } from "react-router-dom";
+import React from "react";
+import store, { persistor } from "./redux/store";
+import { PersistGate } from "redux-persist/integration/react";
+import { Provider, useDispatch } from "react-redux";
+
+import { Route, Routes, Navigate, BrowserRouter } from "react-router-dom";
 import s from "./App.module.css";
 import LoginMain from "./components/Auth/Login/LoginMain";
 import LogOutMain from "./components/Auth/Logout/LogOutMain";
@@ -6,12 +11,11 @@ import Registration from "./components/Auth/Register/Registration";
 
 import NavigationMain from "./components/NavBar/NavigationMain";
 import AnnouncementsMain from "./pages/Announcements/AnnouncementsMain";
-import UpdateReply from "./pages/Comments/UpdateComment/UpdateReply";
 import PostMain from "./pages/Post/PostsMain";
-import UpdatePostMain from "./pages/Post/UpdatePost/UpdatePostMain";
 import ProfileMain from "./pages/Profile/ProfileMain";
 
 const App = () => {
+  const dispatch = useDispatch();
   return (
     <div>
       <div className={s.App_header}>
@@ -31,4 +35,18 @@ const App = () => {
   );
 };
 
-export default App;
+const MainApp = () => {
+  return (
+    <React.StrictMode>
+      <BrowserRouter>
+        <Provider store={store}>
+          <PersistGate loading={null} persistor={persistor}>
+            <App />
+          </PersistGate>
+        </Provider>
+      </BrowserRouter>
+    </React.StrictMode>
+  );
+};
+store.window = store;
+export default MainApp;

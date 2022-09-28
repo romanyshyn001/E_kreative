@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux/es/exports";
+import { useDispatch } from "react-redux";
 import {
   defaultError,
   removeCommentLoading,

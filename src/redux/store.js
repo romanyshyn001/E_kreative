@@ -31,6 +31,7 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 let sagaMiddleware = createSagaMiddleware();
 const middleware = [sagaMiddleware];
 
+
 const store = configureStore({
   reducer: {
     posts,

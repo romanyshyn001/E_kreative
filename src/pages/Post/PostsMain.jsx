@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux/es/exports";
+import { useDispatch, useSelector } from "react-redux";
 import s from "./PostsMain.module.css";
 
 import { postLoading } from "../../redux/slices/postSlices/posts";

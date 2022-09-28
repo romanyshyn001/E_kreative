@@ -1,6 +1,6 @@
 import React from "react";
 import { useFormik } from "formik";
-import { useDispatch, useSelector } from "react-redux/es/exports";
+import { useDispatch, useSelector } from "react-redux";
 import s from "./Registration.module.css";
 import { Navigate } from "react-router-dom";
 import {

@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux/es/exports";
+import { useDispatch, useSelector } from "react-redux";
 import Pagination from "../../components/Pagination/Pagination";
 import { announcementsLoading } from "../../redux/slices/announcementSlices/announcements";
 import { announcementSelector } from "../../redux/slices/announcementSlices/announcementSelectors";

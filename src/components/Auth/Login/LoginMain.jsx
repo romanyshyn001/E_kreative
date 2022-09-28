@@ -1,10 +1,10 @@
 import { useFormik } from "formik";
 import React, { useEffect } from "react";
 import s from "./LoginMain.module.css";
-import { useDispatch, useSelector } from "react-redux/es/exports";
 import { Navigate } from "react-router-dom";
 import { authorizeSuccess, loginLoading } from "../../../redux/slices/authMe";
 import validators from "../../../utils/validators/validators";
+import { useDispatch, useSelector } from "react-redux";
 
 const LoginMain = () => {
   const dispatch = useDispatch();

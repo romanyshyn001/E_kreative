@@ -1,6 +1,6 @@
 import React from "react";
 import s from "./PostsMain.module.css";
-import { useSelector } from "react-redux/es/exports";
+import { useSelector } from "react-redux";
 
 import DeleteItem from "./DeletePost/DeleteItem";
 import AddNewComment from "../Comments/AddComment/AddNewComment";

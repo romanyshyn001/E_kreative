@@ -3,7 +3,7 @@ import {
   defaultError,
   updatePostLoading,
 } from "../../../redux/slices/postSlices/posts";
-import { useDispatch, useSelector } from "react-redux/es/exports";
+import { useDispatch } from "react-redux";
 import s from "./UpdatePostMain.module.css";
 import { useEffect } from "react";
 // remove later

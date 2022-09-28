@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux/es/exports";
+import { useDispatch } from "react-redux";
 import s from "./UpdateReply.module.css";
 import {
   defaultError,

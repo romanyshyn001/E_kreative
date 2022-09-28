@@ -3,14 +3,13 @@ import {
   defaultError,
   updateAnnouncementLoading,
 } from "../../../redux/slices/announcementSlices/announcements";
-import { useDispatch } from "react-redux/es/exports";
+import { useDispatch } from "react-redux";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Modal, Button, Form } from "react-bootstrap";
 import s from "./UpdateAnnouncements.module.css";
 
 const UpdateAnnouncementMain = (props) => {
   const errorStatus = props.errorStatus;
-
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);

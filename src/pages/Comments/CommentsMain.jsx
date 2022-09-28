@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector } from "react-redux/es/exports";
+import { useSelector } from "react-redux";
 import s from "./CommentsMain.module.css";
 import ava from "./../../assets/images/empty.jpg";
 import CommentsManage from "./CommentsManage";
@@ -8,7 +8,9 @@ import { commentSelector } from "../../redux/slices/commentSlices/commentSelecto
 const CommentsMain = (props) => {
   const user = JSON.parse(window.localStorage.getItem("user"));
 
-  const { comments, errorStatus } = useSelector((state) => commentSelector(state));
+  const { comments, errorStatus } = useSelector((state) =>
+    commentSelector(state)
+  );
 
   return (
     <div>

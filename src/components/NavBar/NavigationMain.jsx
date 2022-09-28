@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import s from "./NavigationMain.module.css";
 import React from "react";
-import { useSelector } from "react-redux/es/exports";
+import { useSelector } from "react-redux";
 import Profile from "../../pages/Profile/ProfileMain";
 
 const NavigationMain = () => {

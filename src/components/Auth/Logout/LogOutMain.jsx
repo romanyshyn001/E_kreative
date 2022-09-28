@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux/es/exports";
+import { useDispatch } from "react-redux";
 import { Navigate } from "react-router-dom";
 import { logoutLoading } from "../../../redux/slices/authMe";
 

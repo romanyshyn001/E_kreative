@@ -8,11 +8,13 @@ import {
 } from "../../../redux/slices/announcementSlices/announcements";
 
 const AddAnnoucement = (props) => {
+  // console.log('props', props)
   const dispatch = useDispatch();
   const [errorMessage, setErrorMessage] = useState("");
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [buttonStatus, setButtonStatus] = useState(false);
+
   const addTitle = (e) => {
     setTitle(e.target.value);
   };
@@ -64,6 +66,7 @@ const AddAnnoucement = (props) => {
           name="postTitle"
           onChange={addTitle}
           value={title}
+          alt={'Input Title'}
         />
         <label htmlFor="postContent">Content:</label>
         <textarea
