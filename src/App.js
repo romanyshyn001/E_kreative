@@ -1,7 +1,7 @@
 import React from "react";
 import store, { persistor } from "./redux/store";
 import { PersistGate } from "redux-persist/integration/react";
-import { Provider, useDispatch } from "react-redux";
+import { Provider} from "react-redux";
 
 import { Route, Routes, Navigate, BrowserRouter } from "react-router-dom";
 import s from "./App.module.css";
@@ -15,13 +15,13 @@ import PostMain from "./pages/Post/PostsMain";
 import ProfileMain from "./pages/Profile/ProfileMain";
 
 const App = () => {
-  const dispatch = useDispatch();
   return (
     <div>
       <div className={s.App_header}>
         <NavigationMain />
       </div>
       <Routes>
+      <React.Fragment>
         <Route path="/" element={<Navigate replace to="/posts" />} />
         <Route path="/announcements" element={<AnnouncementsMain />} />
         <Route path="/profile" element={<ProfileMain />} />
@@ -30,6 +30,7 @@ const App = () => {
         <Route path="/logout" element={<LogOutMain />} />
         <Route path="/register" element={<Registration />} />
         <Route path="/posts" element={<PostMain />} />
+        </React.Fragment>
       </Routes>
     </div>
   );
@@ -48,5 +49,4 @@ const MainApp = () => {
     </React.StrictMode>
   );
 };
-store.window = store;
 export default MainApp;

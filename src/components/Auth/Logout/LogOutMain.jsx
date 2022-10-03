@@ -6,10 +6,8 @@ import { logoutLoading } from "../../../redux/slices/authMe";
 
 const LogOutMain = () => {
   const dispatch = useDispatch();
-
   useEffect(() => {
     dispatch(logoutLoading());
-    
   }, [dispatch]);
 
   return (

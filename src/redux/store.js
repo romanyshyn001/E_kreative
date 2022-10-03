@@ -29,9 +29,10 @@ export const persistConfig = {
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 let sagaMiddleware = createSagaMiddleware();
-const middleware = [sagaMiddleware];
+// const middleware = [sagaMiddleware];
 
-
+// переніс preloadedState з test utils
+const preloadedState = {}
 const store = configureStore({
   reducer: {
     posts,
@@ -39,6 +40,7 @@ const store = configureStore({
     authMe: persistedReducer,
     announcements,
   },
+  preloadedState,
   middleware: (getDefaultMiddleware) => {
     return getDefaultMiddleware({
       thunk: false,

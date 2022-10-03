@@ -13,13 +13,7 @@ import { useEffect } from "react";
 
 export const Registration = () => {
   const dispatch = useDispatch();
-  const { isAuthorized, userAvatar, authorizeError } = useSelector((state) => {
-    return {
-      isAuthorized: state.authMe.authorize.isAuthorized,
-      userAvatar: state.authMe.authorize.userAvatar,
-      authorizeError: state.authMe.authorize.authorizeError,
-    };
-  });
+  const { isAuthorized, userAvatar, authorizeError } = useSelector((state) => state.authMe.authorize);
 
   const formik = useFormik({
     initialValues: {

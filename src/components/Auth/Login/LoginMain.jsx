@@ -5,15 +5,14 @@ import { Navigate } from "react-router-dom";
 import { authorizeSuccess, loginLoading } from "../../../redux/slices/authMe";
 import validators from "../../../utils/validators/validators";
 import { useDispatch, useSelector } from "react-redux";
+import createFormField from "../../Common/FormControl";
 
-const LoginMain = () => {
+const LoginMain = (props) => {
   const dispatch = useDispatch();
-  const { isAuthorized, authorizeError } = useSelector((state) => {
-    return {
-      isAuthorized: state.authMe.authorize.isAuthorized,
-      authorizeError: state.authMe.authorize.authorizeError,
-    };
-  });
+  const { isAuthorized, authorizeError } = useSelector(
+    (state) => state.authMe.authorize
+  );
+
   const formik = useFormik({
     initialValues: {
       password: "",
@@ -44,31 +43,33 @@ const LoginMain = () => {
         <h3>Login Here</h3>
 
         <label htmlFor="email">Username</label>
-        <input
-          className={s.text}
-          type="email"
-          placeholder="Email or Phone"
-          id="email"
-          name="email"
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.email}
-        />
+
+        {createFormField(
+          "email",
+          "Email or Phone",
+          "email",
+          "email",
+          formik.handleChange,
+          formik.handleBlur,
+          formik.values.email,
+          s.text
+        )}
         {formik.touched.email && formik.errors.email && (
           <div className={s.ErrorMessage}>{formik.errors.email}</div>
         )}
 
         <label htmlFor="password">Password</label>
-        <input
-          className={s.text}
-          type="password"
-          placeholder="Password"
-          id="password"
-          name="password"
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.password}
-        />
+        {createFormField(
+          "password",
+          "Password",
+          "password",
+          "password",
+          formik.handleChange,
+          formik.handleBlur,
+          formik.values.password,
+          s.text
+        )}
+
         {formik.touched.password && formik.errors.password && (
           <div className={s.ErrorMessage}>{formik.errors.password}</div>
         )}
@@ -76,14 +77,16 @@ const LoginMain = () => {
           <div className={s.ErrorMessage}>Invalid mail or password</div>
         )}
         <label htmlFor="rememberMe">Remember me</label>
-        <input
-          className={s.check}
-          type="checkbox"
-          id="rememberMe"
-          name="rememberMe"
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-        />
+        {createFormField(
+          "rememberMe",
+          "",
+          "rememberMe",
+          "checkbox",
+          formik.handleChange,
+          formik.handleBlur,
+          null,
+          s.check
+        )}
         <div>
           <button className={s.btn} type="submit">
             Log In
