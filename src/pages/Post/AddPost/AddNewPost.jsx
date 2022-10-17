@@ -76,7 +76,7 @@ const AddPost = (props) => {
           id="postContent"
           name="postContent"
           onChange={addBody}
-          value={body}
+          value={body}	
         />
       </form>
       <div className={s.handlesPostStatus}>

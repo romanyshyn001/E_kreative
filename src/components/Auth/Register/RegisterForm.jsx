@@ -2,118 +2,110 @@ import React from "react";
 import createFormField from "../../Common/FormControl";
 import Avatars from "../../UserAvatars/Avatars";
 import s from "./Registration.module.css";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import validators from "../../../utils/validators/validators";
 
-const RegisterForm = (props) => {
-  const formik = props.formik;
+const RegisterForm = ({ authorizeError, onSubmit, isAuthorized }) => {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(validators.validationRegister) });
 
   return (
-    <form onSubmit={formik.handleSubmit}>
+    <form className={s.login} onSubmit={handleSubmit(onSubmit)}>
       <h3>Register Here</h3>
       <div className={s.name}>
-        <label htmlFor="Name">First Name</label>
-        {createFormField(
-          "firstName",
-          "Name",
-          "firstName",
-          "text",
-          formik.handleChange,
-          formik.handleBlur,
-          formik.values.firstName,
-          s.text
+        <label htmlFor="firstname">First name</label>
+        <input
+          type={"text"}
+          className={s.text}
+          name="firstname"
+          placeholder="First name"
+          {...register("firstname", { required: "First name is required" })}
+        />
+        {errors.firstName && (
+          <p className={s.ErrorMessage} role="alert">
+            {errors.firstName.message}
+          </p>
         )}
-
-        {formik.touched.firstName && formik.errors.firstName && (
-          <div className={s.ErrorMessage}>{formik.errors.firstName}</div>
+        <label htmlFor="lastname">Last name</label>
+        <input
+          type={"text"}
+          className={s.text}
+          name="lasttname"
+          placeholder="Last name"
+          {...register("lastname", { required: "Last name is required" })}
+        />
+        {errors.lasttName && (
+          <p className={s.ErrorMessage} role="alert">
+            {errors.lasttName.message}
+          </p>
         )}
-
-        <label htmlFor="Last Name">Last name</label>
-        {createFormField(
-          "lastName",
-          "Last name",
-          "lastName",
-          "text",
-          formik.handleChange,
-          formik.handleBlur,
-          formik.values.lastName,
-          s.text
+        <label htmlFor="Mail">Email</label>
+        <input
+          type={"email"}
+          className={s.text}
+          placeholder="Email"
+          name="email"
+          {...register("email", { required: "Email Address is required" })}
+        />
+        {errors.email && (
+          <p className={s.ErrorMessage} role="alert">
+            {errors.email.message}
+          </p>
         )}
+        <label  htmlFor="password">Password</label>
 
-        {formik.touched.lastName && formik.errors.lastName && (
-          <div className={s.ErrorMessage}>{formik.errors.lastName}</div>
+        <input
+          type={"password"}
+          className={s.text}
+          name="password"
+          placeholder="Password"
+          {...register("password", { required: "Password is required" })}
+        />
+        {errors.password && (
+          <p className={s.ErrorMessage} role="alert">
+            {errors.password.message}
+          </p>
         )}
-      </div>
-      <label htmlFor="email">Username</label>
-      {createFormField(
-        "email",
-        "Email",
-        "email",
-        "email",
-        formik.handleChange,
-        formik.handleBlur,
-        formik.values.email,
-        s.text
-      )}
+        <label htmlFor="confirmPassword">Confirm Password</label>
+        <input
+          type={"password"}
+          className={s.text}
+          name="cpassword"
+          placeholder="Password"
+          {...register("cpassword", {
+            required: "Confirm password is required",
+          })}
+        />
+        {errors.cpassword && (
+          <p className={s.ErrorMessage} role="alert">
+            {errors.cpassword.message}
+          </p>
+        )}
+        <label htmlFor="age">Age</label>
 
-      {props.authorizeError && (
-        <div className={s.ErrorMessage}>Email already exist.</div>
-      )}
-
-      {formik.touched.email && formik.errors.email && (
-        <div className={s.ErrorMessage}>{formik.errors.email}</div>
-      )}
-
-      <label htmlFor="password">Password</label>
-      {createFormField(
-        "password",
-        "Password",
-        "password",
-        "password",
-        formik.handleChange,
-        formik.handleBlur,
-        formik.values.password,
-        s.text
-      )}
-
-      {formik.touched.password && formik.errors.password && (
-        <div className={s.ErrorMessage}>{formik.errors.password}</div>
-      )}
-
-      <label htmlFor="passwordConfirm">Confirm password</label>
-      {createFormField(
-        "passwordConfirm",
-        "Confirm password",
-        "passwordConfirm",
-        "password",
-        formik.handleChange,
-        formik.handleBlur,
-        formik.values.passwordConfirm,
-        s.text
-      )}
-
-      {formik.touched.passwordConfirm && formik.errors.passwordConfirm && (
-        <div className={s.ErrorMessage}>{formik.errors.passwordConfirm}</div>
-      )}
-
-      <label htmlFor="Age">Age</label>
-      {createFormField(
-        "age",
-        "Age",
-        "age",
-        "number",
-        formik.handleChange,
-        formik.handleBlur,
-        formik.values.age,
-        s.text
-      )}
-
-      {formik.touched.age && formik.errors.age && (
-        <div className={s.ErrorMessage}>{formik.errors.age}</div>
-      )}
-
-      <label htmlFor="avatar">Avatar</label>
-      <Avatars />
-      <div>
-        <button className={s.btnreg} type="submit">
+        <input
+          type={"number"}
+          className={s.text}
+          name="age"
+          placeholder="age"
+          {...register("age", { required: "Age is required" })}
+        />
+        {errors.cpassword && (
+          <p className={s.ErrorMessage} role="alert">
+            {errors.cpassword.message}
+          </p>
+        )}
+        <label htmlFor="avatar">Avatar</label>
+        <Avatars />
+        {authorizeError && (
+          <div className={s.ErrorMessage}>*Something went wrong. </div>
+        )}
+        <button type="submit" className={s.btnreg}>
           Register
         </button>
       </div>

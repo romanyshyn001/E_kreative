@@ -7,7 +7,7 @@ import s from "./App.module.css";
 import LogOutMain from "./components/Auth/Logout/LogOutMain";
 import NavigationMain from "./components/NavBar/NavigationMain";
 import ProfileMain from "./pages/Profile/ProfileMain";
-
+import PreLoader from "./components/Loader/PreLoader";
 const LoginMain = React.lazy(() => import("./components/Auth/Login/LoginMain"));
 const Registration = React.lazy(() =>
   import("./components/Auth/Register/Registration")
@@ -23,13 +23,12 @@ const App = () => {
       <div className={s.App_header}>
         <NavigationMain />
       </div>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<PreLoader />}>
         <Routes>
           <React.Fragment>
             <Route path="/" element={<Navigate replace to="/posts" />} />
             <Route path="/announcements" element={<AnnouncementsMain />} />
             <Route path="/profile" element={<ProfileMain />} />
-
             <Route path="/auth" element={<LoginMain />} />
             <Route path="/logout" element={<LogOutMain />} />
             <Route path="/register" element={<Registration />} />
@@ -55,3 +54,4 @@ const MainApp = () => {
   );
 };
 export default MainApp;
+window.store = store;

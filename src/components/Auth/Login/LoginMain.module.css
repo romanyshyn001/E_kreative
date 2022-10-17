@@ -94,8 +94,9 @@ label{
 }
 
 .ErrorMessage{
-    color: #ba3939;
-    margin-top:5px
+    color: #cf2f4d;
+    margin-top:5px;
+    font-weight: bold;
 }
 
 

@@ -37,8 +37,8 @@ const Avatars = () => {
             key={key}
             src={require(`../../assets/avatarIcon/${key}`)}
             alt={key}
-            height={150}
-            width={150}
+            height={50}
+            width={50}
           />
         );
       })}

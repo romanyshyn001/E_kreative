@@ -67,6 +67,7 @@ const AddAnnoucement = (props) => {
           onChange={addTitle}
           value={title}
           alt={'Input Title'}
+          test-id={'test-id'}
         />
         <label htmlFor="postContent">Content:</label>
         <textarea
