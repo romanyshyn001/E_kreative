@@ -126,7 +126,7 @@ nav a:hover {
   }
 
   .item a {
-    color: rgb(255, 208, 208);
+    color: rgb(255, 255, 255);
     font-size: 25px;
     text-decoration: none;
     /* padding: 20px; */
@@ -137,6 +137,7 @@ nav a:hover {
   .item {
     margin-top: 45px;
     margin-bottom: -30px;
+    padding-top: 15px;
   }
 
   .logout {
