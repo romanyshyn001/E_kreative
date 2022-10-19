@@ -33,7 +33,7 @@ const CommentsMain = (props) => {
                 </div>
               </div>
               <div className={s.ava}>
-                <img
+                <img className={s.userAvatar}
                   src={comment.user.avatar ? comment.user.avatar : ava}
                   alt="your avatar"
                 />

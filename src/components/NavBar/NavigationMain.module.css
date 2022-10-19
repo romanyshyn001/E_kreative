@@ -1,17 +1,13 @@
-/* .main{
+nav {
   display: flex;
-  justify-content: center;
-} */
-
-nav{
-  display: flex;
-  padding: 25px;
+  padding: 10px;
   flex-direction: row;
-  justify-content: space-between; 
+  justify-content: space-between;
   position: static;
   /* flex-wrap: wrap; */
 }
-.item a{
+
+.item a {
   color: rgb(252, 252, 252);
   font-size: 25px;
   text-decoration: none;
@@ -19,7 +15,8 @@ nav{
   font-weight: 700;
 
 }
-.item a:hover{
+
+.item a:hover {
   color: rgb(21, 226, 86);
   font-weight: 700;
   font-size: 25px;
@@ -27,7 +24,7 @@ nav{
 }
 
 
-.active a{
+.active a {
   color: rgb(25, 4, 143);
   font-size: 20px;
   font-weight: bold;
@@ -35,32 +32,152 @@ nav{
 }
 
 .item {
-  margin-top: 30px;
-  margin-bottom: 70px;
+  /* margin-top: 10px; */
+  margin-bottom: 10px;
 }
-.menuMain{
+
+.menuMain {
   display: flex;
   flex-wrap: wrap;
+  align-content: center
 }
-.auth a{
+
+.login,
+.register,
+.logout {
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+.login a,
+.register a,
+.logout a {
   color: rgb(252, 252, 252);
   font-size: 15px;
   text-decoration: none;
   padding: 15px;
   font-weight: 700;
 }
-.auth{
-  margin-bottom: 15px;
-  margin-top: 15px;
 
-}
-.auth a:hover{
+nav a:hover {
   color: rgb(21, 226, 86);
   font-weight: 700;
   font-size: 15px;
   text-decoration: none;
 }
-.userInfo{
+
+.userAuth {
+  display: flex;
+  align-items: center;
+}
+
+/* .auth a {
+  color: rgb(252, 252, 252);
+  font-size: 15px;
+  text-decoration: none;
+  padding: 15px;
+  font-weight: 700;
+}
+
+.auth {
+  margin-bottom: 15px;
+  margin-top: 15px;
+
+} */
+
+/* .auth a:hover {
+  color: rgb(21, 226, 86);
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+} */
+
+.userInfo {
   margin-top: -20px;
   margin-bottom: 10px;
+}
+
+.burger {
+  display: none;
+}
+
+@media only screen and (max-width: 900px) {
+  .menuMain {
+    display: none;
+  }
+
+  .burger {
+    position: absolute;
+    display: block;
+    font-size: 25px;
+    border: 0px;
+    background: none;
+    left: 50px;
+    top: 35px;
+  }
+
+  .show {
+    display: block;
+    margin-top: 60px;
+  }
+
+  nav {
+    padding-bottom: 110px;
+  }
+
+  .item a {
+    color: rgb(255, 208, 208);
+    font-size: 25px;
+    text-decoration: none;
+    /* padding: 20px; */
+    font-weight: 700;
+
+  }
+
+  .item {
+    margin-top: 45px;
+    margin-bottom: -30px;
+  }
+
+  .logout {
+    position: absolute;
+    right: 30px;
+    z-index: 2;
+    top: 75px;
+  }
+
+  .login {
+    top: 25px;
+    position: absolute;
+    right: 110px;
+    z-index: 3;
+  }
+
+  .register {
+    top: 25px;
+    position: absolute;
+    right: 20px;
+    z-index: 4;
+  }
+
+  .login a {
+    color: rgb(252, 252, 252);
+    font-size: 15px;
+    text-decoration: none;
+    padding: 10px;
+    font-weight: 700;
+  }
+
+  .register a {
+    color: rgb(252, 252, 252);
+    font-size: 15px;
+    text-decoration: none;
+    padding: 10px;
+    font-weight: 700;
+  }
+
+  .burger img {
+    height: 40px;
+    width: 40px;
+  }
 }

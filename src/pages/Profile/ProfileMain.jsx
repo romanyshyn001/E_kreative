@@ -2,15 +2,15 @@ import React from "react";
 import s from "./ProfileMain.module.css";
 import empty from "./../../assets/images/empty.jpg";
 
-const ProfileMain = () => {
-  const user = JSON.parse(localStorage.getItem("user"));
-
+const ProfileMain = ({ user }) => {
   return (
     <div className={s.container}>
-      <img src={user.avatar || empty} alt="avatar" />
-      <div>
-        <span>{user.firstName}</span>
-        <span> {user.lastName}</span>
+      <div className={s.avatar}>
+        <img src={user.avatar || empty} alt="avatar" />
+      </div>
+      <div className={s.userInfo}>
+        <span> {user.firstname}</span>
+        <span> {user.lastname}</span>
       </div>
     </div>
   );

@@ -8,7 +8,7 @@
     background-color: rgb(220, 231, 137);
     border-radius: 50px 50px 0px 50px;
 }
-img{
+.userAvatar{
     height: 90px;
     width: 90px;
     border-radius: 50px;
