@@ -34,6 +34,8 @@ nav {
 .item {
   /* margin-top: 10px; */
   margin-bottom: 10px;
+  background: none;
+  border: 0px;
 }
 
 .menuMain {
@@ -47,6 +49,8 @@ nav {
 .logout {
   margin-bottom: 15px;
   margin-top: 15px;
+  background: none;
+  border: 0px;
 }
 
 .login a,
@@ -135,9 +139,12 @@ nav a:hover {
   }
 
   .item {
+    display: flex;
     margin-top: 45px;
     margin-bottom: -30px;
     padding-top: 15px;
+    background: none;
+    border: 0px;
   }
 
   .logout {

@@ -7,8 +7,7 @@ import AddNewComment from "../Comments/AddComment/AddNewComment";
 import CommentsMain from "../Comments/CommentsMain";
 import UpdatePostMain from "./UpdatePost/UpdatePostMain";
 
-const PostsManage = (props) => {
-  const post = props.post;
+const PostsManage = ({ post, perPage, currentPage, errorStatus }) => {
   const user = JSON.parse(window.localStorage.getItem("user"));
 
   const { getCommentError } = useSelector((state) => {
@@ -30,8 +29,8 @@ const PostsManage = (props) => {
             <AddNewComment
               user={user}
               post={post}
-              perPage={props.perPage}
-              currentPage={props.currentPage}
+              perPage={perPage}
+              currentPage={currentPage}
             />
           </div>
           {user.id === post.userId && (
@@ -40,15 +39,15 @@ const PostsManage = (props) => {
                 <UpdatePostMain
                   user={user}
                   post={post}
-                  errorStatus={props.errorStatus}
+                  errorStatus={errorStatus}
                 />
               </div>
               <div>
                 <DeleteItem
                   post={post.id}
-                  perPage={props.perPage}
-                  currentPage={props.currentPage}
-                  errorStatus={props.errorStatus}
+                  perPage={perPage}
+                  currentPage={currentPage}
+                  errorStatus={errorStatus}
                 />
               </div>
             </div>

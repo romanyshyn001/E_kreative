@@ -43,14 +43,6 @@ const AnnouncementsMain = () => {
         ) : (
           <div>
             <div>
-              <Pagination
-                totalPostCount={totalAnnouncementCount}
-                perPage={totalOnPage}
-                currentPage={pageNumber}
-                onChange={onChange}
-              />
-            </div>
-            <div>
               <AddAnnoucement user={user} errorStatus={errorStatus} />
             </div>
             {announcements.map((announcement) => (
@@ -90,6 +82,14 @@ const AnnouncementsMain = () => {
             ))}
           </div>
         )}
+      </div>
+      <div>
+        <Pagination
+          totalPostCount={totalAnnouncementCount}
+          perPage={totalOnPage}
+          currentPage={pageNumber}
+          onChange={onChange}
+        />
       </div>
     </div>
   );

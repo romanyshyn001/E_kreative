@@ -1,38 +1,52 @@
-.containerPost{
+.containerPost {
     display: flex;
     justify-content: center;
 }
-.container{
+
+.container {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    padding-top: 150px;
 }
-.info div{
+
+.mainSection {
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-bottom: 150px;
+}
+
+.info div {
     background-color: hsl(120, 1%, 83%);
-    width:100%;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     border-radius: 10px;
     margin-top: 20px;
 }
-.info p{
-   padding: 10px;
-   font-family:'Times New Roman', Times, serif
+
+.info p {
+    padding: 10px;
+    font-family: 'Times New Roman', Times, serif
 }
-.info h3{
+
+.info h3 {
     border-radius: 15px;
     font-size: 20px;
     background-color: hsl(120, 1%, 83%);
     padding: 15px;
 }
-.action{
-    display:  flex;
-    justify-content: flex-end;    
+
+.action {
+    display: flex;
+    justify-content: flex-end;
 }
-.action a{
-    cursor:none;
+
+.action a {
+    cursor: none;
 }
-.btn{
+
+.btn {
     margin: 10px 10px 10px 0px;
     padding: 5px;
     font-size: 15px;
@@ -40,29 +54,38 @@
     background-color: hsl(120, 1%, 83%);
     border-radius: 10px;
 }
-.btn:hover{
+
+.btn:hover {
     background-color: hsl(0, 1%, 56%);
 }
-.hidden{
-    color:rgb(173, 7, 7)
+
+.hidden {
+    color: rgb(173, 7, 7)
 }
-.mainSection{
-    padding-left: 100px;
-    padding-right: 100px;
-    padding-bottom: 150px;
-}
-.messageError{
+
+
+.messageError {
     color: #ba3939;
     margin: 4px;
     padding-left: 5px;
     font-size: 25px;
     font-weight: 500;
 }
-.addComment{
+
+.addComment {
     display: flex;
     justify-content: flex-end;
     margin-bottom: 15px;
     height: 100px;
 }
 
-
+@media only screen and (max-width: 900px) {
+    .container {
+        padding-top: 100px;
+    }
+    .mainSection {
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 20px;
+    }
+}

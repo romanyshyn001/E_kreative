@@ -55,12 +55,6 @@ const PostMain = () => {
 
   return (
     <div className={s.container}>
-      <Pagination
-        totalPostCount={totalPostCount}
-        perPage={perPage}
-        currentPage={currentPage}
-        onChange={onChange}
-      />
       <section className={s.mainSection}>
         {currentPage === 1 && (
           <AddPost
@@ -74,6 +68,12 @@ const PostMain = () => {
         ) : (
           renderedPosts
         )}
+        <Pagination
+          totalPostCount={totalPostCount}
+          perPage={perPage}
+          currentPage={currentPage}
+          onChange={onChange}
+        />
       </section>
     </div>
   );
