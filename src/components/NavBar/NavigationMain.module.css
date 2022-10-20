@@ -4,6 +4,7 @@ nav {
   flex-direction: row;
   justify-content: space-between;
   position: static;
+  height: 200px;
   /* flex-wrap: wrap; */
 }
 
@@ -32,6 +33,7 @@ nav {
 }
 
 .item {
+  display: flex;
   /* margin-top: 10px; */
   margin-bottom: 10px;
   background: none;
@@ -71,30 +73,11 @@ nav a:hover {
 }
 
 .userAuth {
-  display: flex;
-  align-items: center;
+  position: absolute;
+  right: 40px;
+  top: auto;
 }
 
-/* .auth a {
-  color: rgb(252, 252, 252);
-  font-size: 15px;
-  text-decoration: none;
-  padding: 15px;
-  font-weight: 700;
-}
-
-.auth {
-  margin-bottom: 15px;
-  margin-top: 15px;
-
-} */
-
-/* .auth a:hover {
-  color: rgb(21, 226, 86);
-  font-weight: 700;
-  font-size: 15px;
-  text-decoration: none;
-} */
 
 .userInfo {
   margin-top: -20px;
@@ -151,7 +134,7 @@ nav a:hover {
     position: absolute;
     right: 30px;
     z-index: 2;
-    top: 75px;
+    top: 70px;
   }
 
   .login {

@@ -8,7 +8,7 @@ import hamburger from "../../assets/images/hamburger.png";
 
 const NavigationMain = () => {
   const user = JSON.parse(window.localStorage.getItem("user"));
-  const { isAuthorized } = useSelector((state) => state.authMe);
+  const { isAuthorized } = useSelector((state) => state.authMe.authorize);
 
   const [click, setClick] = useState(Boolean);
   const handleClick = () => setClick(!click);
@@ -26,24 +26,10 @@ const NavigationMain = () => {
     );
   };
   // console.log(click);
-  const userLogged = () => {
-    if (localStorage.token != null || isAuthorized) {
-      return (
-        <div>
-          <Profile user={user} />
-          {button("logout", "Log out", s.logout)}
-        </div>
-      );
-    }
-    return (
-      <div className={s.userAuth}>
-        {button("auth", "Log In", s.login)}
-        {button("register", "Register", s.register)}
-      </div>
-    );
-  };
+
+  console.log("isAuthorized", isAuthorized);
   return (
-    <div>
+    <>
       <nav>
         <button className={s.burger} onClick={handleClick}>
           <img src={hamburger} alt="humburger" />
@@ -52,15 +38,41 @@ const NavigationMain = () => {
           {button("posts", "Article", s.item, btnClick)}
           {button("announcements", "Announcements", s.item, btnClick)}
           {button("user", "User", s.item, btnClick)}
+          {!isAuthorized && (
+            <div className={s.userAuth}>
+              {button("auth", "Log In", s.login, btnClick)}
+              {button("register", "Register", s.register, btnClick)}
+            </div>
+          )}
         </div>
-          {userLogged()}
+        {isAuthorized && (
+          <div>
+            <Profile user={user} />
+            {button("logout", "Log out", s.logout, handleClick)}
+          </div>
+        )}
       </nav>
-    </div>
+    </>
   );
 };
 
 export default NavigationMain;
-
+// const userLogged = () => {
+//   if (isAuthorized) {
+//     return (
+//       <div>
+//         <Profile user={user} />
+//         {button("logout", "Log out", s.logout)}
+//       </div>
+//     );
+//   }
+//   return (
+//     <div className={s.userAuth}>
+//       {button("auth", "Log In", s.login)}
+//       {button("register", "Register", s.register)}
+//     </div>
+//   );
+// };
 {
   /* <div className={s.item}>
             <NavLink to="/posts">Article</NavLink>
