@@ -13,14 +13,13 @@ import {
 
 function* postSaga({ payload }) {
   try {
-    const res = yield call(
+    const posts = yield call(
       postApi.getPost,
       payload.currentPage,
       payload.perPage
     );
-    let data = res;
-    let activePage = payload.currentPage;
-    yield put(getAllPosts({ data, activePage }));
+    let currentPage = payload.currentPage;
+    yield put(getAllPosts({ posts, currentPage }));
   } catch (error) {
     yield put(getPostFailure());
   }
@@ -49,8 +48,9 @@ function* updatePostSaga(value) {
 function* addPostSaga(value) {
   try {
     // throw new Error();
-    const newData = yield call(postApi.addPost, value.payload);
-    yield put(addPost(newData.data));
+    const posts = yield call(postApi.addPost, value.payload);
+    
+    yield put(addPost(posts.data));
   } catch (error) {
     yield put(addPostFailure());
   }

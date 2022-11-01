@@ -32,7 +32,7 @@ function* registerSaga(credentials) {
     const res = yield call(authApi.register, credentials.payload);
     localStorage.setItem("token", JSON.stringify(res.data.accessToken));
     localStorage.setItem("user", JSON.stringify(res.data.user));
-    yield put(registerFulfilled(res.data.user));
+    yield put(registerFulfilled(res.data));
   } catch (error) {
     yield put(authorizeFailure());
   }

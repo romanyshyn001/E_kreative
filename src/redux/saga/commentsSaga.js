@@ -15,8 +15,8 @@ function* commentsSaga({ payload: id }) {
   try {
     // throw new Error()
     const res = yield call(commentApi.getComments, id);
-    let data = res.data;
-    yield put(getcomments(data));
+    let comments = res.data;
+    yield put(getcomments({ comments }));
   } catch (error) {
     yield put(getCommentFailure());
   }

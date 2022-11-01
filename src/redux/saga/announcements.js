@@ -14,13 +14,12 @@ import {
 function* getAnnouncementsSaga({ payload }) {
   try {
     // throw new Error();
-    const responce = yield call(
+    const announcements = yield call(
       announcementsApi.getAnnouncementsApi,
       payload.pageNumber
     );
-    let data = responce;
-    let activePage = payload.pageNumber;
-    yield put(getAnnouncements({ data, activePage }));
+    let pageNumber = payload.pageNumber;
+    yield put(getAnnouncements({ announcements, pageNumber }));
   } catch (error) {
     yield put(getAnnouncementFailure());
   }
