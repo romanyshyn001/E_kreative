@@ -45,7 +45,7 @@ function* deleteAnnouncementSaga({ payload }) {
 }
 function* updateAnnouncementSaga(value) {
   try {
-    throw new Error();
+    // throw new Error();
     const newData = yield call(announcementsApi.edit, value.payload);
     yield put(updateAnnouncement(newData.data));
   } catch (error) {

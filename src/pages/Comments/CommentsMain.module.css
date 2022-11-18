@@ -1,37 +1,42 @@
-.comment{
-    margin-top:25px;
-    padding: 15px;
-    margin-left: 30px;
-    margin-right: 55px;
+.comment {
+  margin-top: 5px;
+  padding: 15px;
+  margin-left: 30px;
+  margin-right: 55px;
 
-    font-size: 18px;
-    background-color: rgb(220, 231, 137);
-    border-radius: 50px 50px 0px 50px;
+  font-size: 18px;
+  background-color: rgb(220, 231, 137);
+  border-radius: 50px 50px 0px 50px;
 }
-.userAvatar{
-    height: 90px;
-    width: 90px;
-    border-radius: 50px;
-    margin-top: -10px;
+
+.userAvatar {
+  height: 60px;
+  width: 60px;
+  border-radius: 50px;
+  padding-top: -10px;
 }
-.ava{
-    display: flex;
-    justify-content:flex-end;
+
+.ava {
+  display: flex;
+  justify-content: flex-end;
 }
-.action{
+
+.action {
   display: flex;
   margin-top: 15px;
   justify-content: flex-end;
   margin-bottom: -20px;
 }
-.btn{
-    margin: 10px 10px 10px 0px;
-    padding: 5px;
-    font-size: 15px;
-    color: rgb(0, 0, 0);
-    background-color: hsl(120, 1%, 83%);
-    border-radius: 10px;
+
+.btn {
+  margin: 10px 10px 10px 0px;
+  padding: 5px;
+  font-size: 15px;
+  color: rgb(0, 0, 0);
+  background-color: hsl(120, 1%, 83%);
+  border-radius: 10px;
 }
-.btn:hover{
+
+.btn:hover {
   background-color: hsl(0, 1%, 56%);
-} 
+}

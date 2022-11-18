@@ -21,7 +21,6 @@ export type CommentsType = {
   body: string;
   createdAt: string;
   id: number;
-  title: string;
   updatedAt: string;
   userId: number;
   user?: Array<UserType>;

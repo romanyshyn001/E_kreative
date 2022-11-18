@@ -1,10 +1,11 @@
 .authContainer {
     display: flex;
-    justify-content: center;
+    justify-content: center;;
 }
 
 .login {
-    margin-bottom: 150px;
+    position: absolute;
+    margin-bottom: 200px;
     margin-top: 150px;
     width: 400px;
     background-color: rgba(97, 172, 120, 0.518);

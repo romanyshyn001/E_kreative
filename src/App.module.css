@@ -15,6 +15,7 @@
 }
 .bodyMain{
   background-color: #73acc9;
+  height: auto
 }
 body{
   margin: 0;
@@ -22,5 +23,5 @@ body{
   font-weight: 1.5;
   line-height: 1.5;
   color: #292b2c;
-  height: auto;
+  
 }

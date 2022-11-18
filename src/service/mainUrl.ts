@@ -21,6 +21,7 @@ export type UserDataType = {
 export enum ResultCodesEnum {
   Success = 200,
   Error = 400,
+  Created = 201
 }
 
 export type ResponceTypeApi<D = {}, RC = ResultCodesEnum> = {
