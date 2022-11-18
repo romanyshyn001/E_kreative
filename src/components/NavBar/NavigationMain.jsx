@@ -27,79 +27,42 @@ const NavigationMain = () => {
   };
   // console.log(click);
 
-  console.log("isAuthorized", isAuthorized);
   return (
-    <>
-      <nav>
+    <nav className={s.topNav}>
+      <div>
         <button className={s.burger} onClick={handleClick}>
           <img src={hamburger} alt="humburger" />
         </button>
-        <div className={!click ? s.menuMain : s.show}>
-          {button("posts", "Article", s.item, btnClick)}
-          {button("announcements", "Announcements", s.item, btnClick)}
-          {button("user", "User", s.item, btnClick)}
-          {!isAuthorized && (
-            <div className={s.userAuth}>
-              {button("auth", "Log In", s.login, btnClick)}
-              {button("register", "Register", s.register, btnClick)}
-            </div>
-          )}
-        </div>
-        {isAuthorized && (
-          <div>
-            <Profile user={user} />
-            {button("logout", "Log out", s.logout, handleClick)}
+      </div>
+
+      <div className={!click ? s.menuMain : s.show}>
+        <div className={s.menuContainer}>
+          <div className={s.firstPart}>
+            {button("posts", "Article", s.item, btnClick)}
+            {button("announcements", "Announcements", s.item, btnClick)}
+            {button("user", "User", s.item, btnClick)}
+            {isAuthorized && (
+              <>{button("logout", "Log out", s.item, handleClick)}</>
+            )}
           </div>
-        )}
-      </nav>
-    </>
+          <div className={s.secondPart}>
+            {!isAuthorized && (
+              <div>
+                {button("auth", "Log In", s.login, btnClick)}
+                {button("register", "Register", s.register, btnClick)}
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+            {isAuthorized && (
+              <div className={s.profile}>
+                <Profile user={user} />
+              </div>
+            )}
+    </nav>
+   
   );
 };
 
 export default NavigationMain;
-// const userLogged = () => {
-//   if (isAuthorized) {
-//     return (
-//       <div>
-//         <Profile user={user} />
-//         {button("logout", "Log out", s.logout)}
-//       </div>
-//     );
-//   }
-//   return (
-//     <div className={s.userAuth}>
-//       {button("auth", "Log In", s.login)}
-//       {button("register", "Register", s.register)}
-//     </div>
-//   );
-// };
-{
-  /* <div className={s.item}>
-            <NavLink to="/posts">Article</NavLink>
-          </div>
-          <div className={s.item}>
-            <NavLink to="/announcements">Announcements</NavLink>
-          </div>
-          <div className={s.item}>
-            <NavLink to="/users">Users</NavLink>
-          </div> */
-}
-
-// {localStorage.token != null || isAuthorized ? (
-//   <div>
-//     <Profile user={user} />
-//     {button("logout", "Log out", s.logout)}
-
-//   </div>
-// ) : (
-//   <div className={s.userAuth}>
-//     {authStatus("auth", "Log In", s.login)}
-//     {authStatus("register", "Register", s.register)}
-//     {/* <div className={s.login}>
-//       <NavLink to="/auth">Log In</NavLink>
-//     </div>
-//     <div className={s.register}>
-//       <NavLink to="/register">Register</NavLink>
-//     </div> */}
-//   </div>
-// )}

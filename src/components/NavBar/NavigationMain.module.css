@@ -1,20 +1,16 @@
-nav {
-  display: flex;
+.topNav {
   padding: 10px;
-  flex-direction: row;
-  justify-content: space-between;
   position: static;
-  height: 200px;
-  /* flex-wrap: wrap; */
+  height: 120px;
+  box-sizing: border-box;
 }
 
 .item a {
   color: rgb(252, 252, 252);
   font-size: 25px;
   text-decoration: none;
-  padding: 25px;
+  padding: 25px 25px 25px 25px;
   font-weight: 700;
-
 }
 
 .item a:hover {
@@ -25,25 +21,10 @@ nav {
 }
 
 
-.active a {
-  color: rgb(25, 4, 143);
-  font-size: 20px;
-  font-weight: bold;
-  text-decoration: none;
-}
-
 .item {
-  display: flex;
-  /* margin-top: 10px; */
   margin-bottom: 10px;
   background: none;
   border: 0px;
-}
-
-.menuMain {
-  display: flex;
-  flex-wrap: wrap;
-  align-content: center
 }
 
 .login,
@@ -56,37 +37,45 @@ nav {
 }
 
 .login a,
-.register a,
-.logout a {
+.register a {
   color: rgb(252, 252, 252);
   font-size: 15px;
   text-decoration: none;
   padding: 15px;
   font-weight: 700;
 }
-
-nav a:hover {
-  color: rgb(21, 226, 86);
-  font-weight: 700;
-  font-size: 15px;
-  text-decoration: none;
+.login a:hover, .register a:hover{
+  color: black;
 }
-
-.userAuth {
-  position: absolute;
-  right: 40px;
-  top: auto;
-}
-
-
-.userInfo {
-  margin-top: -20px;
-  margin-bottom: 10px;
-}
-
 .burger {
   display: none;
 }
+
+/* Second Try */
+.menuContainer {
+  display: flex;
+  justify-content: space-between;
+  height: 110px;
+}
+
+.firstPart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.secondPart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile {
+  position: absolute;
+  right: 25px;
+  top: 15px;
+}
+
 
 @media only screen and (max-width: 900px) {
   .menuMain {
@@ -94,13 +83,32 @@ nav a:hover {
   }
 
   .burger {
-    position: absolute;
     display: block;
     font-size: 25px;
     border: 0px;
     background: none;
-    left: 50px;
+    margin: 40px;
     top: 35px;
+  }
+
+  .topNav {
+    height: auto;
+  }
+
+  .menuContainer {
+    box-sizing: border-box;
+    flex-direction: column;
+    height: auto;
+  }
+
+  .firstPart {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .secondPart {
+    justify-content: flex-start;
+
   }
 
   .show {
@@ -108,63 +116,41 @@ nav a:hover {
     margin-top: 60px;
   }
 
-  nav {
-    padding-bottom: 110px;
-  }
-
   .item a {
     color: rgb(255, 255, 255);
     font-size: 25px;
     text-decoration: none;
-    /* padding: 20px; */
     font-weight: 700;
-
   }
 
   .item {
+    display: flex;
+    padding-top: 10px;
+    background: none;
+    border: 0px;
+  }
+
+  .login .register {
     display: flex;
     margin-top: 45px;
     margin-bottom: -30px;
     padding-top: 15px;
     background: none;
     border: 0px;
+    font-size: 25px;
   }
 
-  .logout {
-    position: absolute;
-    right: 30px;
-    z-index: 2;
-    top: 70px;
-  }
 
-  .login {
-    top: 25px;
-    position: absolute;
-    right: 110px;
-    z-index: 3;
-  }
-
-  .register {
-    top: 25px;
-    position: absolute;
-    right: 20px;
-    z-index: 4;
-  }
-
-  .login a {
-    color: rgb(252, 252, 252);
-    font-size: 15px;
-    text-decoration: none;
-    padding: 10px;
-    font-weight: 700;
-  }
-
+  .login a,
   .register a {
-    color: rgb(252, 252, 252);
-    font-size: 15px;
+    color: rgb(255, 255, 255);
+    font-size: 25px;
     text-decoration: none;
-    padding: 10px;
     font-weight: 700;
+  }
+
+  .profile {
+    display: flex;
   }
 
   .burger img {

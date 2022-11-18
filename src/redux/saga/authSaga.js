@@ -9,6 +9,7 @@ import {
 
 function* loginSaga(credentials) {
   try {
+    // console.log('credentials', typeof(password))
     const res = yield call(authApi.login, credentials.payload);
     localStorage.setItem("token", JSON.stringify(res.data.accessToken));
     localStorage.setItem("user", JSON.stringify(res.data.user));

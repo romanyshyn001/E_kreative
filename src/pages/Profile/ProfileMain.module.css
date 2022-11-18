@@ -3,7 +3,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
-
 }
 
 .avatar img {
@@ -11,9 +10,16 @@
     width: 60px;
     border-radius: 100px;
 }
-.userInfo{
+
+.userInfo {
+    display: flex;
     margin-top: 5px;
 }
+
+.userInfo span {
+    margin-left: 7px;
+}
+
 @media only screen and (max-width: 900px) {
     .container {
         position: absolute;
@@ -21,12 +27,14 @@
         top: 10px;
         z-index: 1;
     }
+
     .avatar img {
-        height: 50px;
-        width: 50px;
+        height: 70px;
+        width: 70px;
         border-radius: 100px;
     }
-    .userInfo{
-        font-size: 15px;
+
+    .userInfo {
+        font-size: 17px;
     }
 }
