@@ -1,4 +1,4 @@
-body {
+/* body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -7,14 +7,20 @@ body {
   font-weight: 1.5;
   line-height: 1.5;
   color: #292b2c;
-}
+} */
 .App_header {
   font-size: calc(10px + 1vmin);
   color: white;
-  /* box-sizing: border-box; */
   background-color:  #3b5998 ;
 }
 .bodyMain{
-  background-color: #c0deed;
+  background-color: #73acc9;
 }
-
+body{
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 1.5;
+  line-height: 1.5;
+  color: #292b2c;
+  height: auto;
+}

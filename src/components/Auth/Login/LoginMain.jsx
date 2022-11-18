@@ -33,10 +33,6 @@ const LoginMain = () => {
 
   return (
     <div className={s.authContainer}>
-      <div className={s.background}>
-        <div className={s.shape}></div>
-        <div className={s.shape}></div>
-      </div>
       <form className={s.login} onSubmit={handleSubmit(onSubmit)}>
         <h3>Login Here</h3>
 

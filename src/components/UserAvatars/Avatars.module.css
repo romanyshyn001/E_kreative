@@ -1,9 +1,14 @@
-.avatarContainer img:hover{
+.avatarContainer img{
+
+  margin: 10px 25px 15px 0;
+}
+
+.avatarContainer img:hover {
   transform: scale(1.5);
   cursor: pointer;
-} 
+}
+
 .userAvatar {
   transform: scale(1.5);
   cursor: pointer;
-} 
-  
+}

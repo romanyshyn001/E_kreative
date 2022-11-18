@@ -28,10 +28,6 @@ export const Registration = () => {
   };
   return (
     <div className={s.authContainer}>
-      <div className={s.background}>
-        <div className={s.shape}></div>
-        <div className={s.shape}></div>
-      </div>
       <div className={s.registration}>
         <RegisterForm
           authorizeError={authorizeError}
