@@ -9,9 +9,9 @@ const initialState: InitialStatetype = {
 };
 type InitialStatetype = {
   comments: Array<CommentsType>;
-  isLoading: boolean;
-  getCommentError: boolean;
-  errorStatus: string;
+  isLoading?: boolean;
+  getCommentError?: boolean;
+  errorStatus?: string;
 };
 
 const comments = createSlice({

@@ -8,15 +8,7 @@ const mainURL = axios.create({
   },
 });
 
-export type UserDataType = {
-  age: number;
-  email: string;
-  firstname: string;
-  id: number;
-  lastname: string;
-  cpassword?: string;
-  avatar?: string;
-};
+
 
 export enum ResultCodesEnum {
   Success = 200,

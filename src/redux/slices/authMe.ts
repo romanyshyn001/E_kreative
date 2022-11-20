@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { UserType } from "../../types/types";
 
+
 const initialState: initialStateType = {
   user: [],
   isLoading: false,
@@ -8,14 +9,16 @@ const initialState: initialStateType = {
   rememberMe: false,
   userAvatar: "",
   authorizeError: false,
+  
 };
 type initialStateType = {
-  user: Array<UserType>;
-  isLoading: boolean;
-  isAuthorized: boolean;
-  rememberMe: boolean;
-  userAvatar: string;
-  authorizeError: boolean;
+  user: Array<UserType> | UserType;
+  isLoading?: boolean;
+  isAuthorized?: boolean;
+  rememberMe?: boolean;
+  userAvatar?: string;
+  authorizeError?: boolean;
+  accessToken?: string;
 };
 const authMe = createSlice({
   name: "authMe",
@@ -29,6 +32,9 @@ const authMe = createSlice({
       { payload }: PayloadAction<initialStateType>
     ) => {
       state.user = payload.user;
+      localStorage.setItem("token", JSON.stringify(payload.accessToken));
+      localStorage.setItem("user", JSON.stringify(payload.user));
+
       state.isAuthorized = true;
       state.isLoading = false;
       state.authorizeError = false;
@@ -62,6 +68,8 @@ const authMe = createSlice({
       { payload }: PayloadAction<initialStateType>
     ) => {
       state.user = payload.user;
+      localStorage.setItem("token", JSON.stringify(payload.accessToken));
+      localStorage.setItem("user", JSON.stringify(payload.user));
       state.isAuthorized = true;
       state.isLoading = false;
     },

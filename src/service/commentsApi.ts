@@ -14,7 +14,7 @@ export const commentApi = {
     return await mainURL
       .post<ResponceTypeApi<CommentsType>>("comments/", newData)
       .then((res) => {
-        return res;
+        return res.data;
       });
   },
 
@@ -22,7 +22,7 @@ export const commentApi = {
     return await mainURL
       .patch<ResponceTypeApi<CommentsType>>(`comments/${newData.id}`, newData)
       .then((res) => {
-        return res;
+        return res.data;
       });
   },
 

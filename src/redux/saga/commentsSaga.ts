@@ -1,3 +1,4 @@
+import { SagaParams, CommentsType } from "./../../types/types";
 import { call, put, takeEvery } from "redux-saga/effects";
 import commentApi from "../../service/commentsApi";
 import {
@@ -11,27 +12,30 @@ import {
   addCommentFailure,
 } from "../slices/commentSlices/comments";
 
-function* commentsSaga({ payload: id }) {
+function* commentsSaga() {
   try {
     // throw new Error()
-    const res = yield call(commentApi.getComments, id);
-    let comments = res.data;
+    const res = yield call(commentApi.getComments);
+    let comments: Array<CommentsType> = res.data;
     yield put(getcomments({ comments }));
   } catch (error) {
     yield put(getCommentFailure());
   }
 }
-function* updateCommentSaga(value) {
+function* updateCommentSaga(value: any) {
   try {
     // throw new Error()
-    const newData = yield call(commentApi.editComment, value.payload);
-    yield put(updateComment(newData.data));
+    const newData: CommentsType = yield call(
+      commentApi.editComment,
+      value.payload
+    );
+    yield put(updateComment(newData));
   } catch (error) {
     yield put(editCommentFailure());
   }
 }
 
-function* removeCommentSaga({ payload }) {
+function* removeCommentSaga({ payload }: SagaParams) {
   try {
     // throw new Error()
     yield call(commentApi.deleteComment, payload);
@@ -40,11 +44,14 @@ function* removeCommentSaga({ payload }) {
     yield put(removeCommentFailure());
   }
 }
-function* addCommentSaga(value) {
+function* addCommentSaga(value: any) {
   try {
     // throw new Error()
-    const newData = yield call(commentApi.addComment, value.payload);
-    yield put(addComment(newData.data));
+    const newData: CommentsType = yield call(
+      commentApi.addComment,
+      value.payload
+    );
+    yield put(addComment(newData));
   } catch (error) {
     yield put(addCommentFailure());
   }

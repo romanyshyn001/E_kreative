@@ -1,24 +1,21 @@
-import mainURL, { ResponceTypeApi, UserDataType } from "./mainUrl";
+import { AuthorizeUserType, UserType } from "../types/types";
+import mainURL, { ResponceTypeApi } from "./mainUrl";
 
-type ResponceType = {
-  user: UserDataType;
-  accessToken: string;
-};
+
 
 const authApi = {
   login: async (credentials: any) => {
     return await mainURL
-      .post<ResponceTypeApi<ResponceType>>("login", credentials)
+      .post<ResponceTypeApi<AuthorizeUserType>>("login", credentials)
       .then((res) => {
-        return res;
+        return res.data;
       });
   },
   register: async (credentials: any) => {
-    console.log("credentials", credentials);
     return await mainURL
-      .post<ResponceTypeApi<ResponceType>>("register", credentials)
+      .post<ResponceTypeApi<AuthorizeUserType>>("register", credentials)
       .then((res) => {
-        return res;
+        return res.data;
       });
   },
 };

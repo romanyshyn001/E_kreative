@@ -10,7 +10,7 @@ export type UserType = {
   age: number;
   email: string;
   firstname: string;
-  id: number;
+  id?: number;
   lastname: string;
   password: string;
   avatar?: string | null;
@@ -21,6 +21,7 @@ export type CommentsType = {
   body: string;
   createdAt: string;
   id: number;
+  postId: number;
   updatedAt: string;
   userId: number;
   user?: Array<UserType>;
@@ -34,3 +35,10 @@ export type PostsType = {
   user: Array<UserType>;
   userId: number;
 };
+
+
+export type AuthorizeUserType = {
+  accessToken: string;
+  user: UserType
+};
+export type SagaParams = { payload: any; type: string };

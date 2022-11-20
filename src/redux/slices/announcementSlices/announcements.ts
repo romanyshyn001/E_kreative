@@ -15,12 +15,12 @@ const initialState: InitialStateType = {
 type InitialStateType = {
   announcements: Array<AnnouncementsType>;
   pageNumber: number;
-  totalOnPage: number;
-  totalAnnouncementCount: number;
-  isLoading: boolean;
+  totalOnPage?: number;
+  totalAnnouncementCount?: number;
+  isLoading?: boolean;
 
-  errorStatus: string;
-  getAnnouncementError: boolean;
+  errorStatus?: string;
+  getAnnouncementError?: boolean;
 };
 
 const announcements = createSlice({

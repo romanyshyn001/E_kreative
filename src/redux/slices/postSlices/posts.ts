@@ -14,11 +14,11 @@ const initialState: InitialStateType = {
 type InitialStateType = {
   posts: Array<PostsType>;
   currentPage: number;
-  perPage: number;
-  totalPostCount: number;
-  isLoading: boolean;
-  errorStatus: string;
-  getPostsError: boolean;
+  perPage?: number;
+  totalPostCount?: number;
+  isLoading?: boolean;
+  errorStatus?: string;
+  getPostsError?: boolean;
 };
 const posts = createSlice({
   name: "posts",

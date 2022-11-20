@@ -1,5 +1,7 @@
 import { call, put, takeEvery } from "redux-saga/effects";
 import announcementsApi from "../../service/announcementsApi";
+import { ResponceTypeApi } from "../../service/mainUrl";
+import { AnnouncementsType, SagaParams } from "../../types/types";
 import {
   addAnnouncement,
   addAnnouncementFailure,
@@ -11,30 +13,35 @@ import {
   updateAnnouncement,
 } from "../slices/announcementSlices/announcements";
 
-function* getAnnouncementsSaga({ payload }) {
+
+
+function* getAnnouncementsSaga({ payload }: SagaParams) {
   try {
     // throw new Error();
-    const announcements = yield call(
+    const announcements: Array<AnnouncementsType> = yield call(
       announcementsApi.getAnnouncementsApi,
       payload.pageNumber
     );
-    let pageNumber = payload.pageNumber;
+    let pageNumber: number = payload.pageNumber;
     yield put(getAnnouncements({ announcements, pageNumber }));
   } catch (error) {
     yield put(getAnnouncementFailure());
   }
 }
 
-function* addAnnouncementSaga(value) {
+function* addAnnouncementSaga(value: any) {
   try {
     // throw new Error();
-    const res = yield call(announcementsApi.add, value.payload);
+    const res: ResponceTypeApi<AnnouncementsType> = yield call(
+      announcementsApi.add,
+      value.payload
+    );
     yield put(addAnnouncement(res.data));
   } catch (error) {
     yield put(addAnnouncementFailure());
   }
 }
-function* deleteAnnouncementSaga({ payload }) {
+function* deleteAnnouncementSaga({ payload }: SagaParams) {
   try {
     // throw new Error();
     yield call(announcementsApi.remove, payload);
@@ -43,10 +50,13 @@ function* deleteAnnouncementSaga({ payload }) {
     yield put(removeAnnouncementFailure());
   }
 }
-function* updateAnnouncementSaga(value) {
+function* updateAnnouncementSaga(value: any) {
   try {
     // throw new Error();
-    const newData = yield call(announcementsApi.edit, value.payload);
+    const newData: ResponceTypeApi<AnnouncementsType> = yield call(
+      announcementsApi.edit,
+      value.payload
+    );
     yield put(updateAnnouncement(newData.data));
   } catch (error) {
     yield put(editAnnouncementFailure());
