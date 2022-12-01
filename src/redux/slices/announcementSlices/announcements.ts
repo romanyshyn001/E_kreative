@@ -23,7 +23,11 @@ export type InitialStateType = {
 };
 
 export enum EnumStatus {
-  AddSuccess = "addSuccess",
+  addSuccess = "ADD_SUCCESS",
+  editSuccess = "EDIT_SUCCESS",
+  editRejected = "EDIT_REJECTED",
+  addRejected = "ADD_REJECED",
+  removeRejected = "REMOVE_REJECTED",
 }
 const announcements = createSlice({
   name: "announcements",
@@ -54,12 +58,15 @@ const announcements = createSlice({
       state: InitialStateType,
       { payload }: PayloadAction<AnnouncementsType>
     ) => {
-      state.errorStatus = "addSuccess";
+      state.errorStatus = EnumStatus.addSuccess;
       state.announcements?.push(payload);
       state.isLoading = false;
     },
 
-    removeAnnouncementLoading: (state: InitialStateType) => {
+    removeAnnouncementLoading: (
+      state: InitialStateType,
+      { payload }: PayloadAction<number>
+    ) => {
       state.isLoading = true;
     },
     removeAnnouncement: (
@@ -72,7 +79,10 @@ const announcements = createSlice({
         );
       state.isLoading = false;
     },
-    updateAnnouncementLoading: (state: InitialStateType) => {
+    updateAnnouncementLoading: (
+      state: InitialStateType,
+      { payload }: PayloadAction<AnnouncementsType>
+    ) => {
       state.isLoading = true;
     },
 
@@ -80,7 +90,7 @@ const announcements = createSlice({
       state: InitialStateType,
       { payload }: PayloadAction<AnnouncementsType>
     ) => {
-      state.errorStatus = "editSuccess";
+      state.errorStatus = EnumStatus.editSuccess;
       const { id, title, body } = payload;
       const existingAnnouncement = state.announcements?.find(
         (announcement) => announcement.id === id
@@ -96,13 +106,13 @@ const announcements = createSlice({
       state.getAnnouncementError = true;
     },
     editAnnouncementFailure: (state: InitialStateType) => {
-      state.errorStatus = "editRejected";
+      state.errorStatus = EnumStatus.editRejected;
     },
     addAnnouncementFailure: (state: InitialStateType) => {
-      state.errorStatus = "addRejected";
+      state.errorStatus = EnumStatus.editRejected;
     },
     removeAnnouncementFailure: (state: InitialStateType) => {
-      state.errorStatus = "removeRejected";
+      state.errorStatus = EnumStatus.removeRejected;
     },
     defaultError: (state: InitialStateType) => {
       state.errorStatus = "";

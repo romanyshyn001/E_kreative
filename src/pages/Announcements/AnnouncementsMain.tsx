@@ -29,7 +29,7 @@ const AnnouncementsMain = () => {
   const user = JSON.parse(localStorage.getItem("user") || "{}");
 
   useEffect(() => {
-    if (errorStatus === EnumStatus.AddSuccess) {
+    if (errorStatus === EnumStatus.addSuccess) {
       dispatch(announcementsLoading({ pageNumber, totalOnPage }));
     }
     dispatch(announcementsLoading({ pageNumber, totalOnPage }));
@@ -71,8 +71,10 @@ const AnnouncementsMain = () => {
                           </div>
                           <div>
                             <DeleteAnnoucement
-                              announcement={announcement.id}
+                              announcement={announcement}
                               errorStatus={errorStatus}
+                              pageNumber={pageNumber}
+                              totalOnPage={totalOnPage}
                             />
                           </div>
                         </div>

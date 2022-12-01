@@ -1,53 +1,60 @@
 import React, { useEffect, useState } from "react";
 import {
   defaultError,
+  EnumStatus,
   updateAnnouncementLoading,
 } from "../../../redux/slices/announcementSlices/announcements";
-import { useDispatch } from "react-redux";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Modal, Button, Form } from "react-bootstrap";
 import s from "./UpdateAnnouncements.module.css";
+import { AnnouncementsType, UserType } from "../../../types/types";
+import { useAppDispatch } from "../../../redux/app/hooks";
 
-const UpdateAnnouncementMain = (props) => {
-  console.log(props, 'props')
-  const errorStatus = props.errorStatus;
+type PropsType = {
+  announcement: AnnouncementsType;
+  user: UserType;
+  errorStatus: string
+}
+const UpdateAnnouncementMain = ({ announcement, user, errorStatus }: PropsType) => {
+
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const dispatch = useDispatch();
-  const [title, setTitle] = useState(props.announcement.title);
-  const [body, setBody] = useState(props.announcement.body);
-  const [announcementStatus, setAnnouncementStatus] = useState();
+  const dispatch = useAppDispatch()
+  const [title, setTitle] = useState(announcement.title);
+  const [body, setBody] = useState(announcement.body);
+  const [announcementStatus, setAnnouncementStatus] = useState(String);
 
-  const titleChange = (e) => {
-    setTitle(e.target.value);
+  const titleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setTitle(event.currentTarget.value);
   };
-  const bodyChange = (e) => {
-    setBody(e.target.value);
+  const bodyChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setBody(event.currentTarget.value);
   };
   const onSaveannouncementClicked = () => {
     const updatedAt = new Date().toISOString();
 
     if (title && body) {
-      const options = {
-        id: props.announcement.id,
+      const options: AnnouncementsType = {
+        id: announcement.id,
         title: title,
         body: body,
         updatedAt: updatedAt,
-        userId: props.user.id,
+        userId: user.id,
+        createdAt: announcement.createdAt
       };
       dispatch(updateAnnouncementLoading(options));
     }
   };
 
   useEffect(() => {
-    if (errorStatus === "editSuccess") {
+    if (errorStatus === EnumStatus.editSuccess) {
       setAnnouncementStatus("Saving...");
       setTimeout(() => {
         setAnnouncementStatus("");
         handleClose();
       }, 500);
-    } else if (errorStatus === "editRejected") {
+    } else if (errorStatus === EnumStatus.editRejected) {
       setAnnouncementStatus("Announcement not saved. Try again later...");
       setTimeout(() => {
         setAnnouncementStatus("");

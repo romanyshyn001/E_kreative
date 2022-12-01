@@ -19,7 +19,6 @@ const AddAnnoucement = ({ user, errorStatus }: PropsType) => {
   const [title, setTitle] = useState(String);
   const [body, setBody] = useState(String);
   const [buttonStatus, setButtonStatus] = useState(false);
-
   const addTitle = (event: React.FormEvent<HTMLInputElement>) => {
     setTitle(event.currentTarget.value);
   };
@@ -35,7 +34,8 @@ const AddAnnoucement = ({ user, errorStatus }: PropsType) => {
           title: title,
           body: body,
           userId: user.id,
-          createdAt: createdAt,
+          createdAt: createdAt
+
         };
         dispatch(addAnnouncementLoading(options));
         setTitle("");
