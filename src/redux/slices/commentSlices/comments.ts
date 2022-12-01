@@ -13,7 +13,13 @@ type InitialStatetype = {
   getCommentError?: boolean;
   errorStatus?: string;
 };
-
+export enum EnumStatusComments {
+  addSuccess = "ADD_SUCCESS",
+  editSuccess = "EDIT_SUCCESS",
+  editRejected = "EDIT_REJECTED",
+  addRejected = "ADD_REJECED", //
+  removeRejected = "REMOVE_REJECTED",
+}
 const comments = createSlice({
   name: "comments",
   initialState,
@@ -28,7 +34,10 @@ const comments = createSlice({
       state.comments = payload.comments;
       state.isLoading = false;
     },
-    removeCommentLoading: (state: InitialStatetype) => {
+    removeCommentLoading: (
+      state: InitialStatetype,
+      { payload }: PayloadAction<number>
+    ) => {
       state.isLoading = true;
     },
     removeComment: (
@@ -42,25 +51,31 @@ const comments = createSlice({
       );
       state.isLoading = false;
     },
-    addCommentLoading: (state: InitialStatetype) => {
+    addCommentLoading: (
+      state: InitialStatetype,
+      { payload }: PayloadAction<CommentsType>
+    ) => {
       state.isLoading = true;
     },
     addComment: (
       state: InitialStatetype,
       { payload }: PayloadAction<CommentsType>
     ) => {
-      state.errorStatus = "addSuccess";
+      state.errorStatus = EnumStatusComments.addSuccess;
       state.comments.push(payload);
       state.isLoading = false;
     },
-    updateCommentLoading: (state: InitialStatetype) => {
+    updateCommentLoading: (
+      state: InitialStatetype,
+      { payload }: PayloadAction<CommentsType>
+    ) => {
       state.isLoading = true;
     },
     updateComment: (
       state: InitialStatetype,
       { payload }: PayloadAction<CommentsType>
     ) => {
-      state.errorStatus = "editSuccess";
+      state.errorStatus = EnumStatusComments.editSuccess;
       const { id, body } = payload;
       const existingPost = state.comments.find((comment) => comment.id === id);
       if (existingPost) {
@@ -70,7 +85,7 @@ const comments = createSlice({
     },
     // Errors
     editCommentFailure: (state: InitialStatetype) => {
-      state.errorStatus = "editRejected";
+      state.errorStatus = EnumStatusComments.editRejected;
     },
     defaultError: (state: InitialStatetype) => {
       state.errorStatus = "";
@@ -82,7 +97,7 @@ const comments = createSlice({
       state.errorStatus = "removeRejected";
     },
     addCommentFailure: (state: InitialStatetype) => {
-      state.errorStatus = "addRejected";
+      state.errorStatus = EnumStatusComments.addRejected;
     },
   },
 });

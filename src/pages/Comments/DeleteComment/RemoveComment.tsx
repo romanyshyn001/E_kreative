@@ -1,29 +1,35 @@
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "../../../redux/app/hooks";
 import {
   defaultError,
+  EnumStatusComments,
   removeCommentLoading,
 } from "../../../redux/slices/commentSlices/comments";
 import s from "./RemoveComment.module.css";
 
-const RemoveComment = (props) => {
-  const dispatch = useDispatch();
-  const [errorMessage, setErrorMessage] = useState();
+type PropsType = {
+  errorStatus: string
+  comment: number
+}
+const RemoveComment = ({ errorStatus, comment }: PropsType) => {
+
+  const dispatch = useAppDispatch()
+  const [errorMessage, setErrorMessage] = useState(String);
 
   useEffect(() => {
-    if (props.errorStatus === "removeRejected") {
+    if (errorStatus === EnumStatusComments.removeRejected) {
       setErrorMessage("**Can not remove comment");
       setTimeout(() => {
         setErrorMessage("");
         dispatch(defaultError());
       }, 4000);
     }
-  }, [dispatch, props.errorStatus]);
+  }, [dispatch, errorStatus]);
 
-  const removeCommentHandle = (value) => {
-    dispatch(removeCommentLoading(value));
+  const removeCommentHandle = (commentId: any) => {
+    dispatch(removeCommentLoading(commentId));
   };
 
   return (
@@ -32,7 +38,7 @@ const RemoveComment = (props) => {
       <button
         className={s.btn}
         type="submit"
-        onClick={() => removeCommentHandle(props.comment)}
+        onClick={() => removeCommentHandle(comment)}
       >
         Remove
       </button>

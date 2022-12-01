@@ -4,6 +4,7 @@ import s from "./AddArticle.module.css";
 import {
   addAnnouncementLoading,
   defaultError,
+  EnumStatus,
 } from "../../../redux/slices/announcementSlices/announcements";
 import { useAppDispatch } from "../../../redux/app/hooks";
 import { AnnouncementsType, UserType } from "../../../types/types";
@@ -46,8 +47,7 @@ const AddAnnoucement = ({ user, errorStatus }: PropsType) => {
     }
   };
   useEffect(() => {
-    //todo: addRejected make enum 
-    if (errorStatus === "addRejected") {
+    if (errorStatus === EnumStatus.addRejected) {
       setErrorMessage("*Something went wrong... Try again later");
     }
 

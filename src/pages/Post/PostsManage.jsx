@@ -57,7 +57,7 @@ const PostsManage = ({ post, perPage, currentPage, errorStatus }) => {
         <h3 className={s.hidden}>Login for more opportunities</h3>
       )}
       <div>
-        <CommentsMain post={post} key={post.id} />
+        <CommentsMain post={post} />
       </div>
     </div>
   );

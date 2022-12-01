@@ -22,9 +22,9 @@ export type CommentsType = {
   createdAt: string;
   id: number;
   postId: number;
-  updatedAt: string;
-  userId: number;
-  user?: Array<UserType>;
+  updatedAt: string | null;
+  userId?: number;
+  user?: UserType;
 };
 export type PostsType = {
   body: string;

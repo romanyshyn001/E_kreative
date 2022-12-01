@@ -1,22 +1,25 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import s from "./CommentsMain.module.css";
 import ava from "./../../assets/images/empty.jpg";
 import CommentsManage from "./CommentsManage";
 import { commentSelector } from "../../redux/slices/commentSlices/commentSelectors";
+import { CommentsType, PostsType } from "../../types/types";
+import { useAppSelector } from "../../redux/app/hooks";
 
-const CommentsMain = (props) => {
-  const user = JSON.parse(window.localStorage.getItem("user"));
-
-  const { comments, errorStatus } = useSelector((state) =>
+type PropsType = {
+  post: PostsType
+}
+const CommentsMain = ({ post }: PropsType) => {
+  const user = JSON.parse(localStorage.getItem("user") || "{}");
+  const { comments, errorStatus } = useAppSelector((state) =>
     commentSelector(state)
   );
 
   return (
     <div>
-      {comments.map((comment) => (
+      {comments.map((comment: CommentsType) => (
         <div key={comment.id}>
-          {comment.postId === props.post.id && (
+          {comment.postId === post.id && (
             <div>
               <div className={s.comment}>
                 <div>
@@ -34,7 +37,7 @@ const CommentsMain = (props) => {
               </div>
               <div className={s.ava}>
                 <img className={s.userAvatar}
-                  src={comment.user.avatar ? comment.user.avatar : ava}
+                  src={comment.user?.avatar ? comment.user.avatar : ava}
                   alt="your avatar"
                 />
               </div>
