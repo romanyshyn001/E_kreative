@@ -28,7 +28,6 @@ export const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-export type RootStateType = ReturnType<typeof store.getState>;
 
 let sagaMiddleware = createSagaMiddleware();
 // const middleware = [sagaMiddleware];
@@ -54,5 +53,8 @@ const store = configureStore({
 });
 
 sagaMiddleware.run(rootSaga);
+
+export type RootStateType = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
 export const persistor = persistStore(store);
 export default store;

@@ -9,6 +9,7 @@ import { Modal, Button, Form } from "react-bootstrap";
 import s from "./UpdateAnnouncements.module.css";
 
 const UpdateAnnouncementMain = (props) => {
+  console.log(props, 'props')
   const errorStatus = props.errorStatus;
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);

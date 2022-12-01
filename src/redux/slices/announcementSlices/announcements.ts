@@ -4,30 +4,35 @@ import { AnnouncementsType } from "../../../types/types";
 const initialState: InitialStateType = {
   announcements: [],
   pageNumber: 1,
-  totalOnPage: 10,
+  totalOnPage: 5,
   totalAnnouncementCount: 30,
   isLoading: false,
-
+  //todo: add Enum status to errorStatus
   errorStatus: "",
   getAnnouncementError: false,
 };
 
-type InitialStateType = {
-  announcements: Array<AnnouncementsType>;
+export type InitialStateType = {
+  announcements?: Array<AnnouncementsType>;
   pageNumber: number;
-  totalOnPage?: number;
+  totalOnPage: number;
   totalAnnouncementCount?: number;
   isLoading?: boolean;
-
   errorStatus?: string;
   getAnnouncementError?: boolean;
 };
 
+export enum EnumStatus {
+  AddSuccess = "addSuccess",
+}
 const announcements = createSlice({
   name: "announcements",
   initialState,
   reducers: {
-    announcementsLoading: (state: InitialStateType) => {
+    announcementsLoading: (
+      state: InitialStateType,
+      { payload }: PayloadAction<InitialStateType>
+    ) => {
       state.isLoading = true;
     },
     getAnnouncements: (
@@ -37,8 +42,12 @@ const announcements = createSlice({
       state.announcements = payload.announcements;
       state.pageNumber = payload.pageNumber;
       state.isLoading = false;
+      state.totalOnPage = payload.totalOnPage;
     },
-    addAnnouncementLoading: (state: InitialStateType) => {
+    addAnnouncementLoading: (
+      state: InitialStateType,
+      { payload }: PayloadAction<AnnouncementsType>
+    ) => {
       state.isLoading = true;
     },
     addAnnouncement: (
@@ -46,7 +55,7 @@ const announcements = createSlice({
       { payload }: PayloadAction<AnnouncementsType>
     ) => {
       state.errorStatus = "addSuccess";
-      state.announcements.push(payload);
+      state.announcements?.push(payload);
       state.isLoading = false;
     },
 
@@ -57,9 +66,10 @@ const announcements = createSlice({
       state: InitialStateType,
       { payload }: PayloadAction<number>
     ) => {
-      state.announcements = state.announcements.filter(
-        (announcement) => announcement.id !== payload
-      );
+      if (state.announcements)
+        state.announcements = state.announcements?.filter(
+          (announcement) => announcement.id !== payload
+        );
       state.isLoading = false;
     },
     updateAnnouncementLoading: (state: InitialStateType) => {
@@ -72,7 +82,7 @@ const announcements = createSlice({
     ) => {
       state.errorStatus = "editSuccess";
       const { id, title, body } = payload;
-      const existingAnnouncement = state.announcements.find(
+      const existingAnnouncement = state.announcements?.find(
         (announcement) => announcement.id === id
       );
       if (existingAnnouncement) {

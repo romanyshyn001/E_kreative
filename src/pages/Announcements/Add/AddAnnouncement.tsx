@@ -1,35 +1,40 @@
 import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import s from "./AddArticle.module.css";
-import { useDispatch } from "react-redux";
 import {
   addAnnouncementLoading,
   defaultError,
 } from "../../../redux/slices/announcementSlices/announcements";
+import { useAppDispatch } from "../../../redux/app/hooks";
+import { AnnouncementsType, UserType } from "../../../types/types";
 
-const AddAnnoucement = (props) => {
-  // console.log('props', props)
-  const dispatch = useDispatch();
-  const [errorMessage, setErrorMessage] = useState("");
-  const [title, setTitle] = useState("");
-  const [body, setBody] = useState("");
+
+type PropsType = {
+  user: UserType
+  errorStatus: string
+}
+const AddAnnoucement = ({ user, errorStatus }: PropsType) => {
+  const dispatch = useAppDispatch();
+  const [errorMessage, setErrorMessage] = useState(String);
+  const [title, setTitle] = useState(String);
+  const [body, setBody] = useState(String);
   const [buttonStatus, setButtonStatus] = useState(false);
 
-  const addTitle = (e) => {
-    setTitle(e.target.value);
+  const addTitle = (event: React.FormEvent<HTMLInputElement>) => {
+    setTitle(event.currentTarget.value);
   };
-  const addBody = (e) => {
-    setBody(e.target.value);
+  const addBody = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setBody(event.currentTarget.value);
   };
 
   const onSavePostClicked = () => {
     const createdAt = new Date().toISOString();
-    if (props.user) {
+    if (user) {
       if (title && body) {
-        const options = {
+        const options: AnnouncementsType = {
           title: title,
           body: body,
-          userId: props.user.id,
+          userId: user.id,
           createdAt: createdAt,
         };
         dispatch(addAnnouncementLoading(options));
@@ -41,7 +46,8 @@ const AddAnnoucement = (props) => {
     }
   };
   useEffect(() => {
-    if (props.errorStatus === "addRejected") {
+    //todo: addRejected make enum 
+    if (errorStatus === "addRejected") {
       setErrorMessage("*Something went wrong... Try again later");
     }
 
@@ -52,7 +58,7 @@ const AddAnnoucement = (props) => {
       }, 10000);
       setButtonStatus(false);
     };
-  }, [dispatch, setErrorMessage, props.errorStatus]);
+  }, [dispatch, setErrorMessage, errorStatus]);
 
   return (
     <section>

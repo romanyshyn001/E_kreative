@@ -13,17 +13,17 @@ import {
   updateAnnouncement,
 } from "../slices/announcementSlices/announcements";
 
-
-
 function* getAnnouncementsSaga({ payload }: SagaParams) {
   try {
     // throw new Error();
     const announcements: Array<AnnouncementsType> = yield call(
       announcementsApi.getAnnouncementsApi,
-      payload.pageNumber
+      payload.pageNumber,
+      payload.totalOnPage
     );
     let pageNumber: number = payload.pageNumber;
-    yield put(getAnnouncements({ announcements, pageNumber }));
+    let totalOnPage: number = payload.totalOnPage;
+    yield put(getAnnouncements({ announcements, pageNumber, totalOnPage }));
   } catch (error) {
     yield put(getAnnouncementFailure());
   }
@@ -31,6 +31,7 @@ function* getAnnouncementsSaga({ payload }: SagaParams) {
 
 function* addAnnouncementSaga(value: any) {
   try {
+    // console.log('payload', payload)
     // throw new Error();
     const res: ResponceTypeApi<AnnouncementsType> = yield call(
       announcementsApi.add,

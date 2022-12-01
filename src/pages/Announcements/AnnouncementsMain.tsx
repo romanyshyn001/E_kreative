@@ -1,37 +1,41 @@
 import React from "react";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import Pagination from "../../components/Pagination/Pagination";
+import { useAppDispatch, useAppSelector } from "../../redux/app/hooks";
 import { announcementsLoading } from "../../redux/slices/announcementSlices/announcements";
 import { announcementSelector } from "../../redux/slices/announcementSlices/announcementSelectors";
 import AddAnnoucement from "./Add/AddAnnouncement";
 import s from "./AnnouncementsMain.module.css";
 import DeleteAnnoucement from "./Delete/DeleteAnnouncements";
 import UpdateAnnoucement from "./Update/UpdateAnnouncements";
+import { RootStateType } from "../../redux/store";
+import { AnnouncementsType } from '../../types/types'
+import { EnumStatus } from '../../redux/slices/announcementSlices/announcements'
 
 const AnnouncementsMain = () => {
-  const dispatch = useDispatch();
-
+  const dispatch = useAppDispatch()
   const {
     announcements,
     pageNumber,
     totalOnPage,
     totalAnnouncementCount,
+    // todo: add Loader later
     isLoading,
     errorStatus,
     getAnnouncementError,
-  } = useSelector((state) => announcementSelector(state));
+  } = useAppSelector((state: RootStateType) => announcementSelector(state));
 
-  const user = JSON.parse(window.localStorage.getItem("user"));
+
+  const user = JSON.parse(localStorage.getItem("user") || "{}");
 
   useEffect(() => {
-    if (errorStatus === "addSuccess") {
+    if (errorStatus === EnumStatus.AddSuccess) {
       dispatch(announcementsLoading({ pageNumber, totalOnPage }));
     }
     dispatch(announcementsLoading({ pageNumber, totalOnPage }));
   }, [dispatch, pageNumber, totalOnPage, errorStatus]);
 
-  const onChange = (pageNumber) => {
+  const onChange = (pageNumber: number) => {
     dispatch(announcementsLoading({ pageNumber, totalOnPage }));
   };
 
@@ -45,7 +49,7 @@ const AnnouncementsMain = () => {
             <div>
               <AddAnnoucement user={user} errorStatus={errorStatus} />
             </div>
-            {announcements.map((announcement) => (
+            {announcements.map((announcement: AnnouncementsType) => (
               <div key={announcement.id}>
                 <div className={s.info}>
                   <span>{announcement.title}</span>

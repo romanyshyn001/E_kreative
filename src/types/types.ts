@@ -1,10 +1,10 @@
 export type AnnouncementsType = {
   body: string;
   createdAt: string;
-  id: number;
+  id?: number;
   title: string;
   updatedAt?: string;
-  userId: number;
+  userId?: number;
 };
 export type UserType = {
   age: number;
@@ -41,4 +41,5 @@ export type AuthorizeUserType = {
   accessToken: string;
   user: UserType
 };
+
 export type SagaParams = { payload: any; type: string };

@@ -2,7 +2,7 @@ import { AnnouncementsType } from "../types/types";
 import mainURL, { ResponceTypeApi } from "./mainUrl";
 
 const announcementsApi = {
-  getAnnouncementsApi: async (pageNumber = 1, totalOnPage = 9) => {
+  getAnnouncementsApi: async (pageNumber = 1, totalOnPage: string) => {
     let page = `&_page=${pageNumber}&_limit=${totalOnPage}`;
     const configSortData = `?_sort=createdAt&_order=desc`;
 
